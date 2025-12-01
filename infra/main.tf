@@ -80,15 +80,45 @@ resource "google_compute_url_map" "default" {
   default_service = google_compute_backend_service.default.id
 }
 
-# Target HTTP Proxy
+# Global Static IP Address
+resource "google_compute_global_address" "default" {
+  name = "link-blog-ip"
+}
+
+# Managed SSL Certificate
+resource "google_compute_managed_ssl_certificate" "default" {
+  name = "link-blog-cert"
+
+  managed {
+    domains = [var.domain_name]
+  }
+}
+
+# Target HTTP Proxy (for HTTP to HTTPS redirect or just HTTP access)
 resource "google_compute_target_http_proxy" "default" {
   name    = "link-blog-http-proxy"
   url_map = google_compute_url_map.default.id
 }
 
-# Global Forwarding Rule
-resource "google_compute_global_forwarding_rule" "default" {
-  name       = "link-blog-forwarding-rule"
+# Target HTTPS Proxy
+resource "google_compute_target_https_proxy" "default" {
+  name             = "link-blog-https-proxy"
+  url_map          = google_compute_url_map.default.id
+  ssl_certificates = [google_compute_managed_ssl_certificate.default.id]
+}
+
+# Global Forwarding Rule (HTTP)
+resource "google_compute_global_forwarding_rule" "http" {
+  name       = "link-blog-forwarding-rule-http"
   target     = google_compute_target_http_proxy.default.id
   port_range = "80"
+  ip_address = google_compute_global_address.default.id
+}
+
+# Global Forwarding Rule (HTTPS)
+resource "google_compute_global_forwarding_rule" "https" {
+  name       = "link-blog-forwarding-rule-https"
+  target     = google_compute_target_https_proxy.default.id
+  port_range = "443"
+  ip_address = google_compute_global_address.default.id
 }

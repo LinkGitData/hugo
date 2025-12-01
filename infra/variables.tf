@@ -21,3 +21,9 @@ variable "repository_name" {
   type        = string
   default     = "link-blog-repo"
 }
+
+variable "domain_name" {
+  description = "The domain name for the blog"
+  type        = string
+  default     = "ailab.yuting.cc"
+}
