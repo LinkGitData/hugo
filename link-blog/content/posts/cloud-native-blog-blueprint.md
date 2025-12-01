@@ -1,6 +1,6 @@
 ---
 title: "🚀 Google Antigravity 實作實驗室：Agent-First 雲原生部落格部署指南"
-date: 2025-11-28T17:42:24+08:00
+date: 2025-12-01T16:12:04+08:00
 draft: false
 tags: ["Antigravity", "Hugo", "GCP", "Terraform", "Cloud Run"]
 mermaid: true
