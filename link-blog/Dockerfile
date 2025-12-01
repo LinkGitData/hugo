@@ -1,22 +1,15 @@
 # Stage 1: Build the Hugo site
-FROM cibuilds/hugo:latest AS builder
+FROM alpine:latest AS builder
 
-# cibuilds/hugo usually has git and shell
-# We don't need to reset ENTRYPOINT usually, but let's be safe or check docs. 
-# cibuilds/hugo entrypoint is usually empty or shell.
-# It is based on Alpine.
+# Install dependencies
+RUN apk add --no-cache git curl libc6-compat
+
+# Download and install Hugo Extended
+ENV HUGO_VERSION=0.121.1
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz | tar -xz -C /usr/local/bin hugo
 
 WORKDIR /src
 COPY . .
-
-# Debug: List files to verify context
-RUN pwd && ls -la
-
-# Check Hugo version
-RUN hugo version
-
-# Fallback: Copy hugo.yaml to config.yaml in case Hugo is old
-RUN cp hugo.yaml config.yaml
 
 # Build the site with minification
 RUN hugo --minify
