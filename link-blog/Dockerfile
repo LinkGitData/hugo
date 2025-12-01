@@ -18,8 +18,8 @@ RUN if [ -d "themes/congo/layouts/_shortcodes" ]; then mv themes/congo/layouts/_
 # Build the site with minification
 RUN hugo --minify
 
-# Stage 2: Serve with Chainguard Nginx
-FROM cgr.dev/chainguard/nginx:latest
+# Stage 2: Serve with Nginx Alpine
+FROM nginx:alpine
 
 # Copy the generated static site from the builder stage
 COPY --from=builder /src/public /usr/share/nginx/html
@@ -27,6 +27,6 @@ COPY --from=builder /src/public /usr/share/nginx/html
 # Copy the Nginx configuration template
 COPY config/nginx.conf.template /etc/nginx/nginx.conf.template
 
-# Use a shell command to substitute the PORT environment variable and start Nginx
-# We write to /tmp/nginx.conf because the default location might not be writable by the non-root user
-CMD ["/bin/sh", "-c", "sed \"s/\\${PORT}/$PORT/g\" /etc/nginx/nginx.conf.template > /tmp/nginx.conf && nginx -c /tmp/nginx.conf -g 'daemon off;'"]
+# Substitute $PORT and start Nginx
+# nginx:alpine has envsubst. We use it to replace $PORT in the template.
+CMD ["/bin/sh", "-c", "envsubst '$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
