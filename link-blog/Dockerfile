@@ -9,6 +9,9 @@ FROM cibuilds/hugo:latest AS builder
 WORKDIR /src
 COPY . .
 
+# Debug: List files to verify context
+RUN pwd && ls -la
+
 # Build the site with minification
 RUN hugo --minify
 
