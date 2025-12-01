@@ -1,5 +1,11 @@
 # Stage 1: Build the Hugo site
-FROM klakegg/hugo:ext-alpine AS builder
+FROM gohugoio/hugo:extended AS builder
+
+# Reset entrypoint to allow running shell commands
+ENTRYPOINT []
+
+# Install git as it might be required by the theme
+RUN apk add --no-cache git
 
 WORKDIR /src
 COPY . .
