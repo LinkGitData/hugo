@@ -1,11 +1,10 @@
 # Stage 1: Build the Hugo site
-FROM gohugoio/hugo:latest AS builder
+FROM cibuilds/hugo:latest AS builder
 
-# Reset entrypoint to allow running shell commands
-ENTRYPOINT []
-
-# Install git as it might be required by the theme
-RUN apk add --no-cache git
+# cibuilds/hugo usually has git and shell
+# We don't need to reset ENTRYPOINT usually, but let's be safe or check docs. 
+# cibuilds/hugo entrypoint is usually empty or shell.
+# It is based on Alpine.
 
 WORKDIR /src
 COPY . .
