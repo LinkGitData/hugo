@@ -2,3 +2,15 @@ baseURL: https://ailab.yuting.cc/
 languageCode: en-us
 title: AI Lab @ Yuting
 theme: congo
+
+params:
+  homepage:
+    layout: profile
+    showRecent: true
+  author:
+    name: AI Lab @ Yuting
+    image: me.jpg # Optional: You can add an image later
+    headline: "Welcome to my Cloud Native Blog"
+    links:
+      - icon: github
+        href: "https://github.com/LinkGitData"
