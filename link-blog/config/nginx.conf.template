@@ -1,0 +1,38 @@
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    
+    # Basic settings
+    sendfile on;
+    keepalive_timeout 65;
+
+    server {
+        # Listen on the port defined by the PORT environment variable
+        listen ${PORT};
+        server_name localhost;
+
+        root /usr/share/nginx/html;
+        index index.html;
+
+        # Serve static files
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+        # Cache control for static assets (optional but good practice)
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+            expires 30d;
+            add_header Cache-Control "public, no-transform";
+        }
+        
+        # Health check endpoint (optional, good for Cloud Run)
+        location /healthz {
+            access_log off;
+            return 200 "OK";
+        }
+    }
+}
