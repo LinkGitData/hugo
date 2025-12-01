@@ -58,6 +58,7 @@ graph TD
 - [x] **Google Antigravity IDE**：已安裝並更新至最新版本。
 - [x] **Google Cloud Platform (GCP) 帳號**：擁有一個已啟用帳單 (Billing) 的專案 (`linklin-lab`)。
 - [x] **Antigravity 設定**：已切換至 Enterprise Mode。已連結目標 GCP 專案。
+- [x] **Cloud Build 連線**：需注意 Cloud Build 與 GitHub Repository 的連結必須在 [GCP Console](https://console.cloud.google.com/cloud-build/triggers) 中手動完成授權，無法完全透過 CLI 自動化。
 
 ## 3. 階段 1：環境初始化與專案建置
 
