@@ -11,6 +11,10 @@ RUN curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/
 WORKDIR /src
 COPY . .
 
+# Fix Congo theme directory structure (rename _partials to partials, etc)
+RUN if [ -d "themes/congo/layouts/_partials" ]; then mv themes/congo/layouts/_partials themes/congo/layouts/partials; fi
+RUN if [ -d "themes/congo/layouts/_shortcodes" ]; then mv themes/congo/layouts/_shortcodes themes/congo/layouts/shortcodes; fi
+
 # Build the site with minification
 RUN hugo --minify
 
