@@ -12,6 +12,12 @@ COPY . .
 # Debug: List files to verify context
 RUN pwd && ls -la
 
+# Check Hugo version
+RUN hugo version
+
+# Fallback: Copy hugo.yaml to config.yaml in case Hugo is old
+RUN cp hugo.yaml config.yaml
+
 # Build the site with minification
 RUN hugo --minify
 
