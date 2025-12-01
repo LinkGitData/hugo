@@ -1,8 +1,8 @@
 # Stage 1: Build the Hugo site
-FROM alpine:latest AS builder
+FROM debian:stable-slim AS builder
 
 # Install dependencies
-RUN apk add --no-cache git curl libc6-compat
+RUN apt-get update && apt-get install -y git curl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 # Download and install Hugo Extended
 ENV HUGO_VERSION=0.121.1
