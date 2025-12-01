@@ -15,6 +15,14 @@ COPY . .
 RUN if [ -d "themes/congo/layouts/_partials" ]; then mv themes/congo/layouts/_partials themes/congo/layouts/partials; fi
 RUN if [ -d "themes/congo/layouts/_shortcodes" ]; then mv themes/congo/layouts/_shortcodes themes/congo/layouts/shortcodes; fi
 
+# Fix missing _default directory by moving root layouts
+RUN mkdir -p themes/congo/layouts/_default && \
+    mv themes/congo/layouts/single.html themes/congo/layouts/_default/ && \
+    mv themes/congo/layouts/list.html themes/congo/layouts/_default/ && \
+    mv themes/congo/layouts/baseof.html themes/congo/layouts/_default/ && \
+    mv themes/congo/layouts/taxonomy.html themes/congo/layouts/_default/ && \
+    mv themes/congo/layouts/term.html themes/congo/layouts/_default/
+
 # Build the site with minification
 RUN hugo --minify
 
