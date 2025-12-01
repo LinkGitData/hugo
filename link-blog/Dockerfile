@@ -1,5 +1,5 @@
 # Stage 1: Build the Hugo site
-FROM gohugoio/hugo:extended AS builder
+FROM gohugoio/hugo:latest AS builder
 
 # Reset entrypoint to allow running shell commands
 ENTRYPOINT []
