@@ -5,7 +5,7 @@ FROM debian:stable-slim AS builder
 RUN apt-get update && apt-get install -y git curl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 # Download and install Hugo Extended
-ENV HUGO_VERSION=0.121.1
+ENV HUGO_VERSION=0.152.0
 RUN curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz | tar -xz -C /usr/local/bin hugo
 
 WORKDIR /src
