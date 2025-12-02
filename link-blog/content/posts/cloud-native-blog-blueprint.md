@@ -118,7 +118,7 @@ graph TD
 ### 驗證結果
 
 *   **本地預覽**: `localhost:1313` 成功運行。
-*   **雲端部署**: Cloud Run 服務已上線，並透過 Load Balancer 提供服務。
+*   **雲端部署**: Cloud Run 服務已上線，並透過 Load Balancer 提供服務 ([https://ailab.yuting.cc/](https://ailab.yuting.cc/))。
 *   **CI/CD**: 推送代碼到 GitHub 後，Cloud Build 自動觸發並更新了服務。
 
 ## 8. 清理資源
