@@ -11,17 +11,9 @@ RUN curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/
 WORKDIR /src
 COPY . .
 
-# Fix Congo theme directory structure (rename _partials to partials, etc)
-RUN if [ -d "themes/congo/layouts/_partials" ]; then mv themes/congo/layouts/_partials themes/congo/layouts/partials; fi
-RUN if [ -d "themes/congo/layouts/_shortcodes" ]; then mv themes/congo/layouts/_shortcodes themes/congo/layouts/shortcodes; fi
-
-# Fix missing _default directory by moving root layouts
-RUN mkdir -p themes/congo/layouts/_default && \
-    mv themes/congo/layouts/single.html themes/congo/layouts/_default/ && \
-    mv themes/congo/layouts/list.html themes/congo/layouts/_default/ && \
-    mv themes/congo/layouts/baseof.html themes/congo/layouts/_default/ && \
-    mv themes/congo/layouts/taxonomy.html themes/congo/layouts/_default/ && \
-    mv themes/congo/layouts/term.html themes/congo/layouts/_default/
+# PaperMod theme setup (no special moves needed usually)
+# If PaperMod needs any specific setup, add it here.
+# For now, we assume standard structure works.
 
 # Build the site with minification
 RUN hugo --minify

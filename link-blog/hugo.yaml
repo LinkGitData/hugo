@@ -4,22 +4,55 @@ title: AI Lab @ Yuting
 theme: congo
 
 params:
-  colorScheme: slate
-  defaultAppearance: system
-  enableSearch: true
-  article:
-    showDate: true
-    showReadingTime: true
-    showTableOfContents: true
-    showTaxonomies: true
-    showWordCount: true
-  homepage:
-    layout: profile
-    showRecent: true
-  author:
-    name: Yuting
-    image: images/me.png
-    headline: "Welcome to my Cloud Native Blog"
-    links:
-      - icon: github
-        href: "https://github.com/LinkGitData"
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: AI Lab @ Yuting
+  description: "Welcome to my Cloud Native Blog"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Yuting
+  # author: ["Me", "You"] # multiple authors
+  images: ["images/architecture-diagram.png"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+
+  profileMode:
+    enabled: true
+    title: Yuting
+    subtitle: "Welcome to my Cloud Native Blog"
+    imageUrl: "images/me.png"
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: Yuting
+    buttons:
+      - name: GitHub
+        url: "https://github.com/LinkGitData"
+      - name: LinkedIn
+        url: "https://linkedin.com"
+
+  assets:
+    disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+
+menu:
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: example
+      name: example
+      url: /example.org
+      weight: 30
