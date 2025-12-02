@@ -18,7 +18,7 @@ params:
     showRecent: true
   author:
     name: AI Lab @ Yuting
-    image: me.jpg # Optional: You can add an image later
+    image: me.png
     headline: "Welcome to my Cloud Native Blog"
     links:
       - icon: github
