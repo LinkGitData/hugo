@@ -4,6 +4,7 @@ date: 2025-12-01T16:12:04+08:00
 draft: false
 tags: ["Antigravity", "Hugo", "GCP", "Terraform", "Cloud Run"]
 mermaid: true
+featureImage: images/architecture-diagram.png
 ---
 
 本手冊紀錄了如何利用 Google Antigravity 的 Agent 能力，在不手寫大量設定檔的情況下，快速重現「雲端原生部落格終極藍圖」架構。我們從零打造了一個基於 Hugo、Docker (Chainguard)、Terraform 與 Cloud Run 的高可用性部落格系統。
