@@ -1,7 +1,7 @@
 baseURL: https://ailab.yuting.cc/
 languageCode: en-us
 title: AI Lab @ Yuting
-theme: congo
+theme: PaperMod
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.

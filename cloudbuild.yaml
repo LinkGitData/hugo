@@ -1,4 +1,8 @@
 steps:
+  # Fetch submodules
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['submodule', 'update', '--init', '--recursive']
+
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/link-blog-repo/link-blog:$COMMIT_SHA', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/link-blog-repo/link-blog:latest', '.']
