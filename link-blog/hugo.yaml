@@ -17,8 +17,8 @@ params:
     layout: profile
     showRecent: true
   author:
-    name: AI Lab @ Yuting
-    image: me.png
+    name: Yuting
+    image: images/me.png
     headline: "Welcome to my Cloud Native Blog"
     links:
       - icon: github
