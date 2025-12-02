@@ -3,6 +3,7 @@ title: "🚀 Google Antigravity 實作實驗室：Agent-First 雲原生部落格
 date: 2025-12-01T16:12:04+08:00
 draft: false
 tags: ["Antigravity", "Hugo", "GCP", "Terraform", "Cloud Run"]
+categories: ["Cloud Native"]
 
 mermaid: true
 cover:
