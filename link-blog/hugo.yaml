@@ -4,6 +4,15 @@ title: AI Lab @ Yuting
 theme: congo
 
 params:
+  colorScheme: slate
+  defaultAppearance: system
+  enableSearch: true
+  article:
+    showDate: true
+    showReadingTime: true
+    showTableOfContents: true
+    showTaxonomies: true
+    showWordCount: true
   homepage:
     layout: profile
     showRecent: true

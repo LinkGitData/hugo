@@ -23,6 +23,8 @@ mermaid: true
 
 ## 1. 專案簡介與架構
 
+> 🚀 **Live Demo**: [https://ailab.yuting.cc/](https://ailab.yuting.cc/)
+
 本實驗室透過 Antigravity Agent 協調以下技術堆疊，實現 100% 代碼管理與自動化部署：
 
 *   🎨 **應用層**：Hugo (靜態網站生成器) + Congo Theme (Tailwind CSS)
