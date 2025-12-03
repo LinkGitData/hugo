@@ -79,6 +79,9 @@ graph TD
 2.  **Hugo 站點**：建立了 `link-blog` 專案，並設定 `Congo` 主題。
 3.  **Git 初始化**：初始化了 Git Repository 並推送到 GitHub (`LinkGitData/hugo`)。
 
+> 🤖 **Agent Prompt**:
+> "在當前目錄下建立一個名為 'link-blog' 的新 Hugo 網站。使用 'Congo' 主題。初始化 git repository 並推送到 'LinkGitData/hugo'。"
+
 ## 4. 階段 2：容器化與本地預覽
 
 🎯 **目標**：生成符合安全最佳實踐的 Dockerfile 並進行本地測試。
@@ -90,6 +93,9 @@ graph TD
 1.  **Build Stage**: 使用 `klakegg/hugo:ext-alpine` 生成靜態檔案。
 2.  **Run Stage**: 使用 `cgr.dev/chainguard/nginx:latest` 提供服務。
 3.  **配置**: Nginx 設定為監聽 `$PORT` 環境變數，符合 Cloud Run 要求。
+
+> 🤖 **Agent Prompt**:
+> "為這個 Hugo 專案建立一個 multi-stage Dockerfile。Stage 1 使用 'klakegg/hugo:ext-alpine' 來建置網站。Stage 2 使用 'cgr.dev/chainguard/nginx:latest' 來提供靜態檔案服務。設定 Nginx 監聽 $PORT 環境變數所定義的連接埠。"
 
 ## 5. 階段 3：基礎設施即代碼 (Terraform 生成)
 
@@ -104,6 +110,9 @@ graph TD
 *   **Load Balancer**: Global External HTTPS Load Balancer (含 Cloud CDN)
 *   **Backend State**: 使用 GCS Bucket `linklin-lab-tfstate` 儲存 Terraform 狀態。
 
+> 🤖 **Agent Prompt**:
+> "為名為 'link-blog-service' 的 Cloud Run 服務生成 Terraform 設定。它應該使用 Artifact Registry 'link-blog-repo' 中的映像檔。同時建立一個 Global External HTTPS Load Balancer，並為網域 'ailab.yuting.cc' 設定託管的 SSL 憑證。使用 GCS bucket 'linklin-lab-tfstate' 作為 backend state。"
+
 > 💡 **經驗分享**：在初始化 Terraform 時，我們遇到了 GCS 權限問題，通過 `gcloud auth application-default login` 重新驗證解決。
 
 ## 6. 階段 4：CI/CD 自動化管線
@@ -115,6 +124,9 @@ graph TD
 1.  **Cloud Build 設定**: 建立了 `cloudbuild.yaml`，定義了 Build -> Push -> Deploy 流程。
 2.  **GitHub 連結**: 這是關鍵的一步。我們需要在 GCP Console 中手動將 GitHub Repository (`LinkGitData/hugo`) 連結到 Cloud Build。
 3.  **觸發器 (Trigger)**: 設定了 `link-blog-trigger`，當 `main` 分支有 Push 時自動觸發。
+
+> 🤖 **Agent Prompt**:
+> "建立一個 cloudbuild.yaml 檔案，負責建置 Docker 映像檔、推送到 Artifact Registry，並部署到 Cloud Run。此建置流程應由推送到 main 分支的動作觸發。"
 
 > ⚠️ **重要提示**：Cloud Build 的 GitHub Repository 連結必須在 GCP Console 中手動完成，無法完全透過 CLI 自動化。
 
