@@ -41,7 +41,7 @@ cover:
 
 ### 架構流程圖
 
-![Cloud Native Architecture Blueprint](/images/architecture-diagram.png?v=4)
+![Cloud Native Architecture Blueprint](/images/architecture-diagram.png?v=5)
 
 ## 2. 先決條件
 
