@@ -14,6 +14,8 @@ cover:
 
 在這篇文章中，我們將深入探討一個令人興奮的開源專案，該專案利用 Google 的 **Gemini 1.5 Flash** 模型對文字進行進階的情感分析和實體識別。這個名為 `gemini-sentiment-web` 的專案展示了如何將現代生成式 AI (Generative AI) 整合到簡單的 Flask Web 應用程式中。
 
+> 🎮 **線上試玩**：您可以直接訪問 [Live Demo](https://sentiment.yuting.cc/) 來體驗情感分析功能。
+
 ## 🌟 專案概觀
 
 此應用程式的核心目標是接收一段文字（例如客戶評論或社群媒體留言），並自動執行以下操作：
