@@ -23,6 +23,7 @@ params:
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
+  buildFuture: true
 
   profileMode:
     enabled: false
