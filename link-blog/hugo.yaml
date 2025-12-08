@@ -53,7 +53,7 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-    - identifier: example
-      name: example
-      url: /example.org
+    - identifier: post
+      name: post
+      url: /posts/
       weight: 30
