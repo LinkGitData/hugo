@@ -7,7 +7,7 @@ categories: ["Cloud Native"]
 
 mermaid: true
 cover:
-  image: "images/ai-cover.png?v=6"
+  image: "images/ai-cover.png?v=7"
   alt: "Cloud Native Architecture Blueprint"
   caption: "Cloud Native Architecture Blueprint"
   relative: false
