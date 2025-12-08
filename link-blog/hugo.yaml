@@ -24,6 +24,7 @@ params:
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
   buildFuture: true
+  mainSections: ["posts"]
 
   profileMode:
     enabled: false
