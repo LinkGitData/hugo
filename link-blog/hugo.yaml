@@ -6,11 +6,11 @@ theme: PaperMod
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: AI Lab @ Yuting
-  description: "Welcome to my Cloud Native Blog"
-  keywords: [Blog, Portfolio, PaperMod]
+  description: "Sharing insights on Cloud Native, Artificial Intelligence, and DevOps practices. Building the future with Agentic AI."
+  keywords: [Cloud Native, Artificial Intelligence, DevOps, Hugo, Google Cloud Platform, Agentic AI, Terraform]
   author: Yuting
   # author: ["Me", "You"] # multiple authors
-  images: ["images/architecture-diagram.png"]
+  images: ["images/ai-cover.png"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
