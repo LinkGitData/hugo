@@ -41,24 +41,7 @@ cover:
 
 ### 架構流程圖
 
-{{< mermaid >}}
-graph TD
-    User[Developer / Antigravity] -->|Git Push| GitHub[GitHub Repository]
-    GitHub -->|Trigger| CB[Cloud Build]
-    
-    subgraph CI/CD Pipeline
-        CB -->|Build| Docker[Docker Image]
-        Docker -->|Push| AR[Artifact Registry]
-        CB -->|Deploy| CR[Cloud Run Service]
-    end
-    
-    subgraph Infrastructure
-        LB[Global Load Balancer] -->|Traffic| CR
-        CR -->|Pull Image| AR
-    end
-    
-    PublicUser[Public User] -->|HTTPS| LB
-{{< /mermaid >}}
+![Cloud Native Architecture Blueprint](/images/architecture-diagram.png?v=3)
 
 ## 2. 先決條件
 
