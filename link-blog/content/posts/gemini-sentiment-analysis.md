@@ -60,7 +60,7 @@ graph LR
 
 ```python
 model = GenerativeModel(
-    "gemini-2.5-flash-lite-001",
+    "gemini-2.5-flash-lite",
     system_instruction=["""你是很棒的評論家，你的服務很有幫助"""]
 )
 ```
