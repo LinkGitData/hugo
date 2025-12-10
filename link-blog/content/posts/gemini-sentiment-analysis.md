@@ -6,7 +6,7 @@ tags: ["Generative AI", "Gemini", "Flask", "Python", "Sentiment Analysis"]
 categories: ["AI Projects"]
 mermaid: true
 cover:
-  image: "images/ai-cover.png?v=7"
+  image: "images/gemini-cover.png?v=1"
   alt: "Gemini 情感分析"
   caption: "Powered by Gemini 2.5 Flash Lite"
   relative: false
