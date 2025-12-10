@@ -16,6 +16,19 @@ cover:
 
 > 🎮 **線上試玩**：您可以直接訪問 [Live Demo](https://sentiment.yuting.cc/) 來體驗情感分析功能。
 
+## 📋 目錄
+
+1. [專案概觀](#-專案概觀)
+2. [系統架構](#-系統架構)
+3. [技術堆疊](#-技術堆疊)
+4. [程式碼深度解析](#-程式碼深度解析)
+    - [1. 模型初始化](#1-模型初始化)
+    - [2. Prompt Engineering (提示詞工程)](#2-prompt-engineering-提示詞工程)
+    - [3. 安全設定與參數配置](#3-安全設定與參數配置)
+5. [為什麼這很重要](#-為什麼這很重要)
+
+---
+
 ## 🌟 專案概觀
 
 此應用程式的核心目標是接收一段文字（例如客戶評論或社群媒體留言），並自動執行以下操作：
@@ -45,10 +58,10 @@ graph LR
 
 ## 🛠️ 技術堆疊
 
-* **後端**：Python, Flask
-* **AI 模型**：Google Vertex AI (Gemini 2.5 Flash Lite)
-* **監控**：Sentry (用於錯誤追蹤)
-* **部署**：支援 Docker / Cloud Run (內含 Procfile)
+- **後端**：Python, Flask
+- **AI 模型**：Google Vertex AI (Gemini 2.5 Flash Lite)
+- **監控**：Sentry (用於錯誤追蹤)
+- **部署**：支援 Docker / Cloud Run (內含 Procfile)
 
 ## 💻 程式碼深度解析
 
