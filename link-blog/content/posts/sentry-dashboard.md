@@ -6,7 +6,7 @@ tags: ["Sentry", "Observability", "Cloud Native", "Architecture"]
 categories: ["Architecture"]
 mermaid: true
 cover:
-  image: "images/ai-cover.png?v=7"
+  image: "images/sentry-cover.png?v=1"
   alt: "Sentry 全鏈路監控"
   caption: "前端部署於雲端，後端部署於在地機房的監控整合方案"
   relative: false
