@@ -8,18 +8,13 @@ source_raw_path = "/Users/yuting/.gemini/antigravity/brain/ef23cb45-4062-4562-96
 try:
     img = Image.open(source_raw_path).convert("RGBA")
     
-    font_size = 52
-    try:
-        font = ImageFont.truetype(font_path, font_size)
-    except IOError:
-        print(f"Could not load font. Make sure {font_path} exists.")
-        exit(1)
+    font_path = "/System/Library/Fonts/STHeiti Medium.ttc"
     
     levels = [
-        {"text": "System Builder", "y": 270},
-        {"text": "分析研究型", "y": 480},
-        {"text": "效率工具型", "y": 680},
-        {"text": "快速答案型", "y": 880}
+        {"text": "System Builder", "y": 320,  "size": 36},
+        {"text": "分析研究型",      "y": 500,  "size": 44},
+        {"text": "效率工具型",      "y": 690,  "size": 52},
+        {"text": "快速答案型",      "y": 880,  "size": 60}
     ]
     
     image_width = img.size[0]
@@ -31,6 +26,7 @@ try:
     # Draw thick shadow text to make it legible against bright background
     for level in levels:
         text = level["text"]
+        font = ImageFont.truetype(font_path, level["size"])
         bbox = font.getbbox(text)
         text_w = bbox[2] - bbox[0]
         x = (image_width - text_w) / 2
@@ -52,6 +48,7 @@ try:
     
     for level in levels:
         text = level["text"]
+        font = ImageFont.truetype(font_path, level["size"])
         bbox = font.getbbox(text)
         text_w = bbox[2] - bbox[0]
         x = (image_width - text_w) / 2
