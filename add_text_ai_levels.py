@@ -11,10 +11,10 @@ try:
     font_path = "/System/Library/Fonts/STHeiti Medium.ttc"
     
     levels = [
-        {"text": "System Builder", "y": 320,  "size": 36},
-        {"text": "分析研究型",      "y": 500,  "size": 44},
-        {"text": "效率工具型",      "y": 690,  "size": 52},
-        {"text": "快速答案型",      "y": 880,  "size": 60}
+        {"text": "System Builder (1-2%)", "y": 350,  "size": 30},
+        {"text": "分析研究型 (5-10%)",      "y": 500,  "size": 40},
+        {"text": "效率工具型 (20-30%)",      "y": 680,  "size": 48},
+        {"text": "快速答案型 (60-70%)",      "y": 860,  "size": 56}
     ]
     
     image_width = img.size[0]
