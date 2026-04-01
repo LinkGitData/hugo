@@ -1,85 +1,70 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import os
 
 font_path = "/System/Library/Fonts/STHeiti Medium.ttc"
 image_path = "/Users/yuting/Documents/GitHub/hugo/link-blog/static/images/ai-users-levels.png"
+source_raw_path = "/Users/yuting/.gemini/antigravity/brain/ef23cb45-4062-4562-96b3-b32135598791/ai_users_levels_1775018059263.png"
 
 try:
-    img = Image.open(image_path)
-    # Ensure image is in RGBA so we can do transparent overlay
-    img = img.convert("RGBA")
+    img = Image.open(source_raw_path).convert("RGBA")
     
-    # Create an overlay layer for transparent backgrounds
-    overlay = Image.new('RGBA', img.size, (255, 255, 255, 0))
-    d = ImageDraw.Draw(overlay)
-    
-    # Try to load font
+    font_size = 52
     try:
-        font_size = 48
         font = ImageFont.truetype(font_path, font_size)
     except IOError:
         print(f"Could not load font. Make sure {font_path} exists.")
         exit(1)
-        
-    draw = ImageDraw.Draw(img)
     
-    # Levels and their approximate Y coordinates (from top to bottom)
     levels = [
-        {"text": "System Builder", "y": 280},
+        {"text": "System Builder", "y": 270},
         {"text": "分析研究型", "y": 480},
         {"text": "效率工具型", "y": 680},
         {"text": "快速答案型", "y": 880}
     ]
     
-    image_width = img.width
+    image_width = img.size[0]
     
-    for level in levels:
-        text = level["text"]
-        
-        # Calculate text bounding box
-        # getbbox returns (left, top, right, bottom)
-        bbox = font.getbbox(text)
-        text_width = bbox[2] - bbox[0]
-        text_height = bbox[3] - bbox[1]
-        
-        # Center horizontally
-        x = (image_width - text_width) / 2
-        y = level["y"]
-        
-        # Draw background rectangle
-        padding_x = 30
-        padding_y = 15
-        rect_left = x - padding_x
-        rect_top = y - padding_y - 10  # offset a bit for box alignment
-        rect_right = x + text_width + padding_x
-        rect_bottom = y + text_height + padding_y + 10
-        
-        # Draw semi-transparent rounded-like rect on overlay
-        d.rectangle(
-            [rect_left, rect_top, rect_right, rect_bottom], 
-            fill=(20, 10, 50, 200),  # Dark purple tint with opacity
-            outline=(100, 200, 255, 255),  # Cyan glow edge
-            width=2
-        )
+    # Create an image just for the shadow/glow
+    shadow_img = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    d_shadow = ImageDraw.Draw(shadow_img)
     
-    # Merge overlay with original image
-    out = Image.alpha_composite(img, overlay)
-    
-    # Draw text on the composited image
-    final_draw = ImageDraw.Draw(out)
+    # Draw thick shadow text to make it legible against bright background
     for level in levels:
         text = level["text"]
         bbox = font.getbbox(text)
-        text_width = bbox[2] - bbox[0]
-        x = (image_width - text_width) / 2
+        text_w = bbox[2] - bbox[0]
+        x = (image_width - text_w) / 2
         y = level["y"]
+        d_shadow.text((x, y), text, font=font, fill=(0, 0, 0, 255))
+        d_shadow.text((x-2, y-2), text, font=font, fill=(0, 0, 0, 255))
+        d_shadow.text((x+2, y+2), text, font=font, fill=(0, 0, 0, 255))
+
+    # Apply Gaussian Blur to create a dark halo (shadow) instead of a hard box
+    shadow_img = shadow_img.filter(ImageFilter.GaussianBlur(8))
+    
+    # Layer the shadow multiple times to make it darker and more effective
+    for _ in range(4):
+        img = Image.alpha_composite(img, shadow_img)
+    
+    # Now draw the bright white text on top
+    text_img = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    d_text = ImageDraw.Draw(text_img)
+    
+    for level in levels:
+        text = level["text"]
+        bbox = font.getbbox(text)
+        text_w = bbox[2] - bbox[0]
+        x = (image_width - text_w) / 2
+        y = level["y"]
+        # Add a subtle cyan/purple hue to the text for integration
+        # Or just pure white with high opacity
+        d_text.text((x, y), text, font=font, fill=(255, 255, 255, 245))
         
-        final_draw.text((x, y), text, font=font, fill=(255, 255, 255, 255))
-        
-    # Drop alpha and save
-    out = out.convert("RGB")
-    out.save(image_path)
-    print("Successfully added text to the image!")
+    img = Image.alpha_composite(img, text_img)
+    
+    img = img.convert("RGB")
+    img.save(image_path)
+    print("Successfully added smooth text to the image!")
 
 except Exception as e:
     print(f"Error: {e}")
