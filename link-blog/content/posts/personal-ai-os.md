@@ -17,7 +17,7 @@ cover:
 
 ## 一、 了解自己在哪個階段：AI 使用者的四個層次
 
-![AI 使用者的四個層次](/images/ai-users-levels.png?v=5)
+![AI 使用者的四個層次](/images/ai-users-levels.png?v=6)
 
 在目前的 AI 應用生態中，我們大致可以將使用者的層次與特質分為以下四類：
 
