@@ -188,7 +188,7 @@ fi
 ./start.sh /image /Users/yuting/Claude/pic/Yushan.png "請詳細分析這張圖片，包括：景色內容、地點特徵、天氣、光線、拍攝角度，以及任何值得注意的細節。請用繁體中文回答。"
 ```
 
-![玉山主峰分析測試圖片](/images/Yushan.png)
+![玉山主峰分析測試圖片](/images/Yushan_beautified.png)
 
 ### Gemma 4 分析結果摘要
 *   **⛰️ 地點特徵：** 正確讀出「Mt. Jade Main Peak, 3952m」，確認是玉山主峰人工砌石平台。
