@@ -46,8 +46,9 @@ cover:
 以下是從用戶登入到呈現視覺化報表的完整請求生命週期：
 
 {{< mermaid >}}
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e1f5fe', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff'}}}%%
 graph TD
-    User([系統使用者]) -->|1. OAuth 登入驗證| Auth[Google OAuth colatour.com.tw]
+    User([系統使用者]) -->|1. OAuth 登入驗證| Auth[Google OAuth enterprise-cloud.com.tw]
     User -->|2. 送出查詢請求| Nginx[前端 Flutter 容器 Nginx]
     subgraph Frontend Container
         Nginx -->|3. 檢查 allowed_ips.conf| Nginx
@@ -68,7 +69,7 @@ graph TD
 經過系統轉換後，原先複雜且難以閱讀的 BigQuery 表格，已被轉化為能互動點擊的成本趨勢圖與專案攤提列表，讓我們得以快速追查成本劇增的潛在危機。
 
 
-![GCP Billing Dashboard](/images/gcp-billing-dashboard-anonymized.png?v=2)
+![GCP Billing Dashboard](/images/gcp-billing-dashboard-anonymized.png?v=3)
 
 ## 💡 實踐中的關鍵挑戰與解法
 

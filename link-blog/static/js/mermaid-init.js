@@ -3,11 +3,17 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const getTheme = () => document.body.classList.contains("dark") ? "dark" : "default";
-
+  const isDark = document.body.classList.contains("dark");
+  
   mermaid.initialize({
     startOnLoad: true,
-    theme: getTheme(),
+    theme: isDark ? "dark" : "default",
+    themeVariables: {
+      lineColor: isDark ? "#ffffff" : "#333333",
+      textColor: isDark ? "#ffffff" : "#333333",
+      mainBkg: isDark ? "#2e2e33" : "#f8f9fa",
+      nodeBorder: isDark ? "#ffffff" : "#333333",
+    },
     securityLevel: 'loose',
   });
 });
