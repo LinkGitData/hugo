@@ -6,7 +6,7 @@ tags: ["Gemma 4", "Ollama", "Local LLM", "Multimodal", "Python"]
 categories: ["AI Projects"]
 mermaid: true
 cover:
-  image: "images/gemma4-local-integration-cover.png?v=1"
+  image: "images/gemma4-local-integration-cover.png?v=2"
   alt: "Gemma 4 and Ollama Local Setup"
   caption: "Powered by Gemma 4:e4b on macOS"
   relative: false
