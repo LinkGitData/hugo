@@ -23,25 +23,44 @@ cover:
 
 ## 🏗️ 核心技術與微服務架構
 
-本專案採用高度標準化的 **前後分離 (Separation of Concerns)** 設計，並透過基礎設施即代碼（IaC）達成全自動化部署。
+本專案採用高度標準化的 **前後分離 (Separation of Concerns)** 與 **微服務 (Microservices)** 架構。所有的基礎設施皆透過 **Terraform (IaC)** 進行定義，確保環境的可移植性與安全性。
 
-*   **前端展示**：利用 Flutter Web 與原生 Android App 雙棲架構撰寫，介面狀態以 `provider` 進行管理，並利用 `fl_chart` 提供各月成本的精確報表圖。
-*   **後端服務**：奠基於 Python FastAPI 與 Google BigQuery 之間，負責進行複雜的 SQL 分析，將 BigQuery Export 中扁平的成本及折讓明細，清洗為巢狀 JSON 結構。
-*   **基礎設施與部署**：透過 Terraform 管理 VPC、Cloud Run 以及 IAM 權限分配。
+### 📁 模組化職責拆解
 
-以下為核心的資料請求流向：
+1.  **前端展示層 (`frontend/`)**：
+    *   **技術選型**：採用 **Flutter Web** 驅動，利用同一套 Dart 邏輯兼顧 Android App 版本的開發，實現「一份程式碼，多端部署」。
+    *   **狀態與圖表**：使用 `provider` 進行全局狀態管理，並整合 `fl_chart` 與 `syncfusion_flutter_treemap` 繪製高互動性的 Treemap 樹狀圖與折線圖。
+    *   **容器化設計**：以前端 Nginx 容器作為入口，除了提供靜態資源，亦扮演 **Reverse Proxy** 的角色，負擔 IP 白名單檢查並在轉發 API 請求時自動注入中繼憑證。
+
+2.  **後端邏輯層 (`backend/`)**：
+    *   **高效能開發**：基於 Python **FastAPI** 框架，利用 Pydantic 進行嚴格的參數驗證與資料模型定義，提供標準的 RESTful API。
+    *   **大數據分析**：作為 Google **BigQuery Client**，後端負責執行複雜的 SQL 彙整語句。它能將 GCP 原始匯出的扁平化（Flat）帳單列 (Raw Rows)，清洗與轉換為以 `Project -> Service -> MonthlyCost` 為階層的巢狀 JSON 結構。
+    *   **安全性 Middleware**：實作自定義中繼軟體，強制校驗請求標頭中的 `X-Service-Secret`，確保所有 API 呼叫皆來自受信任的前端代理。
+
+3.  **基礎設施層 (`terraform/`)**：
+    *   **資源管理**：透過 Terraform 自動化配置 **Artifact Registry** (映像檔倉庫)、**VPC 專用網路**與子網。
+    *   **Serverless 部署**：將服務部署於 **Google Cloud Run**。後端設定為 `INTERNAL_ONLY` 模式，而前端則配置 **VPC Access Connector**，建立起一條專屬的內部加密通道與後端通訊。
+
+### 📊 系統資料流向圖
+
+以下是從用戶登入到呈現視覺化報表的完整請求生命週期：
 
 {{< mermaid >}}
 graph TD
-    User([系統使用者]) -->|1. OAuth 帳號驗證| Auth[Google 驗證]
+    User([系統使用者]) -->|1. OAuth 登入驗證| Auth[Google OAuth colatour.com.tw]
     User -->|2. 送出查詢請求| Nginx[前端 Flutter 容器 Nginx]
-    Nginx -->|3. 通過 IP 白名單| Nginx
-    Nginx -->|4. 注入密鑰後轉發 API| Backend[Cloud Run Backend]
-    Backend -->|5. Middleware 解析密鑰| FastAPI[FastAPI 核心處理]
-    FastAPI -->|6. Gcp_Billing_Export_v1 查詢| BQ[(BigQuery Billing 資料集)]
-    BQ -->|7. 回傳成本/折讓資料| FastAPI
-    FastAPI -->|8. 回傳階層式 JSON 資料| Nginx
-    Nginx -->|9. 產生 Treemap 視覺化| User
+    subgraph Frontend Container
+        Nginx -->|3. 檢查 allowed_ips.conf| Nginx
+        Nginx -->|4. 注入 X-Service-Secret| Proxy[Reverse Proxy]
+    end
+    Proxy -->|5. 透過 VPC Connector 轉發| Backend[Cloud Run Backend]
+    subgraph Backend Service
+        Backend -->|6. Middleware 秘鑰檢查| FastAPI[FastAPI 核心處理]
+        FastAPI -->|7. BigQuery SQL 彙整查詢| BQ[(GCP Billing Export v1)]
+    end
+    BQ -->|8. 回傳成本/折讓資料| FastAPI
+    FastAPI -->|9. 封裝 JSON 結構| Proxy
+    Proxy -->|10. fl_chart / Treemap 渲染| User
 {{< /mermaid >}}
 
 ## 🖼️ 視覺化成果展示
