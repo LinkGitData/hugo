@@ -37,7 +37,7 @@ cover:
 1.  **前言/導言**：簡要介紹技術核心或該篇筆記解決了什麼痛點。
 2.  **## 📋 目錄**：利用 Markdown 與錨點連結建立目錄清單。
 3.  **本文段落 (H2)**：根據使用者的內容展開具體的技術章節，請為標題配上對應的 Emoji。
-    * 若可將概念圖解，請優先使用 Hugo 的 `{{< mermaid >}}` 短代碼繪製架構圖/資料流圖。
+    * 若可將概念圖解，請優先使用標準 Markdown code block (` ```mermaid `) 繪製架構圖/資料流圖，請勿使用 `{{< mermaid >}}` 短代碼。
     * 若有程式碼，必須使用有語言標籤 (如 `python` 或 `bash`) 的 Code Block。
 4.  **## 🚀 結論與未來進階**：統整全篇觀念並給予下一步的行動建議。
 
@@ -46,6 +46,7 @@ cover:
 *   **使用英文撰寫。**
 *   **風格需求：** High quality, tech vibe, subtle anime or modern flat illustration style, clean UI aesthetic, vibrant colors.
 *   **畫面內容：** 根據文章核心技術自由發揮，例如："A futuristic data center flowing with glowing nodes..."。
+*   **特殊必行操作 (極度重要)：** 生成封面圖片後，必須運用 Python (`Pillow` / `PIL`) 或 ImageMagick 將該預設圖片置中等比縮放並裁切至 **`1024x256`** 的長條型比例，以符合部落格首頁卡片格式，否則會跑版。請主動在對話中執行這個裁切動作。
 
 ### 3. 主動協助保存
 文章生成並展示給使用者確認後，主動詢問使用者：「是否需要我將這篇文章直接寫入專案的 `link-blog/content/posts/[檔案名稱].md` 中？」。
