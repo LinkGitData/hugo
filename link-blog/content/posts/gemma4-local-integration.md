@@ -14,134 +14,228 @@ cover:
 
 在生成式 AI 的發展下，除了雲端大模型，將大型語言模型（LLM）部署在「本地端」並具備多模態（Multimodal）能力，已成為開發者與系統建構者（System Builder）的新趨勢。這不僅能大幅降低依賴外部 API 的成本，更能確保敏感資料（如私人圖片與文件）的絕對安全。
 
-本文紀錄了在 macOS 環境中，不需繁雜設定，透過 **Ollama** 整合 Python 腳本，快速將 Google 最新支援多模態的 **Gemma 4 (e4b 版本)** 大模型落地運行的實戰筆記。
+本文詳細紀錄了在 macOS 環境中，如何不需透過繁雜設定，透過 **Ollama** 整合 Python 腳本，完整體驗 Google 最新具備多模態能力的 **Gemma 4** 邊緣模型落地實戰。
 
 ---
 
 ## 📋 目錄
 
-1. [系統環境與 Gemma 4 模型選擇](#-系統環境與-gemma-4-模型選擇)
-2. [系統架構：Ollama 與 Python 串接](#-系統架構ollama-與-python-串接)
-3. [Ollama 安裝與自訂路徑實作](#-ollama-安裝與自訂路徑實作)
-4. [實測：多模態影像解析 (玉山主峰)](#-實測多模態影像解析-玉山主峰)
-5. [Benchmark 效能指標剖析](#-benchmark-效能指標剖析)
-6. [結論與未來進階](#-結論與未來進階)
+1. [環境確認與 Gemma 4 規格選擇](#-環境確認與-gemma-4-規格選擇)
+2. [Ollama 隔離式安裝與模型下載](#-ollama-隔離式安裝與模型下載)
+3. [核心系統：Bash 與 Python 對話腳本](#-核心系統bash-與-python-對話腳本)
+4. [多模態結構與 CLI 命令模式](#-多模態結構與-cli-命令模式)
+5. [實測示範：玉山主峰影像解析](#-實測示範玉山主峰影像解析)
+6. [效能指標（Benchmark）詳解](#-效能指標benchmark詳解)
+7. [專案架構與完整使用手冊](#-專案架構與完整使用手冊)
+8. [結論與未來進階](#-結論與未來進階)
 
 ---
 
-## 🏗️ 系統環境與 Gemma 4 模型選擇
+## 🏗️ 環境確認與 Gemma 4 規格選擇
 
-在開始部署前，我們盤點了目前的硬體資源，這決定了我們可以乘載多大的模型：
-*   **作業系統**：macOS
-*   **開發環境**：Python 3.9.6
-*   **記憶體**：16 GB RAM
+### 1. 本地實測環境
 
-在此前提下，我們選用了 **`gemma4:e4b`**。這款模型容量約 9.6 GB，專門為邊緣裝置設計，最大的優勢是在 16 GB 的規格下能穩定運行，且完美支援了「文字、圖片與音訊」的**多模態處理**能力。
+| 項目 | 說明 |
+| :--- | :--- |
+| **作業系統** | macOS |
+| **開發工具** | Python 3.9.6, pip 23.2.1 |
+| **硬體資源** | 16 GB RAM |
+| **依賴套件** | 未安裝 Homebrew，未預先安裝 Ollama |
 
-> 💡 **經驗分享**：如果您的設備 RAM 小於 16GB，建議可以降級採用 `gemma4:e2b` (約 7.2 GB) 來確保推論時系統不會過載發燙。
+為了不干擾系統底層，我們採用 **方案 A：Ollama Binary + Python 腳本**，不強制依賴系統套件管理器。
 
----
+### 2. Gemma 4 模型挑選
 
-## ⚙️ 系統架構：Ollama 與 Python 串接
+根據 Google 釋出的資訊，Gemma 4 提供多樣的參數量，我們評估了以下官方規格：
 
-我們設定這套系統為一個可以直接透過終端機 (CLI) 互動的腳本工具，以下是整體的資料流架構：
+| 模型 Tag | 檔案大小 | 特性與說明 |
+| :--- | :--- | :--- |
+| `gemma4:e2b` | 7.2 GB | 邊緣裝置適用，支援文字/圖片/音訊。 |
+| **`gemma4:e4b`** | **9.6 GB** | **邊緣裝置適用，支援文字/圖片/音訊 (✅ 本次選用)** |
+| `gemma4:26b` | 18 GB | MoE (混合專家) 架構，需高硬體規格。 |
+| `gemma4:31b` | 20 GB | Dense 模型架構。 |
 
-{{< mermaid >}}
-graph LR
-    User[使用者] -->|輸入參數或圖片| Bash[start.sh 腳本]
-    Bash -->|參數傳遞| Py[chat.py Python 核心]
-    
-    subgraph Local LLM Engine
-        Py -->|API 請求 + Base64 圖片| Ollama[Ollama 伺服器]
-        Ollama -->|Load| Model[(Gemma 4:e4b)]
-    end
-    
-    Ollama -->|串流生成 JSON Chunk| Py
-    Py -->|渲染 Markdown 與 Benchmark| User
-{{< /mermaid >}}
+> 💡 **經驗分享**：在 16 GB RAM 的基準下，`gemma4:e4b` 可以在不耗盡系統資源的前提下提供最高畫質的語義與圖片解析能力。
 
 ---
 
-## 💻 Ollama 安裝與自訂路徑實作
+## 💻 Ollama 隔離式安裝與模型下載
 
-為了保持開發環境乾淨，我們選擇不去動用到 Homebrew 及全域設定 (`sudo`)，而是結合 App Bundle 將執行檔提取出來，並使用環境變數綁定模型下載路徑。
+### 1. 安裝與自訂路徑
 
-### 1. 隔離式安裝
-
-這是一個很靈活的本地測試技巧：
+若您不希望透過 `curl | sh` 的方式污染系統 PATH，可以像我們一樣利用 macOS App bundle 提取二進位執行檔：
 
 ```bash
-# 從 App bundle 複製分離 binary
+# 從 App bundle 抽出二進位檔案放入專案的 bin 目錄
 mkdir -p /Users/yuting/Claude/bin
 cp /Applications/Ollama.app/Contents/Resources/ollama ./bin/ollama
 chmod +x ./bin/ollama
 
-# 確認版本
+# 確認是否可執行，應顯示 0.20.3 等版本號
 ./bin/ollama --version
 ```
 
-### 2. 啟動與模型載入
+### 2. 下載 Gemma 4 模型
 
-利用 `OLLAMA_MODELS` 環境變數，強迫將高達近 10GB 的模型權重，指定下載至專案內的 `./models`，讓系統管理更為優雅。
+我們使用 `OLLAMA_MODELS` 參數，強迫模型權重儲存於專案內：
 
 ```bash
-# 啟動伺服器，將日誌背景輸出
+# 背景啟動 Ollama 伺服器
 OLLAMA_MODELS=/Users/yuting/Claude/models ./bin/ollama serve > ollama.log 2>&1 &
 
-# 拉取 gemma4:e4b 模型 (花費約 12 分鐘)
+# 拉取 gemma4:e4b 模型
 OLLAMA_MODELS=/Users/yuting/Claude/models ./bin/ollama pull gemma4:e4b
 ```
 
-> 🤖 **Agent Prompt**: 如果您設計自動化腳本，建議在執行對話 Python 前加入 health check：`curl -s http://localhost:11434/api/tags`，若沒有啟動再自行觸發。
+由於模型達 9.6GB，Ollama 會切分為約 16 個 600MB 的分片進行下載，在良好的網速下約需 **12 分鐘** 即可完成。最後可透過 `list` 指令確認模型就緒。
 
 ---
 
-## 🏞️ 實測：多模態影像解析 (玉山主峰)
+## 🛠️ 核心系統：Bash 與 Python 對話腳本
 
-最令人期待的多模態測試！我們傳送了一張大小高達 8.5 MB 的玉山紀念照片作為測試，並要求 Gemma 作出分析。
+為了讓系統好用，我們製作了一套封裝腳本（包含 Bash 進入點與 Python 核心程式）。以下是資料流設計：
 
-**CLI 執行腳本範例：**
+{{< mermaid >}}
+graph LR
+    User[使用者 CLI 輸入] --> Bash[start.sh]
+    Bash -->|檢查 Ollama API| Check{伺服器狀態}
+    Check -->|未啟動| Start[Ollama Serve]
+    Check -->|已啟動| Py[chat.py]
+    Start --> Py
+    Py -->|多模態 Payload| Ollama[Gemma 4 API]
+    Ollama -->|JSON 流| Py
+    Py -->|渲染| User
+{{< /mermaid >}}
+
+### 啟動入口：`start.sh`
+這支腳本負責自動依賴檢查，省去使用者手動開啟 Server 的麻煩。
+```bash
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export OLLAMA_MODELS="$SCRIPT_DIR/models"
+OLLAMA="$SCRIPT_DIR/bin/ollama"
+
+# 健康檢查 (Health Check)
+if ! curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+    echo "啟動 Ollama 伺服器..."
+    "$OLLAMA" serve > "$SCRIPT_DIR/ollama.log" 2>&1 &
+    sleep 2
+fi
+
+# 判斷是否為單次查詢參數或進入互動模式
+if [ $# -gt 0 ]; then
+    python3 "$SCRIPT_DIR/chat.py" -- "$@"
+else
+    python3 "$SCRIPT_DIR/chat.py"
+fi
+```
+
+而在 `chat.py` 核心中，它支援了 API 串流 (Streaming)、Benchmark 指標解析，以及**多模態輸入擷取**。
+
+---
+
+## 📂 多模態結構與 CLI 命令模式
+
+### 多模態 Payload 格式
+要讓 Gemma 4 成功「看見」圖片或「聽見」聲音，我們只需在 JSON 中加入 `images` 參數使用 Base64 編碼即可。支援了 `JPG`, `PNG`, `MP3`, `WAV` 等常見格式。
+
+```python
+# API 傳遞格式範例
+{
+    "role": "user",
+    "content": "請描述這張圖片",
+    "images": ["<base64_encoded_str>"] 
+}
+```
+
+### CLI 參數快速運用
+系統設計為可互動也能單次執行（適合寫成排程任務）：
+```bash
+# 純文字詢問
+./start.sh "台灣最高峰是哪一座山？"
+
+# 影像分析實測
+./start.sh /image /path/to/photo.png "描述這張圖片的雲海"
+
+# 多重圖片比較
+./start.sh /image a.png /image b.png "比較兩張圖的色彩差異"
+```
+
+---
+
+## 🏞️ 實測示範：玉山主峰影像解析
+
+身為台灣的開發者，當然要測試最具代表性的地標。我們準備了一張高達 8.5 MB 的玉山紀念原圖。
+
+**指令：**
 ```bash
 ./start.sh /image /Users/yuting/Claude/pic/Yushan.png "請詳細分析這張圖片，包括：景色內容、地點特徵、天氣、光線、拍攝角度，以及任何值得注意的細節。請用繁體中文回答。"
 ```
 
 ![玉山主峰分析測試圖片](/images/Yushan.png)
 
-### Gemma 4 解析結果精華：
-*   **⛰️ 地點判斷正確：** 精準認出石碑上的英文字「Mt. Jade Main Peak, 3952m」，認定為玉山主峰。
-*   **📸 構圖理解：** 判斷為「略微仰角 (Low Angle) 拍攝」，強調了人物與大自然的壯闊對比。
-*   **☁️ 氣候分析推理：** 從山下低垂雲海與高能見度判斷為晴朗，且透過「人物著防雪多層裝備」推理出高山具備強風特徵。
+### Gemma 4 分析結果摘要
+*   **⛰️ 地點特徵：** 正確讀出「Mt. Jade Main Peak, 3952m」，確認是玉山主峰人工砌石平台。
+*   **☁️ 氣候與場景：** 觀測到「山下低垂雲海」、「晴朗高能見度」，並聰明地從「登山者多層次穿著搭配防風帽」推理出山峰具有**強風**環境。
+*   **📸 視覺構圖：** 識別出使用了「略微仰角 (Low Angle)」的拍攝視角，形塑了大自然與人的壯闊對比美學。
 
-> 💡 **經驗分享**：Ollama API 處理多模態的邏輯，是將影像經過 Base64 編碼塞進 Payload 中的 `images` 陣列傳送，這意味著解析高畫質照片時會瞬間產生龐大的 Token 與處理時間。
+> 💡 **經驗分享**：Gemma 4 對於中文石碑可能還略顯吃力，但其英文辨識 (OCR) 能力與自然環境推理的準確度十分驚人。
 
 ---
 
-## 📊 Benchmark 效能指標剖析
+## 📊 效能指標（Benchmark）詳解
 
-要成為一位 System Builder，必須嚴謹評估大模型的資源耗損。Ollama 的串流 API 提供了精確的數據讓我們調校系統：
+Ollama 的設計非常工程師友善，在回傳的最後一個資料 Chunk 當中，會附帶極度詳盡的效能消耗數據。我們將原始的 `.ns` (奈秒) 轉換為好讀的秒數。
 
-| 指標項目 | 我們的實測數值 (8.5 MB 圖片) | 意義與說明 |
+**本次處理 8.5MB 高畫質圖片的數據：**
+
+| 系統指標 | 實測表現 | 說明 |
 | :--- | :--- | :--- |
-| **總耗時** | 131.4 秒 | 從發出請求到全文明轉錄的總花費時間。 |
-| **首字延遲 (TTFT)** | 7.58 秒 | 使用者感覺到「AI 開始思考輸出」的時間，非常優異！|
-| **Prompt 處理速度** | **277.4 t/s** (1.15 秒) | Gemma 分析大圖與大量 Prompt 飛快的讀取速度。 |
-| **生成速度** | **20.4 t/s** (長達 2180 tokens) | 本地端運行能擁有 20 字/秒，閱讀不卡頓。 |
+| **總耗時** (`total_duration`) | 131.424 秒 | 從發送請求到收到最後一個字的總體驗時間。 |
+| **模型載入** (`load_duration`)| 6.427 秒 | (冷啟動) 將 9.6GB 全推入記憶體的時間。 |
+| **首字延遲** (**TTFT**) | 7.581 秒 | 載入模型加 Prompt 解析，到**第一個字印出**的延遲。非常快！ |
+| **Prompt 速度** | **277.4 t/s** (1.15 秒) | Gemma 取用 Base64 轉換圖片與文字的速度，此階段吞吐極快。 |
+| **生成速度** | **20.4 t/s** (長達 106.6 秒) | 生成了驚人的 `2180 tokens`，20 字/秒足以跟上人類閱讀節奏。 |
 
-*註解：首次冷啟動 (Cold start) 載入模型需 6~20 秒，之後的熱啟動耗時將趨近於 0。*
+---
+
+## 📂 專案架構與完整使用手冊
+
+最終，我們用如此單純的結構擁有了強大的本地 AI 解析庫。
+
+### 專案目錄樹
+```text
+/Users/yuting/Claude/
+├── bin/
+│   └── ollama              # 隔離版的 Ollama 執行檔
+├── models/
+│   ├── blobs/              # 存放 9.6 GB 權重
+│   └── manifests/          
+├── pic/
+│   └── Yushan.png          # 相關測試圖片存放
+├── chat.py                 # Gemma 核心 Python 控制器
+├── start.sh                # 使用者操作進入點
+└── ollama.log              # 伺服器背景服務日誌
+```
+
+### 控制指令速查表
+若您進入互動模式 (`./start.sh` 不帶變數)，可以隨時使用以下指令與系統交互：
+
+| 指令 | 說明 | 注意事項 |
+| :--- | :--- | :--- |
+| `/image <路徑>` | 載入圖片進行下標 | 圖片越大，Prompt 轉換成 Base64 所花費的時間就越長。 |
+| `/audio <路徑>` | 解析語音輸入 | 依賴 Ollama 底層支援，實驗性功能失敗時可換 `gemma4:e2b`。 |
+| `/bench` | 再次印出效能表 | 無需重新耗電，直接重繪前一次的對話消耗指標。 |
+| `/clear` | 清除記憶 | 將 context history 放空，防止胡言亂語。 |
+
+> ⚠️ **手動重啟**：若要關閉背景伺服器釋放記憶體，請執行 `kill $(lsof -ti:11434)`。
 
 ---
 
 ## 🚀 結論與未來進階
 
-透過 Ollama 與 Python 的輕量結合，我們不僅在 macOS 上成功建立了一座無需聯網即可使用的多模態 AI 工具庫，更為未來的自動化資料爬取、本地視覺辨識，奠定下強而有力的基礎。
+採用 Ollama 二進位隔離安裝與簡單的 Python SDK 封裝，我們已經能流暢地在 MacBook 上「無雲端」安全解析大容量圖像。不僅保障圖片隱私，更掌握了效能精準的衡量指標。
 
-**下一步的挑戰方向：**
-1. **Chat 記憶體機制封裝**：利用 SQLite 將對話與圖片歷史保存，實現連續對話追問記憶。
-2. **音訊轉換接合**：利用腳本自動裁切較長的錄音檔，分段匯入 Gemma 4，打造純本地的高精度語音會議紀錄機器人。
-
-期待未來能夠在個人 AI OS (Personal AI OS) 內，將這些獨立模組整合成完全自動化的流程！
-
----
-
-**[Cover Image Prompt]**
-A futuristic data center or tech lab flowing with glowing nodes and code interfaces. In the center, a stylized robotic eye or lens representing "Multimodal Vision". High quality, tech vibe, subtle anime or modern flat illustration style, clean UI aesthetic, vibrant gradients, isometric perspective.
+隨著這套機制成熟，未來的**進階路徑**可以考慮：
+1. **多輪對話持久化：** 在 `chat.py` 內建 SQLite，將圖文混合的上下文記憶下來。
+2. **完全自動化 (Automation)：** 將分析後的資料串接 `Make` 或 `n8n`，實現諸如「丟張發票進資料夾，後台就自動用 Gemma 4 解析並輸出報表到 Google Sheets」。這也是個人 AI OS 系統構建的核心最終目標！
