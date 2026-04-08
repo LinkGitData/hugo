@@ -31,7 +31,7 @@ cover:
 
 以下為核心的資料請求流向：
 
-{{< mermaid >}}
+```mermaid
 graph TD
     User([系統使用者]) -->|1. OAuth 帳號驗證| Auth[Google 驗證]
     User -->|2. 送出查詢請求| Nginx[前端 Flutter 容器 Nginx]
@@ -42,7 +42,7 @@ graph TD
     BQ -->|7. 回傳成本/折讓資料| FastAPI
     FastAPI -->|8. 回傳階層式 JSON 資料| Nginx
     Nginx -->|9. 產生 Treemap 視覺化| User
-{{< /mermaid >}}
+```
 
 ## 🖼️ 視覺化成果展示
 
