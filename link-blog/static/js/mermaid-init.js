@@ -3,5 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  mermaid.initialize({ startOnLoad: true });
+  const getTheme = () => document.body.classList.contains("dark") ? "dark" : "default";
+
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: getTheme(),
+    securityLevel: 'loose',
+  });
 });

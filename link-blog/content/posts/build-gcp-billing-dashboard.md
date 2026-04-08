@@ -50,7 +50,7 @@ graph TD
 
 *(系統截圖已預先濾除非公然的公司業務資訊)*
 
-![GCP Billing Dashboard](/images/gcp-billing-dashboard-anonymized.png)
+![GCP Billing Dashboard](/images/gcp-billing-dashboard-anonymized.png?v=2)
 
 ## 💡 實踐中的關鍵挑戰與解法
 
