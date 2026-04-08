@@ -7,7 +7,6 @@ categories: ["Tech", "AI Tools"]
 cover:
   image: "images/claude-cowork-cover.png?v=1"
   alt: "Claude Cowork AI Workflow"
-  caption: "工作流程的革命"
   relative: false
 ---
 

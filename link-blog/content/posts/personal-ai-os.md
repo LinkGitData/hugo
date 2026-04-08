@@ -7,7 +7,6 @@ categories: ["Tech", "AI Tools"]
 cover:
   image: "images/ai-os-cover.png?v=2"
   alt: "Personal AI OS"
-  caption: "AI 作業系統建構者"
   relative: false
 ---
 

@@ -12,6 +12,7 @@ Everything in this project is code-defined, following GitOps and Infrastructure 
 *   **Containerization**: Multi-stage Docker build using [Chainguard Images](https://images.chainguard.dev/directory/image/nginx/overview) (Nginx) for minimal footprint and security.
 *   **Infrastructure**: [Terraform](https://www.terraform.io/) manages GCP resources (Cloud Run, Artifact Registry, Load Balancer, SSL).
 *   **CI/CD**: [Google Cloud Build](https://cloud.google.com/build) automatically builds and deploys on every push to `main`.
+    Builds now include a Trivy image scan gate and fail before push/deploy on fixable `HIGH` or `CRITICAL` container vulnerabilities.
 *   **Agentic Workflow**: Developed using Google's Antigravity Agent.
 
 ## 📂 Repository Structure

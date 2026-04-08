@@ -1,5 +1,6 @@
 baseURL: https://ailab.yuting.cc/
-languageCode: en-us
+languageCode: zh-tw
+hasCJKLanguage: true
 title: AI Lab @ Yuting
 theme: PaperMod
 

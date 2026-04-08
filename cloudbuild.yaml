@@ -8,6 +8,26 @@ steps:
     args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/link-blog-repo/link-blog:$COMMIT_SHA', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/link-blog-repo/link-blog:latest', '.']
     dir: 'link-blog'
 
+  # Export the built image so Trivy can scan it without relying on Docker socket sharing.
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['save', '-o', '/workspace/link-blog-image.tar', 'us-central1-docker.pkg.dev/$PROJECT_ID/link-blog-repo/link-blog:$COMMIT_SHA']
+
+  # Fail the pipeline on HIGH/CRITICAL vulnerabilities that already have fixes.
+  - name: 'aquasec/trivy:0.68.2'
+    entrypoint: 'trivy'
+    args:
+      - 'image'
+      - '--input'
+      - '/workspace/link-blog-image.tar'
+      - '--scanners'
+      - 'vuln'
+      - '--severity'
+      - 'HIGH,CRITICAL'
+      - '--ignore-unfixed'
+      - '--exit-code'
+      - '1'
+      - '--no-progress'
+
   # Push the container image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/link-blog-repo/link-blog:$COMMIT_SHA']
