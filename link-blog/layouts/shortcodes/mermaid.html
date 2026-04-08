@@ -1,26 +1,22 @@
-<div class="mermaid" align="center">
-  {{ .Inner }}
+<div class="mermaid-container" align="center">
+  <div class="mermaid">
+    {{ .Inner }}
+  </div>
 </div>
 
 <style>
-  /* Force mermaid lines/arrows visibility in PaperMod Dark Mode */
-  .dark .mermaid svg {
-    color: #e1e1e1 !important;
+  /* Wrap mermaid in a white container for consistent contrast in all themes */
+  .mermaid-container {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    margin: 32px 0;
+    overflow-x: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  .dark .mermaid .edgePaths .edgePath path {
-    stroke: #d1d1d1 !important;
-    stroke-width: 2px;
-  }
-  .dark .mermaid .markerPath {
-    fill: #d1d1d1 !important;
-  }
-  .dark .mermaid .label foreignObject {
-    color: #e1e1e1 !important;
-  }
-  .dark .mermaid .node rect, 
-  .dark .mermaid .node circle, 
-  .dark .mermaid .node polygon, 
-  .dark .mermaid .node path {
-    stroke: #d1d1d1 !important;
+  
+  /* Reset text colors inside the white container just in case */
+  .mermaid-container svg {
+    color: #333 !important;
   }
 </style>

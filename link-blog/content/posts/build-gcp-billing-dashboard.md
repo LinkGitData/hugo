@@ -46,7 +46,6 @@ cover:
 以下是從用戶登入到呈現視覺化報表的完整請求生命週期：
 
 {{< mermaid >}}
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e1f5fe', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff'}}}%%
 graph TD
     User([系統使用者]) -->|1. OAuth 登入驗證| Auth[Google OAuth enterprise-cloud.com.tw]
     User -->|2. 送出查詢請求| Nginx[前端 Flutter 容器 Nginx]
