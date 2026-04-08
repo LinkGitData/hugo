@@ -1,3 +1,26 @@
 <div class="mermaid" align="center">
   {{ .Inner }}
 </div>
+
+<style>
+  /* Force mermaid lines/arrows visibility in PaperMod Dark Mode */
+  .dark .mermaid svg {
+    color: #e1e1e1 !important;
+  }
+  .dark .mermaid .edgePaths .edgePath path {
+    stroke: #d1d1d1 !important;
+    stroke-width: 2px;
+  }
+  .dark .mermaid .markerPath {
+    fill: #d1d1d1 !important;
+  }
+  .dark .mermaid .label foreignObject {
+    color: #e1e1e1 !important;
+  }
+  .dark .mermaid .node rect, 
+  .dark .mermaid .node circle, 
+  .dark .mermaid .node polygon, 
+  .dark .mermaid .node path {
+    stroke: #d1d1d1 !important;
+  }
+</style>

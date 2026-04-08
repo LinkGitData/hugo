@@ -48,7 +48,6 @@ graph TD
 
 經過系統轉換後，原先複雜且難以閱讀的 BigQuery 表格，已被轉化為能互動點擊的成本趨勢圖與專案攤提列表，讓我們得以快速追查成本劇增的潛在危機。
 
-*(系統截圖已預先濾除非公然的公司業務資訊)*
 
 ![GCP Billing Dashboard](/images/gcp-billing-dashboard-anonymized.png?v=2)
 
