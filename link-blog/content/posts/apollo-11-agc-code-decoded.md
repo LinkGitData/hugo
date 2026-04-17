@@ -50,6 +50,7 @@ timeline
 
 > 💡 **精確的硬體規格釐清**
 > 新聞媒體常簡寫為 4KB RAM / 74KB ROM / 1MHz 以方便傳播。更精確的寫法應為：
+>
 > - **Erasable Memory**: 約 3,840 bytes
 > - **Fixed Memory (Rope Memory)**: 約 36K words
 > - **時脈 (Clock Speed)**: 約 1.024 MHz
@@ -65,7 +66,7 @@ graph TD
     A --> F[導航 Navigation]
     A --> G[姿態控制 Attitude Control]
     A --> H[下降引擎 Descent Engine]
-    
+
     style A fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
     style B fill:#334155,stroke:#64748b,color:#fff
     style C fill:#334155,stroke:#64748b,color:#fff
@@ -90,7 +91,7 @@ stateDiagram-v2
     Normal_Execution --> Overload: 感測器資料過載 (如雷達異常)
     Overload --> Alarm_1201_1202: 觸發 1201/1202 資源耗盡警報
     Alarm_1201_1202 --> System_Reset: 發起軟體重啟 (Soft Reset)
-    
+
     state System_Reset {
         [*] --> Task_Evaluator
         Task_Evaluator --> Drop_Low_Priority: 丟棄低優先級任務 (如螢幕更新)
