@@ -33,9 +33,9 @@ cover:
 {{< mermaid >}}
 timeline
     title 2026年 Apollo 11 原始碼熱議時間軸
-    2026年3月底 : AI 逆向工程 : 現代工程師開始使用 AI 工具<br>重新解析 AGC 的組合語言
-    2026年4月上旬 : 歷史 Bug 澄清 : 社群熱議程式碼中的潛在問題<br>Virtual AGC 澄清當年已修復此問題
-    2026年4月中旬 : 科技媒體轉載 : Tom's Hardware 等媒體大篇幅報導<br>聚焦於「極端資源限制」的對比
+    2026年3月底 : AI 逆向工程 : 現代工程師使用 AI 工具 : 重新解析 AGC 組合語言
+    2026年4月上旬 : 歷史 Bug 澄清 : 網傳程式碼存在歷史問題 : 官方社群澄清當年已修復
+    2026年4月中旬 : 科技媒體轉載 : 科技大廠與媒體大量報導 : 聚焦極限資源與效能對比
 {{< /mermaid >}}
 
 1. **科技媒體重新聚焦**：多家科技媒體重新報導了這份在 GitHub 上的 Public Domain 資源。媒體的焦點大多放在「用極少硬體資源完成登月」的強烈反差上。
@@ -58,7 +58,7 @@ timeline
 
 {{< mermaid >}}
 graph TD
-    A[Apollo Guidance Computer <br> AGC] -->|Fixed: 36K words| B(Rope Memory / 程式儲存)
+    A[Apollo Guidance Computer AGC] -->|Fixed: 36K words| B(Rope Memory / 程式儲存)
     A -->|Erasable: 3,840 bytes| C(RAM / 變數與狀態)
     D[太空人 Astronauts] <-->|操作與顯示| E[DSKY 介面]
     E <-->|指令輸入 / 告警顯示| A
@@ -93,8 +93,8 @@ stateDiagram-v2
     
     state System_Reset {
         [*] --> Task_Evaluator
-        Task_Evaluator --> Drop_Low_Priority: 丟棄低優先級任務 <br>(如螢幕更新、除錯運算)
-        Task_Evaluator --> Keep_High_Priority: 保留高優先級任務 <br>(姿態控制、下降引擎)
+        Task_Evaluator --> Drop_Low_Priority: 丟棄低優先級任務 (如螢幕更新)
+        Task_Evaluator --> Keep_High_Priority: 保留高優先級任務 (優先姿態控制與下降)
     }
     
     System_Reset --> Normal_Execution: 穩定核心功能，完成登月
