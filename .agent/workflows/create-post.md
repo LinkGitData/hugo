@@ -46,13 +46,12 @@ cover:
     * 若有程式碼，必須使用有語言標籤 (如 `python` 或 `bash`) 的 Code Block。
 4. **## 🚀 結論與未來進階**：統整全篇觀念並給予下一步的行動建議。
 
-**【封面圖片生成 (Cover Image Prompt)】**
-在文章的最末端（以 `---` 水平線與正文隔開），請提供一段給 AI 繪圖工具（如 Gimini image）的「封面圖片生成 Prompt」。
+**【封面圖片生成與自動裁切 (極度重要)】**
+請**主動**使用您的圖片生成工具 (如 `generate_image`)，根據文章主題直接替這篇文章產生一張精美的封面圖片。
 
-* **使用英文撰寫。**
 * **風格需求：** High quality, tech vibe, subtle anime or modern flat illustration style, clean UI aesthetic, vibrant colors.
-* **畫面內容：** 根據文章核心技術自由發揮，例如："A futuristic data center flowing with glowing nodes..."。
-* **特殊必行操作 (極度重要)：** 生成封面圖片後，必須運用 Python (`Pillow` / `PIL`) 或 ImageMagick 將該預設圖片置中等比縮放並裁切至 **`1024x256`** 的長條型比例，以符合部落格首頁卡片格式，否則會跑版。請主動在對話中執行這個裁切動作。
+* **絕對禁止：** 封面圖片的 Prompt **絕對不可以**寫在最終輸出的 Markdown 文章內容中。請在背景自行構思並產出圖片即可，保持文章結尾乾淨。
+* **特殊必行操作：** 產生圖片後，必須立刻運用 Python (`Pillow` / `PIL`) 將該獲得的圖片執行「置中、等比縮放並裁切」至 **`1024x256`** 的長條型比例，並儲存至 `/static/images/` 以符合首頁卡片格式，保證不會跑版。
 
 ### 3. 主動協助保存
 
