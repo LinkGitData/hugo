@@ -100,7 +100,3 @@ CRTD 內建了豐富的威脅偵測模組，負責揪出常見的駭客入侵軌
 2. 盡量使用 Google Cloud Secret Manager 來管理敏感機密，杜絕由環境變數或 CLI 參數明文洩漏的風險。
 3. 進入 Security Command Center，啟用設定並測試 CRTD 告警與自動化通報的整合機制。
 
----
-
-> **封面圖片生成 Prompt (給 Midjourney / DALL-E 使用)**:
-> High quality, tech vibe, subtle anime or modern flat illustration style, clean UI aesthetic, vibrant colors. A futuristic data center flowing with glowing nodes representing Google Cloud serverless containers, protected by a sophisticated, energetic blue security force field or cyber-shield symbolizing Cloud Run Threat Detection, dark theme background with high contrast glowing elements, ultra-detailed --ar 16:9
