@@ -94,7 +94,7 @@ terraform apply -target=google_cloud_run_v2_service.default
 這類掌管企業「成本命脈」的內部系統絕對必須極度嚴謹。我們實踐了以下幾道防線：
 
 1.  **VPC 網路層隔離**：透過 Terraform 將後端 Cloud Run 的 `ingress` 設定為 `INGRESS_TRAFFIC_INTERNAL_ONLY`，完全拒絕外部網路直連。
-2.  **前端網域嚴格管控**：前臺的 Google OAuth 網域鎖定 `colatour.com.tw`。
+2.  **前端網域嚴格管控**：前臺的 Google OAuth 網域鎖定 `enterprise-cloud.com.tw`。
 3.  **前端容器白名單防護**：Nginx 層實作了 `allowed_ips.conf`。透過 Terraform 在啟動階段將靜態環境變數載入，封鎖來自外部的非預期流量。
 4.  **Middleware 中繼檢查**：公司內網即使與 VPC 互通，未持有正確的 `X-Service-Secret` 的第三方微服務也將不被允許調用內部成本系統的 API 節點。
 
