@@ -11,6 +11,7 @@ cover:
   caption: "以 LLM 作為核心，建立能持續生長且具備記憶的 Wiki 知識庫"
   relative: false
 ---
+> 🔗 **官方資料來源**：[Andrej Karpathy - llm-wiki.md (GitHub Gist)](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 
 前言：在處理大量個人文件或企業內部知識庫時，多數開發者與使用者首先想到的是傳統的 RAG（Retrieval-Augmented Generation，檢索增強生成）架構。然而，隨著我們投入越來越多資料，傳統 RAG 的致命缺點逐漸浮現：它每次都要從碎片化的資訊中重新尋找答案，嚴重缺乏知識的「累積與沉澱」。本篇文章將深入探討前 OpenAI 知名研究員 Andrej Karpathy 近期提出的「LLM Wiki」概念，藉由讓 LLM 擔任專職的圖書館員，主動維護一個相互連結的 Wiki 系統，為我們打造能真正持續進化、自動除錯的個人 AI 大腦。我們將從理論架構、實踐流程、工具生態系，一路解析到知識管理哲學的根本轉變。
 
