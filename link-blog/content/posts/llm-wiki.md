@@ -60,27 +60,27 @@ cover:
 
 {{< mermaid >}}
 flowchart TD
-    subgraph Layer1 [第一層：原始資料層 (Raw Sources)]
-        A1[技術文章 / PDF]
-        A2[會議紀錄 / 錄音檔]
-        A3[數據報表 / 截圖]
+    subgraph Layer1 ["第一層：原始資料層 (Raw Sources)"]
+        A1["技術文章 / PDF"]
+        A2["會議紀錄 / 錄音檔"]
+        A3["數據報表 / 截圖"]
     end
     
-    subgraph Layer2 [第二層：Wiki 層 (The Wiki)]
-        B1[index.md - 全域索引]
-        B2[log.md - 系統日誌]
-        B3[Entity Pages - 實體概念頁面]
-        B4[Synthesis - 跨主題綜合分析]
+    subgraph Layer2 ["第二層：Wiki 層 (The Wiki)"]
+        B1["index.md - 全域索引"]
+        B2["log.md - 系統日誌"]
+        B3["Entity Pages - 實體概念頁面"]
+        B4["Synthesis - 跨主題綜合分析"]
     end
     
-    subgraph Layer3 [第三層：結構定義層 (The Schema)]
-        C1[CLAUDE.md / AGENTS.md]
-        C2[系統角色與寫作規範]
+    subgraph Layer3 ["第三層：結構定義層 (The Schema)"]
+        C1["CLAUDE.md / AGENTS.md"]
+        C2["系統角色與寫作規範"]
     end
 
     Layer1 -- "LLM 讀取 (絕對唯讀，禁止修改)" --> Layer2
     Layer3 -. "規範工作流程、標籤格式、更新策略" .-> Layer2
-    User([人類使用者]) -- "提供來源 & 指導方向" --> Layer1
+    User(["人類使用者"]) -- "提供來源 & 指導方向" --> Layer1
     User -- "閱讀與提問" --> Layer2
     
     style Layer1 fill:#1e1e24,stroke:#4caf50,stroke-width:2px,color:#fff
