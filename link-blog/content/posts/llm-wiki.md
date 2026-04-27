@@ -59,29 +59,29 @@ cover:
 這個 LLM Wiki 系統的設計哲學非常清晰，可以嚴格區分為三個核心層次，確保資料不會被不慎竄改，同時保證系統的靈活性與可擴展性。
 
 {{< mermaid >}}
-flowchart TD
-    subgraph Layer1 ["第一層：原始資料層 (Raw Sources)"]
-        A1["技術文章 / PDF"]
-        A2["會議紀錄 / 錄音檔"]
-        A3["數據報表 / 截圖"]
+graph TD
+    subgraph Layer1 [第一層：原始資料層]
+        A1[技術文章與PDF]
+        A2[會議紀錄與錄音檔]
+        A3[數據報表與截圖]
     end
     
-    subgraph Layer2 ["第二層：Wiki 層 (The Wiki)"]
-        B1["index.md - 全域索引"]
-        B2["log.md - 系統日誌"]
-        B3["Entity Pages - 實體概念頁面"]
-        B4["Synthesis - 跨主題綜合分析"]
+    subgraph Layer2 [第二層：Wiki層]
+        B1[全域索引]
+        B2[系統日誌]
+        B3[實體概念頁面]
+        B4[跨主題綜合分析]
     end
     
-    subgraph Layer3 ["第三層：結構定義層 (The Schema)"]
-        C1["CLAUDE.md / AGENTS.md"]
-        C2["系統角色與寫作規範"]
+    subgraph Layer3 [第三層：結構定義層]
+        C1[核心設定檔]
+        C2[系統角色與寫作規範]
     end
 
-    Layer1 -- "LLM 讀取 (絕對唯讀，禁止修改)" --> Layer2
-    Layer3 -. "規範工作流程、標籤格式、更新策略" .-> Layer2
-    User(["人類使用者"]) -- "提供來源 & 指導方向" --> Layer1
-    User -- "閱讀與提問" --> Layer2
+    Layer1 -->|LLM讀取絕對唯讀| Layer2
+    Layer3 -.->|規範工作流程與更新策略| Layer2
+    User([人類使用者]) -->|提供來源與指導方向| Layer1
+    User -->|閱讀與提問| Layer2
     
     style Layer1 fill:#1e1e24,stroke:#4caf50,stroke-width:2px,color:#fff
     style Layer2 fill:#1e1e24,stroke:#2196f3,stroke-width:2px,color:#fff
