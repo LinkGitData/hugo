@@ -56,7 +56,7 @@ cover:
 
 * **風格需求：** High quality, tech vibe, subtle anime or modern flat illustration style, clean UI aesthetic, vibrant colors.
 * **絕對禁止：** 封面圖片的 Prompt **絕對不可以**寫在最終輸出的 Markdown 文章內容中。請在背景自行構思並產出圖片即可，保持文章結尾乾淨。
-* **特殊必行操作：** 產生圖片後，必須立刻運用 Python (`Pillow` / `PIL`) 將該獲得的圖片執行「置中、等比縮放並裁切」至 **`1024x256`** 的長條型比例，並儲存至 `/static/images/` 以符合首頁卡片格式，保證不會跑版。
+* **特殊必行操作：** 產生圖片後，必須立刻運用 Python (`Pillow` / `PIL`) 將該獲得的圖片執行「置中、等比縮放並裁切」至 **`1024x256`** 的長條型比例。**注意路徑防呆**：必須儲存至 Hugo 網站的真實根目錄下（例如 `link-blog/static/images/`，而非專案最外層的 `/static/images/`），以符合首頁卡片格式，保證圖片不會出現 404 破圖。
 
 ### 3. 主動協助保存
 
