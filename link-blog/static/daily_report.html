@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資觀察日報表</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --stock-color: #10b981;
+            --etf-color: #8b5cf6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 40px 20px;
+            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center; font-weight: 800; font-size: 2.5rem; margin-bottom: 40px;
+            background: -webkit-linear-gradient(45deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { border-bottom: 2px solid var(--card-border); padding-bottom: 10px; margin-top: 50px; font-size: 1.8rem; }
+        .stock-title { color: var(--stock-color); }
+        .etf-title { color: var(--etf-color); }
+        .card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        .symbol-name { font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; }
+        .history-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .history-table th, .history-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
+        .history-table th { color: #94a3b8; font-weight: 600; background: rgba(0,0,0,0.2); }
+        .date-col { font-weight: 600; color: #e2e8f0; }
+        .price-col { font-weight: 600; color: #facc15; }
+        .tech-col { color: #60a5fa; }
+        .fin-col { color: #f472b6; }
+        .table-responsive { overflow-x: auto; }
+        .advice-box { margin-top: 15px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 4px; line-height: 1.6; color: #e2e8f0; font-size: 0.95rem; }
+        .advice-box strong { color: #60a5fa; }
+        .price-advice { color: #10b981 !important; margin-top: 8px; display: inline-block; }
+        .positive { color: #ef4444; } /* 台股紅漲 */
+        .negative { color: #22c55e; } /* 台股綠跌 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>投資觀察日報表</h1>
+        <h2 class="section-title stock-title">📈 股票觀察清單 (Stocks)</h2>
+        <div id="stocks-container">
+        <div class="card"><div class="symbol-name">臻鼎-KY (4958)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>394.00</td><td class='price-col'>383.00</td><td class='price-col negative'>-2.79%</td><td class='tech-col'>高檔回檔</td><td class='tech-col'>62</td><td class='tech-col'>紅柱縮減</td><td class='fin-col'>+1.50%</td><td class='fin-col'>20.1%</td><td class='fin-col'>7.1</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>358.50</td><td class='price-col'>394.00</td><td class='price-col positive'>+9.90%</td><td class='tech-col'>強勢多頭</td><td class='tech-col'>56.31</td><td class='tech-col'>多頭排列 (0.39)</td><td class='fin-col'>+1.30%</td><td class='fin-col'>19.8%</td><td class='fin-col'>6.78</td></tr><tr><td class='date-col'>2026-04-27</td><td class='price-col'>347.50</td><td class='price-col'>358.50</td><td class='price-col positive'>+3.17%</td><td class='tech-col'>多頭 (乖離偏大)</td><td class='tech-col'>偏高 (超買疑慮)</td><td class='tech-col'>多頭動能</td><td class='fin-col'>+7.18% (3月)</td><td class='fin-col'>22.56% (2025Q4)</td><td class='fin-col'>1.27元 (3月自結)</td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 【籌碼面更新】今日投信大舉買超 4,513 張，勇奪投信買超榜首，顯示內資法人極度看好。雖受外資調節與注意股影響收跌於 383 元，但基本面受惠 AI 伺服器與清大研發中心第二期計畫動能，建議趁拉回分批佈局。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 投信成本區 370-380 具支撐，目標價維持 400+</div></div>
+        <div class="card"><div class="symbol-name">Alphabet (Class A) (GOOGL)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>350.34</td><td class='price-col'>349.78</td><td class='price-col negative'>-0.16%</td><td class='tech-col'>高檔震盪</td><td class='tech-col'>65</td><td class='tech-col'>多頭收斂</td><td class='fin-col'>18.5%</td><td class='fin-col'>59.8%</td><td class='fin-col'>11.2 USD</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>344.40</td><td class='price-col'>350.34</td><td class='price-col positive'>+1.72%</td><td class='tech-col'>強勢看漲</td><td class='tech-col'>72 (超買)</td><td class='tech-col'>多頭排列</td><td class='fin-col'>18.00%</td><td class='fin-col'>59.65%</td><td class='fin-col'>10.83 USD</td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 財報開出後股價高檔震盪整理，整體多頭趨勢未變，建議逢回季線支撐再行佈局。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 340 附近分批承接</div></div></div>
+        <h2 class="section-title etf-title">📊 ETF觀察清單 (ETFs)</h2>
+        <div id="etfs-container">
+        <div class="card"><div class="symbol-name">群益ESG投等債20+ (00937B)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>14.78</td><td class='price-col'>14.82</td><td class='price-col positive'>+0.27%</td><td class='tech-col'>回穩向上</td><td class='tech-col'>48</td><td class='tech-col'>轉強</td><td class='fin-col'>-0.35% (折價)</td><td class='fin-col'>0.40%</td><td class='fin-col'>6.02%</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>14.79</td><td class='price-col'>14.78</td><td class='price-col negative'>-0.07%</td><td class='tech-col'>低檔震盪</td><td class='tech-col'>44.20</td><td class='tech-col'>盤整</td><td class='fin-col'>-0.67% (折價)</td><td class='fin-col'>0.40%</td><td class='fin-col'>5.93%</td></tr><tr><td class='date-col'>2026-04-27</td><td class='price-col'>14.86</td><td class='price-col'>14.79</td><td class='price-col negative'>-0.47%</td><td class='tech-col'>中性盤整</td><td class='tech-col'>中性 (~50)</td><td class='tech-col'>平緩</td><td class='fin-col'>-0.2% (折價)</td><td class='fin-col'>約0.26%</td><td class='fin-col'>月配息穩定</td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 債券價格在今日盤中回穩，小幅折價提供買點。殖利率維持在 6% 水準，適合領息族群分批建立部位。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 14.7-14.8 穩健買進</div></div>
+        <div class="card"><div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>13.15</td><td class='price-col'>13.05</td><td class='price-col negative'>-0.76%</td><td class='tech-col'>趨勢看漲</td><td class='tech-col'>46</td><td class='tech-col'>中性</td><td class='fin-col'>+0.42% (溢價)</td><td class='fin-col'>0.10%</td><td class='fin-col'>不配息</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>13.17</td><td class='price-col'>13.15</td><td class='price-col negative'>-0.15%</td><td class='tech-col'>看漲趨勢穩定</td><td class='tech-col'>51.95</td><td class='tech-col'>中性盤整</td><td class='fin-col'>+2.80% (溢價)</td><td class='fin-col'>約0.1%</td><td class='fin-col'>不配息</td></tr><tr><td class='date-col'>2026-04-27</td><td class='price-col'>12.87</td><td class='price-col'>13.17</td><td class='price-col positive'>+2.33%</td><td class='tech-col'>多頭 (隨大盤)</td><td class='tech-col'>偏多</td><td class='tech-col'>偏多</td><td class='fin-col'>+0.08% (溢價)</td><td class='fin-col'>約0.01% (極低)</td><td class='fin-col'>不配息 (自動滾入)</td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 法人籌碼隨大盤微幅調節。目前溢價率穩定，適合作為市值型核心配置，建議維持定期定額策略，不隨短線波動頻繁換股。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 13.0 以下持續吸納</div></div>
+        <div class="card"><div class="symbol-name">元大台灣50正2 (00631L)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>29.27</td><td class='price-col'>28.82</td><td class='price-col negative'>-1.54%</td><td class='tech-col'>多頭修正</td><td class='tech-col'>52</td><td class='tech-col'>高檔收斂</td><td class='fin-col'>+0.20% (溢價)</td><td class='fin-col'>1.04%</td><td class='fin-col'>無配息</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>29.62</td><td class='price-col'>29.27</td><td class='price-col negative'>-1.18%</td><td class='tech-col'>強烈看漲</td><td class='tech-col'>52.33</td><td class='tech-col'>多頭排列 (0.05)</td><td class='fin-col'>+0.75% (溢價)</td><td class='fin-col'>1.04%</td><td class='fin-col'>槓桿型無配息</td></tr><tr><td class='date-col'>2026-04-27</td><td class='price-col'>28.44</td><td class='price-col'>29.62</td><td class='price-col positive'>+4.15%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 隨大盤賣壓拉回，槓桿損耗增加。目前大盤處於高檔修正期，正2 建議縮減部位或轉向 0050 進行防禦，待外資賣超縮減後再行介入。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 28.0 關鍵支撐</div></div>
+        <div class="card"><div class="symbol-name">元大台灣50 (0050)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>92.00</td><td class='price-col'>90.75</td><td class='price-col negative'>-1.36%</td><td class='tech-col'>上升軌道</td><td class='tech-col'>48</td><td class='tech-col'>紅柱萎縮</td><td class='fin-col'>+0.38% (溢價)</td><td class='fin-col'>0.32%</td><td class='fin-col'>1.92%</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>93.00</td><td class='price-col'>92.00</td><td class='price-col negative'>-1.08%</td><td class='tech-col'>長期看漲</td><td class='tech-col'>44.65</td><td class='tech-col'>微弱金叉 (0.02)</td><td class='fin-col'>+2.74% (溢價)</td><td class='fin-col'>0.32%</td><td class='fin-col'>1.89%</td></tr><tr><td class='date-col'>2026-04-27</td><td class='price-col'>89.95</td><td class='price-col'>93.00</td><td class='price-col positive'>+3.39%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 【籌碼面更新】外資今日大賣 3.7 萬張，為賣超第一名，拖累股價跌破 91 元。台股大盤面臨獲利回吐壓力，短線外資尚未轉向前建議觀望。長期投資者可於 90 元整數關卡分批加碼。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 支撐看 89.5，壓力 92.5</div></div>
+        <div class="card"><div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>273.51</td><td class='price-col'>270.76</td><td class='price-col negative'>-1.01%</td><td class='tech-col'>高檔整理</td><td class='tech-col'>60</td><td class='tech-col'>高檔鈍化</td><td class='fin-col'>0%</td><td class='fin-col'>0.15%</td><td class='fin-col'>0.55%</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>273.38</td><td class='price-col'>273.51</td><td class='price-col positive'>+0.05%</td><td class='tech-col'>穩健看漲</td><td class='tech-col'>68</td><td class='tech-col'>多頭排列</td><td class='fin-col'>趨近 0%</td><td class='fin-col'>0.15%</td><td class='fin-col'>0.53%</td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 科技股漲多出現獲利回吐，但長線 AI 趨勢與基本面不變，建議維持長期持有策略。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 定期定額不停扣</div></div>
+        <div class="card"><div class="symbol-name">NASDAQ Composite (^IXIC)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>24887.10</td><td class='price-col'>24663.80</td><td class='price-col negative'>-0.90%</td><td class='tech-col'>創高拉回</td><td class='tech-col'>62</td><td class='tech-col'>高檔收斂</td><td class='fin-col'>N/A</td><td class='fin-col'>N/A</td><td class='fin-col'>N/A</td></tr><tr><td class='date-col'>2026-04-28</td><td class='price-col'>24836.60</td><td class='price-col'>24887.10</td><td class='price-col positive'>+0.20%</td><td class='tech-col'>強勢多頭</td><td class='tech-col'>70</td><td class='tech-col'>正值排列</td><td class='fin-col'>N/A</td><td class='fin-col'>N/A</td><td class='fin-col'>N/A</td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 那斯達克創高後小幅拉回，整體多方格局未被破壞，後續需留意重量級科技股財報指引影響。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 追蹤觀察</div></div>
+        <div class="card"><div class="symbol-name">統一台股升級50主動式ETF (00403A)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'></td><td class='price-col'></td><td class='price-col '></td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 統一投信最新主動式 ETF，預計 5 月上市。主打市值升級、主動挑選 50 大企業黑馬，建議納入觀察名單，待上市後觀察其折溢價情形。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 觀察 IPO 定價及折溢價</div></div>
+        <div class="card"><div class="symbol-name">統一台股增長主動式ETF (00981A)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-04-29</td><td class='price-col'>27.81</td><td class='price-col'>27.74</td><td class='price-col negative'>-0.25%</td><td class='tech-col'>橫盤</td><td class='tech-col'>50</td><td class='tech-col'>中性</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><div class='advice-box'><strong>💡 AI 今日投資建議：</strong> 主動型成長配置，近期隨科技股波動。目前呈現小幅回檔，適合追求超越大盤績效的積極型投資人分批佈局。<br><strong class='price-advice'>🎯 建議買賣價位：</strong> 27.5 附近尋求支撐</div></div></div>
+    </div>
+</body>
+</html>

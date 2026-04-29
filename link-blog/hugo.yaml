@@ -60,3 +60,7 @@ menu:
       name: post
       url: /posts/
       weight: 30
+    - identifier: investment-report
+      name: 投資觀察報表
+      url: /daily_report.html
+      weight: 40
