@@ -101,12 +101,14 @@
         /* 表格響應式捲動 */
         .table-responsive {
             overflow-x: auto;
+            margin-top: 15px;
         }
         details {
-            margin-top: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 10px;
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid var(--card-border);
         }
         summary {
             cursor: pointer;
@@ -115,22 +117,61 @@
             font-weight: 600;
             user-select: none;
             padding: 5px;
+            transition: color 0.2s;
         }
         summary:hover {
             color: var(--accent-color);
         }
         .older-records-table {
-            margin-top: 10px;
+            margin-top: 15px;
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #94a3b8;
         }
         .older-records-table th, .older-records-table td {
-            padding: 8px;
+            padding: 10px;
             border-bottom: 1px solid var(--card-border);
         }
+        .chart-container {
+            width: 100%;
+            height: 250px;
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.1);
+        }
+        .advice-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(167, 139, 250, 0.1));
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
     </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        function drawChart(containerId, chartData, color) {
+            const data = google.visualization.arrayToDataTable(chartData);
+            const options = {
+                backgroundColor: 'transparent',
+                colors: [color],
+                chartArea: {width: '90%', height: '80%'},
+                hAxis: { textStyle: {color: '#94a3b8', fontSize: 10}, gridlines: {color: 'transparent'} },
+                vAxis: { textStyle: {color: '#94a3b8', fontSize: 10}, gridlines: {color: 'rgba(255,255,255,0.05)'} },
+                legend: 'none',
+                curveType: 'function',
+                lineWidth: 3,
+                pointsVisible: true,
+                areaOpacity: 0.1
+            };
+            const chart = new google.visualization.AreaChart(document.getElementById(containerId));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -144,6 +185,11 @@
             <div class="card-header">
                 <div class="symbol-name">臻鼎-KY (4958)</div>
             </div>
+            <div id='chart_4958' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】股價今日逆勢飆漲近 10%，收在 421 元！技術面上 MACD 雖呈現「紅柱縮減」（代表指標過熱後的震盪收斂），但強勢的價格實質突破顯示主力籌碼極度看好 AI 伺服器動能，多頭行情猛烈。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>沿五日線強勢操作，防守/停利點上移至 400 元
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -151,8 +197,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點 (營收YoY / 毛利率 / EPS)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -176,12 +222,6 @@
                             <td class="fin-col">20.1%</td>
                             <td class="fin-col">7.1</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】股價今日逆勢飆漲近 10%，收在 421 元！技術面上 MACD 雖呈現「紅柱縮減」（代表指標過熱後的震盪收斂），但強勢的價格實質突破顯示主力籌碼極度看好 AI 伺服器動能，多頭行情猛烈。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>沿五日線強勢操作，防守/停利點上移至 400 元
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -193,12 +233,6 @@
                             <td class="fin-col">+1.50%</td>
                             <td class="fin-col">20.1%</td>
                             <td class="fin-col">7.1</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>今日強勢大漲突破，動能極強，但 RSI 進入嚴重超買區。建議持有者可續抱享受波段利潤，空手者不宜過度追高。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>持有，跌破 370 停利
-                            </td>
                         </tr>
             
                         <tr>
@@ -212,12 +246,6 @@
                             <td class="fin-col">19.8%</td>
                             <td class="fin-col">6.78</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>台股突破 4 萬點大關，臻鼎-KY 均線多頭排列且價格高於 50/200MA。MACD 呈現多頭，動能溫和。建議分批佈局。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議買進：380-385，停利：420
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -227,6 +255,11 @@
             <div class="card-header">
                 <div class="symbol-name">Alphabet (Class A) (GOOGL)</div>
             </div>
+            <div id='chart_GOOGL' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】MACD 顯示「多頭收斂」，意味著財報公布後多方推升的力道正在減緩，股價進入高檔震盪盤整期。整體趨勢尚未反轉，建議等待回測支撐。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>340 附近分批承接
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -234,8 +267,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點 (營收YoY / 毛利率 / EPS)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -259,12 +292,6 @@
                             <td class="fin-col">59.8%</td>
                             <td class="fin-col">11.2 USD</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】MACD 顯示「多頭收斂」，意味著財報公布後多方推升的力道正在減緩，股價進入高檔震盪盤整期。整體趨勢尚未反轉，建議等待回測支撐。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>340 附近分批承接
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -277,12 +304,6 @@
                             <td class="fin-col">59.8%</td>
                             <td class="fin-col">11.2 USD</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>財報開出後股價高檔震盪整理，整體多頭趨勢未變，建議逢回季線支撐再行佈局。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>340 附近分批承接
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-28</td>
@@ -294,12 +315,6 @@
                             <td class="fin-col">18.00%</td>
                             <td class="fin-col">59.65%</td>
                             <td class="fin-col">10.83 USD</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>Alphabet (GOOGL) 股價近期噴出，RSI 已進入 70 以上超買區。明日將公佈 Q1 財報，市場預期偏高。建議觀察財報後是否有獲利回吐再進場。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議觀察財報後水位，支撐區約 310-320
-                            </td>
                         </tr>
             
                     </tbody>
@@ -316,6 +331,11 @@
             <div class="card-header">
                 <div class="symbol-name">群益ESG投等債20+ (00937B)</div>
             </div>
+            <div id='chart_00937B' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】投等債 MACD 指標出現「轉強」跡象，這通常暗示短期的債券拋售壓力減輕，低接買盤動能開始浮現。搭配目前逾 6% 的殖利率，防禦價值極高。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>14.8 以下皆屬便宜價，適合存股族穩定買進
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -323,8 +343,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -348,12 +368,6 @@
                             <td class="fin-col">0.40%</td>
                             <td class="fin-col">6.02%</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】投等債 MACD 指標出現「轉強」跡象，這通常暗示短期的債券拋售壓力減輕，低接買盤動能開始浮現。搭配目前逾 6% 的殖利率，防禦價值極高。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>14.8 以下皆屬便宜價，適合存股族穩定買進
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -365,12 +379,6 @@
                             <td class="fin-col">-0.50% (折價)</td>
                             <td class="fin-col">0.40%</td>
                             <td class="fin-col">6.05%</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>債券價格持續受聯準會降息時程影響而震盪，目前折價且殖利率破 6% 具吸引力，可作為資產配置防禦部位。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>14.7 穩定買進
-                            </td>
                         </tr>
             
                         <tr>
@@ -384,12 +392,6 @@
                             <td class="fin-col">0.40%</td>
                             <td class="fin-col">5.93%</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>目前呈現小幅折價，對買方有利。殖利率近 6% 具防禦價值。技術面低位盤整，適合長期領息。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議買進：14.7-14.8
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -399,6 +401,11 @@
             <div class="card-header">
                 <div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div>
             </div>
+            <div id='chart_009816' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】目前 MACD 狀態維持「中性」，顯示大盤震盪下目前處於多空平衡的觀望狀態，沒有明顯的單邊趨勢。作為低費率市值型 ETF，無需過度擔憂短期波動。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>跌破 13.0 視為絕佳加碼點
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -406,8 +413,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -431,12 +438,6 @@
                             <td class="fin-col">0.10%</td>
                             <td class="fin-col">不配息</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】目前 MACD 狀態維持「中性」，顯示大盤震盪下目前處於多空平衡的觀望狀態，沒有明顯的單邊趨勢。作為低費率市值型 ETF，無需過度擔憂短期波動。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>跌破 13.0 視為絕佳加碼點
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -448,12 +449,6 @@
                             <td class="fin-col">+0.50% (溢價)</td>
                             <td class="fin-col">0.10%</td>
                             <td class="fin-col">不配息</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>隨台股大盤高檔震盪，具備低費用率與股息自動滾入優勢，適合長期複利，建議逢回加碼。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>13.0 以下佈局
-                            </td>
                         </tr>
             
                         <tr>
@@ -467,12 +462,6 @@
                             <td class="fin-col">約0.1%</td>
                             <td class="fin-col">不配息</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>低費用率優勢明顯。目前溢價 2.80% 偏高。技術面趨勢看漲但短線動能稍緩。建議待溢價收斂後進場。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議買進：12.9-13.0
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -482,6 +471,11 @@
             <div class="card-header">
                 <div class="symbol-name">元大台灣50正2 (00631L)</div>
             </div>
+            <div id='chart_00631L' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】大盤高檔震盪，此檔 ETF 的 MACD 在「高檔出現收斂」，這是典型的上攻力道衰退訊號，加上微幅溢價，對於槓桿型產品來說，需要特別警戒隨之而來的回檔耗損風險。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>嚴守 28.0 關鍵支撐，破線建議減碼或停損
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -489,8 +483,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -514,12 +508,6 @@
                             <td class="fin-col">1.04%</td>
                             <td class="fin-col">無配息</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】大盤高檔震盪，此檔 ETF 的 MACD 在「高檔出現收斂」，這是典型的上攻力道衰退訊號，加上微幅溢價，對於槓桿型產品來說，需要特別警戒隨之而來的回檔耗損風險。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>嚴守 28.0 關鍵支撐，破線建議減碼或停損
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -531,12 +519,6 @@
                             <td class="fin-col">+0.20% (溢價)</td>
                             <td class="fin-col">1.04%</td>
                             <td class="fin-col">無配息</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>台股短線漲多拉回，正2槓桿波動放大，適合波段操作，請務必注意風險控管及停損停利。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>28.5-29.0 區間操作
-                            </td>
                         </tr>
             
                         <tr>
@@ -550,12 +532,6 @@
                             <td class="fin-col">1.04%</td>
                             <td class="fin-col">槓桿型無配息</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>槓桿型 ETF 受惠於大盤萬點行情噴出。技術面極度強勢，MACD 維持多方。溢價 0.75% 尚屬合理。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議買進：29.5 附近，動能操作
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -565,6 +541,11 @@
             <div class="card-header">
                 <div class="symbol-name">元大台灣50 (0050)</div>
             </div>
+            <div id='chart_0050' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】今日股價微幅收紅。觀察 MACD 呈現「紅柱萎縮」，代表台股大盤權值股的短線多頭推升力道已不若先前強勁，進入正常的獲利了結修正階段。但長線多頭未破，仍是存股好時機。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>90 元整數關卡具備強烈支撐，建議持續定期定額
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -572,8 +553,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -597,12 +578,6 @@
                             <td class="fin-col">0.32%</td>
                             <td class="fin-col">1.92%</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】今日股價微幅收紅。觀察 MACD 呈現「紅柱萎縮」，代表台股大盤權值股的短線多頭推升力道已不若先前強勁，進入正常的獲利了結修正階段。但長線多頭未破，仍是存股好時機。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>90 元整數關卡具備強烈支撐，建議持續定期定額
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -614,12 +589,6 @@
                             <td class="fin-col">+0.50% (溢價)</td>
                             <td class="fin-col">0.32%</td>
                             <td class="fin-col">1.90%</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>大盤高檔震盪，0050 作為台股核心配置，維持多頭格局，溢價有所收斂，適合定期定額。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>90 以下分批買進
-                            </td>
                         </tr>
             
                         <tr>
@@ -633,12 +602,6 @@
                             <td class="fin-col">0.32%</td>
                             <td class="fin-col">1.89%</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>0050 隨大盤強勢上攻，MACD 出現轉強跡象。但溢價率達 2.74% 偏高，追高需謹慎，可待回落至 90 元附近。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議買進：90.5-91，不宜追高溢價
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -648,6 +611,11 @@
             <div class="card-header">
                 <div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div>
             </div>
+            <div id='chart_QQQM' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】科技股漲多後 MACD 出現「高檔鈍化」，顯示連續大漲後追價買盤漸趨保守。但長線 AI 趨勢未變，建議維持長期紀律。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>定期定額不停扣
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -655,8 +623,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -680,12 +648,6 @@
                             <td class="fin-col">0.15%</td>
                             <td class="fin-col">0.55%</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】科技股漲多後 MACD 出現「高檔鈍化」，顯示連續大漲後追價買盤漸趨保守。但長線 AI 趨勢未變，建議維持長期紀律。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>定期定額不停扣
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -697,12 +659,6 @@
                             <td class="fin-col">0%</td>
                             <td class="fin-col">0.15%</td>
                             <td class="fin-col">0.55%</td>
-                        </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>科技股漲多出現獲利回吐，但長線 AI 趨勢與基本面不變，建議維持長期持有策略。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>定期定額不停扣
-                            </td>
                         </tr>
             
                         <tr>
@@ -716,12 +672,6 @@
                             <td class="fin-col">0.15%</td>
                             <td class="fin-col">0.53%</td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>QQQM 作為低費用率的 NASDAQ-100 追蹤工具，目前隨科技股走強。動能強勁且接近 52 週高點。適合長線持有。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>建議長期定期定額
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -731,6 +681,11 @@
             <div class="card-header">
                 <div class="symbol-name">統一台股升級50主動式ETF (00403A)</div>
             </div>
+            
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】即將掛牌的主動式 50 ETF，主打基本面嚴選黑馬股。因尚未掛牌無 MACD 數據，目前處於 IPO 等待期。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>掛牌上市後，先觀察折溢價情形再決定進場點
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -738,8 +693,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -763,12 +718,6 @@
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】即將掛牌的主動式 50 ETF，主打基本面嚴選黑馬股。因尚未掛牌無 MACD 數據，目前處於 IPO 等待期。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>掛牌上市後，先觀察折溢價情形再決定進場點
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -781,12 +730,6 @@
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>統一投信最新主動式 ETF，預計 5 月上市。主打市值升級、主動挑選 50 大企業黑馬，建議納入觀察名單，待上市後觀察其折溢價情形。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>觀察 IPO 定價及折溢價
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -796,6 +739,11 @@
             <div class="card-header">
                 <div class="symbol-name">統一台股增長主動式ETF (00981A)</div>
             </div>
+            <div id='chart_00981A' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】今日單日反彈大漲 2.02%！目前 MACD 狀態雖為「中性」（長線趨勢尚未完全翻多），但短線強勢反彈顯示其主動選股優勢開始發酵，值得持續關注。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>站穩 28 元關卡可分批加碼
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -803,8 +751,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -828,12 +776,6 @@
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】今日單日反彈大漲 2.02%！目前 MACD 狀態雖為「中性」（長線趨勢尚未完全翻多），但短線強勢反彈顯示其主動選股優勢開始發酵，值得持續關注。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>站穩 28 元關卡可分批加碼
-                            </td>
-                        </tr>
             
                         <tr>
                             <td class="date-col">2026-04-29</td>
@@ -846,12 +788,6 @@
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>主動型成長配置，近期隨科技股波動。目前呈現小幅回檔，適合追求超越大盤績效的積極型投資人分批佈局。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>27.5 附近尋求支撐
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -861,6 +797,11 @@
             <div class="card-header">
                 <div class="symbol-name">Xtrackers Nasdaq 100 UCITS ETF (LSE) (XNAS.L)</div>
             </div>
+            <div id='chart_XNAS_L' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】新納入觀察！此檔 LSE 掛牌的 Nasdaq 100 ETF 具備免預扣稅優勢。目前尚無完整 MACD 趨勢數據，但直接受惠全球 AI 巨頭成長，適合做為海外資產核心。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>長線核心配置，無腦定期定額不停扣
+            </div>
             <div class="table-responsive">
                 <table class="history-table">
                     <thead>
@@ -868,8 +809,8 @@
                             <th rowspan="2">日期</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
                             <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析 (MA / RSI / MACD)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點 (折溢價 / 內扣費用 / 配息)</th>
+                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -893,12 +834,6 @@
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                         </tr>
-                        <tr style="background-color: rgba(255,255,255,0.02);">
-                            <td colspan="9" style="padding: 10px 12px; font-size: 0.85rem; color: #cbd5e1; border-bottom: 2px solid var(--card-border);">
-                                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 最新盤後分析】新納入觀察！此檔 LSE 掛牌的 Nasdaq 100 ETF 具備免預扣稅優勢。目前尚無完整 MACD 趨勢數據，但直接受惠全球 AI 巨頭成長，適合做為海外資產核心。 <br>
-                                <strong style="color: #34d399;">🎯 操作策略：</strong>長線核心配置，無腦定期定額不停扣
-                            </td>
-                        </tr>
             
                     </tbody>
                 </table>
@@ -906,5 +841,14 @@
         </div>
         </div>
     </div>
-</body>
+<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price"], ["04-27", 358.5], ["04-28", 394.0], ["04-29", 383.0], ["04-30", 421.0]], '#10b981'));
+google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price"], ["04-28", 350.34], ["04-29", 349.78], ["04-30", 349.94]], '#10b981'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price"], ["04-27", 14.79], ["04-28", 14.78], ["04-29", 14.82], ["04-30", 14.76]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price"], ["04-27", 13.17], ["04-28", 13.15], ["04-29", 13.05], ["04-30", 13.05]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price"], ["04-27", 29.62], ["04-28", 29.27], ["04-29", 28.82], ["04-30", 28.61]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price"], ["04-27", 93.0], ["04-28", 92.0], ["04-29", 90.75], ["04-30", 90.5]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price"], ["04-28", 273.51], ["04-29", 270.76], ["04-30", 272.39]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price"], ["04-29", 27.74], ["04-30", 28.28]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price"], ["04-30", 62.91]], '#8b5cf6'));
+</script></body>
 </html>
