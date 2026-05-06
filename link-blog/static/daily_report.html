@@ -11,7 +11,6 @@
             --text-color: #f8fafc;
             --card-bg: rgba(30, 41, 59, 0.7);
             --card-border: rgba(255, 255, 255, 0.1);
-            --accent-color: #3b82f6;
             --stock-color: #10b981;
             --etf-color: #8b5cf6;
         }
@@ -19,90 +18,35 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 0;
-            padding: 40px 20px;
+            margin: 0; padding: 40px 20px;
             background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
             min-height: 100vh;
         }
         h1 {
-            text-align: center;
-            font-weight: 800;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+            text-align: center; font-weight: 800; font-size: 2.5rem; margin-bottom: 40px;
             background: -webkit-linear-gradient(45deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .section-title {
-            border-bottom: 2px solid var(--card-border);
-            padding-bottom: 10px;
-            margin-top: 50px;
-            font-size: 1.8rem;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { border-bottom: 2px solid var(--card-border); padding-bottom: 10px; margin-top: 50px; font-size: 1.8rem; }
         .stock-title { color: var(--stock-color); }
         .etf-title { color: var(--etf-color); }
-        
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .symbol-name {
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-        
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        .history-table th, .history-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--card-border);
-        }
-        .history-table th {
-            color: #94a3b8;
-            font-weight: 600;
-            background: rgba(0,0,0,0.2);
-        }
-        .date-col {
-            font-weight: 600;
-            color: #e2e8f0;
-        }
+        .card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        .symbol-name { font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; }
+        .history-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .history-table th, .history-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
+        .history-table th { color: #94a3b8; font-weight: 600; background: rgba(0,0,0,0.2); }
+        .date-col { font-weight: 600; color: #e2e8f0; }
+        .price-col { font-weight: 600; color: #facc15; }
         .tech-col { color: #60a5fa; }
         .fin-col { color: #f472b6; }
-        
-        .empty-state {
-            text-align: center;
-            color: #94a3b8;
-            font-style: italic;
-        }
-        
-        /* 表格響應式捲動 */
-        .table-responsive {
-            overflow-x: auto;
-            margin-top: 15px;
-        }
+        .table-responsive { overflow-x: auto; }
+        .advice-box { margin-top: 15px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 4px; line-height: 1.6; color: #e2e8f0; font-size: 0.95rem; }
+        .advice-box strong { color: #60a5fa; }
+        .price-advice { color: #10b981 !important; margin-top: 8px; display: inline-block; }
+        .positive { color: #ef4444; } /* 台股紅漲 */
+        .negative { color: #22c55e; } /* 台股綠跌 */
         details {
             margin-top: 15px;
             background: rgba(255, 255, 255, 0.03);
@@ -143,7 +87,7 @@
         }
         .advice-section {
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(167, 139, 250, 0.1));
-            border-left: 4px solid var(--accent-color);
+            border-left: 4px solid #3b82f6;
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
@@ -176,727 +120,179 @@
 <body>
     <div class="container">
         <h1>投資觀察日報表</h1>
-        
-        <!-- 股票區塊 -->
         <h2 class="section-title stock-title">📈 股票觀察清單 (Stocks)</h2>
         <div id="stocks-container">
-            
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">臻鼎-KY (4958)</div>
-            </div>
-            <div id='chart_4958' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日下跌 1.39% 稍微拉回。MACD 呈現「紅柱縮減」，代表高檔的多頭動能正在減弱，股價正逢前高壓力而出現合理修正。只要守穩重要支撐，多頭架構仍在。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>防守點設於月線附近，跌破則考慮停利。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>營收 YoY</th>
-                            <th>毛利率</th>
-                            <th>EPS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">426.50</td>
-                            <td style="color: #eab308;">-1.39%</td>
-                            <td class="tech-col">高檔回檔</td>
-                            <td class="tech-col">62</td>
-                            <td class="tech-col">紅柱縮減</td>
-                            <td class="fin-col">+1.50%</td>
-                            <td class="fin-col">20.1%</td>
-                            <td class="fin-col">7.1</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">432.50</td>
-                            <td style="color: #eab308;">+2.73%</td>
-                            <td class="tech-col">高檔回檔</td>
-                            <td class="tech-col">62</td>
-                            <td class="tech-col">紅柱縮減</td>
-                            <td class="fin-col">+1.50%</td>
-                            <td class="fin-col">20.1%</td>
-                            <td class="fin-col">7.1</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">421.00</td>
-                            <td style="color: #eab308;">+9.92%</td>
-                            <td class="tech-col">高檔回檔</td>
-                            <td class="tech-col">62</td>
-                            <td class="tech-col">紅柱縮減</td>
-                            <td class="fin-col">+1.50%</td>
-                            <td class="fin-col">20.1%</td>
-                            <td class="fin-col">7.1</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-04-29</td><td>383.00</td><td>-2.79%</td><td>強勢突破</td><td>78 (超買)</td><td>紅柱放大</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-28</td><td>394.00</td><td>+9.90%</td><td>強勢多頭</td><td>56.31</td><td>多頭排列 (0.39)</td><td>+1.30%</td><td>19.8%</td><td>6.78</td></tr><tr><td>2026-04-27</td><td>358.50</td><td>+3.17%</td><td>多頭 (乖離偏大)</td><td>偏高 (超買疑慮)</td><td>多頭動能</td><td>+7.18% (3月)</td><td>22.56% (2025Q4)</td><td>1.27元 (3月自結)</td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">Alphabet (Class A) (GOOGL)</div>
-            </div>
-            <div id='chart_GOOGL' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日小跌 0.63%。MACD 維持「多頭收斂」，顯示短期追價意願降低，股價正進入高檔狹幅震盪消化賣壓。這屬於急漲後的休息，無需過度擔憂。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>375-380 元區間為短期支撐，可趁拉回時分批承接。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>營收 YoY</th>
-                            <th>毛利率</th>
-                            <th>EPS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">383.25</td>
-                            <td style="color: #eab308;">-0.63%</td>
-                            <td class="tech-col">高檔震盪</td>
-                            <td class="tech-col">65</td>
-                            <td class="tech-col">多頭收斂</td>
-                            <td class="fin-col">18.5%</td>
-                            <td class="fin-col">59.8%</td>
-                            <td class="fin-col">11.2 USD</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">385.69</td>
-                            <td style="color: #eab308;">+0.23%</td>
-                            <td class="tech-col">高檔震盪</td>
-                            <td class="tech-col">65</td>
-                            <td class="tech-col">多頭收斂</td>
-                            <td class="fin-col">18.5%</td>
-                            <td class="fin-col">59.8%</td>
-                            <td class="fin-col">11.2 USD</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">349.94</td>
-                            <td style="color: #eab308;">+0.04%</td>
-                            <td class="tech-col">高檔震盪</td>
-                            <td class="tech-col">65</td>
-                            <td class="tech-col">多頭收斂</td>
-                            <td class="fin-col">18.5%</td>
-                            <td class="fin-col">59.8%</td>
-                            <td class="fin-col">11.2 USD</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-04-29</td><td>349.78</td><td>-0.16%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-28</td><td>350.34</td><td>+1.72%</td><td>強勢看漲</td><td>72 (超買)</td><td>多頭排列</td><td>18.00%</td><td>59.65%</td><td>10.83 USD</td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">臻鼎-KY (4958)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">臻鼎-KY (4958)</div>
+        <div id='chart_4958' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】今日股價開高走低，終場大跌 3.40% 收在 412.00 元。盤中可能受到獲利了結賣壓影響，導致高檔回檔。需密切觀察是否跌破月線支撐，若未跌破則視為漲多的正常修正。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 防守點下移至 400 元大關，空手者建議暫時觀望，不宜在此急跌時摸底。
         </div>
-
-        <!-- ETF區塊 -->
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>426.50</td><td class='price-col'>412.00</td><td class='price-col negative'>-3.40%</td><td class='tech-col'>高檔回檔</td><td class='tech-col'>62</td><td class='tech-col'>紅柱縮減</td><td class='fin-col'>+1.50%</td><td class='fin-col'>20.1%</td><td class='fin-col'>7.1</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>432.50</td><td class='price-col'>426.50</td><td class='price-col negative'>-1.39%</td><td class='tech-col'>高檔回檔</td><td class='tech-col'>62</td><td class='tech-col'>紅柱縮減</td><td class='fin-col'>+1.50%</td><td class='fin-col'>20.1%</td><td class='fin-col'>7.1</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>421.00</td><td class='price-col'>432.50</td><td class='price-col positive'>+2.73%</td><td class='tech-col'>高檔回檔</td><td class='tech-col'>62</td><td class='tech-col'>紅柱縮減</td><td class='fin-col'>+1.50%</td><td class='fin-col'>20.1%</td><td class='fin-col'>7.1</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-04-30</td><td>421.00</td><td>+9.92%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-29</td><td>383.00</td><td>-2.79%</td><td>強勢突破</td><td>78 (超買)</td><td>紅柱放大</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-28</td><td>394.00</td><td>+9.90%</td><td>強勢多頭</td><td>56.31</td><td>多頭排列 (0.39)</td><td>+1.30%</td><td>19.8%</td><td>6.78</td></tr><tr><td>2026-04-27</td><td>358.50</td><td>+3.17%</td><td>多頭 (乖離偏大)</td><td>偏高 (超買疑慮)</td><td>多頭動能</td><td>+7.18% (3月)</td><td>22.56% (2025Q4)</td><td>1.27元 (3月自結)</td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">Alphabet (Class A) (GOOGL)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">Alphabet (Class A) (GOOGL)</div>
+        <div id='chart_GOOGL' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】股價上漲 1.35% 來到 388.43 元，重啟多頭動能。AI 搜尋與雲端業務持續發酵，若能穩定站上所有均線之上，則有望挑戰前波高點，建議續抱。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 長線續抱，若回測 360-370 區間可考慮加碼。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>383.25</td><td class='price-col'>388.43</td><td class='price-col positive'>+1.35%</td><td class='tech-col'>高檔震盪</td><td class='tech-col'>65</td><td class='tech-col'>多頭收斂</td><td class='fin-col'>18.5%</td><td class='fin-col'>59.8%</td><td class='fin-col'>11.2 USD</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>385.69</td><td class='price-col'>383.25</td><td class='price-col negative'>-0.63%</td><td class='tech-col'>高檔震盪</td><td class='tech-col'>65</td><td class='tech-col'>多頭收斂</td><td class='fin-col'>18.5%</td><td class='fin-col'>59.8%</td><td class='fin-col'>11.2 USD</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>384.80</td><td class='price-col'>385.69</td><td class='price-col positive'>+0.23%</td><td class='tech-col'>高檔震盪</td><td class='tech-col'>65</td><td class='tech-col'>多頭收斂</td><td class='fin-col'>18.5%</td><td class='fin-col'>59.8%</td><td class='fin-col'>11.2 USD</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-04-30</td><td>349.94</td><td>+0.04%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-29</td><td>349.78</td><td>-0.16%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-28</td><td>350.34</td><td>+1.72%</td><td>強勢看漲</td><td>72 (超買)</td><td>多頭排列</td><td>18.00%</td><td>59.65%</td><td>10.83 USD</td></tr></tbody></table></div></details></div></div>
         <h2 class="section-title etf-title">📊 ETF觀察清單 (ETFs)</h2>
         <div id="etfs-container">
-            
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">群益ESG投等債20+ (00937B)</div>
-            </div>
-            <div id='chart_00937B' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日小幅回檔 0.41%。儘管價格微跌，但 MACD 指標持續「轉強」（負值縮減），暗示拋售壓力正逐漸減輕。這時候的拉回反而提供了極佳的佈局機會。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>14.7 元附近為絕佳存股點位，適合長線領息。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">14.73</td>
-                            <td style="color: #eab308;">-0.41%</td>
-                            <td class="tech-col">回穩向上</td>
-                            <td class="tech-col">48</td>
-                            <td class="tech-col">轉強</td>
-                            <td class="fin-col">-0.35% (折價)</td>
-                            <td class="fin-col">0.40%</td>
-                            <td class="fin-col">6.02%</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">14.79</td>
-                            <td style="color: #eab308;">+0.20%</td>
-                            <td class="tech-col">回穩向上</td>
-                            <td class="tech-col">48</td>
-                            <td class="tech-col">轉強</td>
-                            <td class="fin-col">-0.35% (折價)</td>
-                            <td class="fin-col">0.40%</td>
-                            <td class="fin-col">6.02%</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">14.76</td>
-                            <td style="color: #eab308;">-0.40%</td>
-                            <td class="tech-col">回穩向上</td>
-                            <td class="tech-col">48</td>
-                            <td class="tech-col">轉強</td>
-                            <td class="fin-col">-0.35% (折價)</td>
-                            <td class="fin-col">0.40%</td>
-                            <td class="fin-col">6.02%</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td>14.82</td><td>+0.27%</td><td>橫盤整理</td><td>43</td><td>平緩</td><td>-0.50% (折價)</td><td>0.40%</td><td>6.05%</td></tr><tr><td>2026-04-28</td><td>14.78</td><td>-0.07%</td><td>低檔震盪</td><td>44.20</td><td>盤整</td><td>-0.67% (折價)</td><td>0.40%</td><td>5.93%</td></tr><tr><td>2026-04-27</td><td>14.79</td><td>-0.47%</td><td>中性盤整</td><td>中性 (~50)</td><td>平緩</td><td>-0.2% (折價)</td><td>約0.26%</td><td>月配息穩定</td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div>
-            </div>
-            <div id='chart_009816' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日微幅上漲 0.59%。MACD 處於「中性」，顯示目前並未出現明顯的爆發方向，而是跟隨大盤穩健墊高。市值型 ETF 注重長期複利，無需因短期無聊的盤整而下車。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>長線持有不停利，定期定額持續滾雪球。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">13.68</td>
-                            <td style="color: #eab308;">+0.59%</td>
-                            <td class="tech-col">趨勢看漲</td>
-                            <td class="tech-col">46</td>
-                            <td class="tech-col">中性</td>
-                            <td class="fin-col">+0.42% (溢價)</td>
-                            <td class="fin-col">0.10%</td>
-                            <td class="fin-col">不配息</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">13.60</td>
-                            <td style="color: #eab308;">+4.21%</td>
-                            <td class="tech-col">趨勢看漲</td>
-                            <td class="tech-col">46</td>
-                            <td class="tech-col">中性</td>
-                            <td class="fin-col">+0.42% (溢價)</td>
-                            <td class="fin-col">0.10%</td>
-                            <td class="fin-col">不配息</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">13.05</td>
-                            <td style="color: #eab308;">0.00%</td>
-                            <td class="tech-col">趨勢看漲</td>
-                            <td class="tech-col">46</td>
-                            <td class="tech-col">中性</td>
-                            <td class="fin-col">+0.42% (溢價)</td>
-                            <td class="fin-col">0.10%</td>
-                            <td class="fin-col">不配息</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td>13.05</td><td>-0.76%</td><td>上升趨勢</td><td>50</td><td>中性</td><td>+0.50% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-28</td><td>13.15</td><td>-0.15%</td><td>看漲趨勢穩定</td><td>51.95</td><td>中性盤整</td><td>+2.80% (溢價)</td><td>約0.1%</td><td>不配息</td></tr><tr><td>2026-04-27</td><td>13.17</td><td>+2.33%</td><td>多頭 (隨大盤)</td><td>偏多</td><td>偏多</td><td>+0.08% (溢價)</td><td>約0.01% (極低)</td><td>不配息 (自動滾入)</td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">元大台灣50正2 (00631L)</div>
-            </div>
-            <div id='chart_00631L' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日微漲 0.26%，漲勢明顯趨緩。MACD 出現「高檔收斂」，這是一個短線動能即將耗盡的警訊。正 2 產品對波動十分敏感，在高檔整理時容易產生耗損。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>短期內若無法放量上攻，可考慮先縮減部分槓桿部位獲利了結。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">31.08</td>
-                            <td style="color: #eab308;">+0.26%</td>
-                            <td class="tech-col">多頭修正</td>
-                            <td class="tech-col">52</td>
-                            <td class="tech-col">高檔收斂</td>
-                            <td class="fin-col">+0.20% (溢價)</td>
-                            <td class="fin-col">1.04%</td>
-                            <td class="fin-col">無配息</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">31.00</td>
-                            <td style="color: #eab308;">+8.35%</td>
-                            <td class="tech-col">多頭修正</td>
-                            <td class="tech-col">52</td>
-                            <td class="tech-col">高檔收斂</td>
-                            <td class="fin-col">+0.20% (溢價)</td>
-                            <td class="fin-col">1.04%</td>
-                            <td class="fin-col">無配息</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">28.61</td>
-                            <td style="color: #eab308;">-0.73%</td>
-                            <td class="tech-col">多頭修正</td>
-                            <td class="tech-col">52</td>
-                            <td class="tech-col">高檔收斂</td>
-                            <td class="fin-col">+0.20% (溢價)</td>
-                            <td class="fin-col">1.04%</td>
-                            <td class="fin-col">無配息</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td>28.82</td><td>-1.54%</td><td>多頭回檔</td><td>55</td><td>紅柱縮減</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-28</td><td>29.27</td><td>-1.18%</td><td>強烈看漲</td><td>52.33</td><td>多頭排列 (0.05)</td><td>+0.75% (溢價)</td><td>1.04%</td><td>槓桿型無配息</td></tr><tr><td>2026-04-27</td><td>29.62</td><td>+4.15%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">元大台灣50 (0050)</div>
-            </div>
-            <div id='chart_0050' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日收平盤。MACD 呈現「紅柱萎縮」，顯示大盤權值股在強彈後進入休息觀望期。這是健康的多頭修正，只要不跌破前波低點，中長線依舊看好。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>維持定期定額策略，91-92 元為重要防守區。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">94.60</td>
-                            <td style="color: #eab308;">0.00%</td>
-                            <td class="tech-col">上升軌道</td>
-                            <td class="tech-col">48</td>
-                            <td class="tech-col">紅柱萎縮</td>
-                            <td class="fin-col">+0.38% (溢價)</td>
-                            <td class="fin-col">0.32%</td>
-                            <td class="fin-col">1.92%</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">94.60</td>
-                            <td style="color: #eab308;">+4.53%</td>
-                            <td class="tech-col">上升軌道</td>
-                            <td class="tech-col">48</td>
-                            <td class="tech-col">紅柱萎縮</td>
-                            <td class="fin-col">+0.38% (溢價)</td>
-                            <td class="fin-col">0.32%</td>
-                            <td class="fin-col">1.92%</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">90.50</td>
-                            <td style="color: #eab308;">-0.28%</td>
-                            <td class="tech-col">上升軌道</td>
-                            <td class="tech-col">48</td>
-                            <td class="tech-col">紅柱萎縮</td>
-                            <td class="fin-col">+0.38% (溢價)</td>
-                            <td class="fin-col">0.32%</td>
-                            <td class="fin-col">1.92%</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td>90.75</td><td>-1.36%</td><td>穩健多頭</td><td>52</td><td>中性</td><td>+0.50% (溢價)</td><td>0.32%</td><td>1.90%</td></tr><tr><td>2026-04-28</td><td>92.00</td><td>-1.08%</td><td>長期看漲</td><td>44.65</td><td>微弱金叉 (0.02)</td><td>+2.74% (溢價)</td><td>0.32%</td><td>1.89%</td></tr><tr><td>2026-04-27</td><td>93.00</td><td>+3.39%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div>
-            </div>
-            <div id='chart_QQQM' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日小跌 0.18%。MACD 仍維持「高檔鈍化」，雖然短線似乎過熱，但強勢多頭格局未變。科技股長線趨勢依舊明朗，逢回即可視為買點。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>定期定額不停扣，短線波段以 10 日線為防守底線。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">277.05</td>
-                            <td style="color: #eab308;">-0.18%</td>
-                            <td class="tech-col">高檔整理</td>
-                            <td class="tech-col">60</td>
-                            <td class="tech-col">高檔鈍化</td>
-                            <td class="fin-col">0%</td>
-                            <td class="fin-col">0.15%</td>
-                            <td class="fin-col">0.55%</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">277.54</td>
-                            <td style="color: #eab308;">+0.96%</td>
-                            <td class="tech-col">高檔整理</td>
-                            <td class="tech-col">60</td>
-                            <td class="tech-col">高檔鈍化</td>
-                            <td class="fin-col">0%</td>
-                            <td class="fin-col">0.15%</td>
-                            <td class="fin-col">0.55%</td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">272.39</td>
-                            <td style="color: #eab308;">+0.60%</td>
-                            <td class="tech-col">高檔整理</td>
-                            <td class="tech-col">60</td>
-                            <td class="tech-col">高檔鈍化</td>
-                            <td class="fin-col">0%</td>
-                            <td class="fin-col">0.15%</td>
-                            <td class="fin-col">0.55%</td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td>270.76</td><td>-1.01%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-28</td><td>273.51</td><td>+0.05%</td><td>穩健看漲</td><td>68</td><td>多頭排列</td><td>趨近 0%</td><td>0.15%</td><td>0.53%</td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">統一台股升級50主動式ETF (00403A)</div>
-            </div>
-            
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】目前為上市初期，尚未有完整的技術指標與盤後數據。這段期間重點在於觀察經理人的主動選股方向以及市場買氣是否能維持。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>持續觀察 15.0 元發行價附近的支撐。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;"></td>
-                            <td style="color: #eab308;"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;"></td>
-                            <td style="color: #eab308;"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;"></td>
-                            <td style="color: #eab308;"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">統一台股增長主動式ETF (00981A)</div>
-            </div>
-            <div id='chart_00981A' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】今日回檔 0.57%。MACD 維持「中性」，這是主動型基金在市場震盪時常見的調整。低檔轉強的態勢並未被單日下跌破壞，可繼續關注其超額報酬表現。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>28.5-29.0 元區間可考慮分批試單佈局。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">29.46</td>
-                            <td style="color: #eab308;">-0.57%</td>
-                            <td class="tech-col">橫盤</td>
-                            <td class="tech-col">50</td>
-                            <td class="tech-col">中性</td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">29.63</td>
-                            <td style="color: #eab308;">+4.77%</td>
-                            <td class="tech-col">橫盤</td>
-                            <td class="tech-col">50</td>
-                            <td class="tech-col">中性</td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">28.28</td>
-                            <td style="color: #eab308;">+1.95%</td>
-                            <td class="tech-col">橫盤</td>
-                            <td class="tech-col">50</td>
-                            <td class="tech-col">中性</td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
-        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-29</td><td>27.74</td><td>-0.25%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="symbol-name">Xtrackers Nasdaq 100 UCITS ETF (LSE) (XNAS.L)</div>
-            </div>
-            <div id='chart_XNAS_L' class='chart-container'></div>
-            <div class="advice-section">
-                <strong style="color: #fbbf24;">💡 觀察與建議：</strong>【AI 盤後分析】倫敦掛牌版本今日價格持平。受惠於免除 30% 股息稅的優勢，雖然缺乏詳細技術指標，但緊跟美股那斯達克 100 的強勁基本面，長線複利效果可期。 <br>
-                <strong style="color: #34d399;">🎯 操作策略：</strong>適合長線投資，設定定期無腦扣款，不需在意短期波動。
-            </div>
-            <div class="table-responsive">
-                <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
-                        </tr>
-                        <tr>
-                            <th>均線趨勢</th>
-                            <th>RSI 狀態</th>
-                            <th>MACD 狀態</th>
-                            <th>折溢價</th>
-                            <th>內扣費用</th>
-                            <th>殖利率/配息</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                        <tr>
-                            <td class="date-col">2026-05-05</td>
-                            <td style="font-weight: 600; color: #eab308;">64.29</td>
-                            <td style="color: #eab308;">+1.69%</td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-05-04</td>
-                            <td style="font-weight: 600; color: #eab308;">64.29</td>
-                            <td style="color: #eab308;">+1.69%</td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                        <tr>
-                            <td class="date-col">2026-04-30</td>
-                            <td style="font-weight: 600; color: #eab308;">62.91</td>
-                            <td style="color: #eab308;">+0.94%</td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                            <td class="fin-col"></td>
-                        </tr>
-            
-                    </tbody>
-                </table>
-            </div>
+        <div class="card"><div class="symbol-name">群益ESG投等債20+ (00937B)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">群益ESG投等債20+ (00937B)</div>
+        <div id='chart_00937B' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】債券價格今日小幅反彈 0.54%，收在 14.81 元。MACD 顯示已有轉強跡象。在降息循環的長期趨勢下，目前的價位與殖利率具有高度配置價值。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 14.5-14.8 元區間為極佳存股買點，可分批進場。
         </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>14.73</td><td class='price-col'>14.81</td><td class='price-col positive'>+0.54%</td><td class='tech-col'>回穩向上</td><td class='tech-col'>48</td><td class='tech-col'>轉強</td><td class='fin-col'>-0.35% (折價)</td><td class='fin-col'>0.40%</td><td class='fin-col'>6.02%</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>14.79</td><td class='price-col'>14.73</td><td class='price-col negative'>-0.41%</td><td class='tech-col'>回穩向上</td><td class='tech-col'>48</td><td class='tech-col'>轉強</td><td class='fin-col'>-0.35% (折價)</td><td class='fin-col'>0.40%</td><td class='fin-col'>6.02%</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>14.76</td><td class='price-col'>14.79</td><td class='price-col positive'>+0.20%</td><td class='tech-col'>回穩向上</td><td class='tech-col'>48</td><td class='tech-col'>轉強</td><td class='fin-col'>-0.35% (折價)</td><td class='fin-col'>0.40%</td><td class='fin-col'>6.02%</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>14.76</td><td>-0.40%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-04-29</td><td>14.82</td><td>+0.27%</td><td>橫盤整理</td><td>43</td><td>平緩</td><td>-0.50% (折價)</td><td>0.40%</td><td>6.05%</td></tr><tr><td>2026-04-28</td><td>14.78</td><td>-0.07%</td><td>低檔震盪</td><td>44.20</td><td>盤整</td><td>-0.67% (折價)</td><td>0.40%</td><td>5.93%</td></tr><tr><td>2026-04-27</td><td>14.79</td><td>-0.47%</td><td>中性盤整</td><td>中性 (~50)</td><td>平緩</td><td>-0.2% (折價)</td><td>約0.26%</td><td>月配息穩定</td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div>
+        <div id='chart_009816' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】今日收漲 1.24% 至 13.85 元，表現強於大盤。顯示其選股邏輯在震盪盤勢中具有優勢。長期無配息的複利效應將隨時間發酵。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 持續定期定額，逢拉回 13.5 以下皆可積極加碼。
         </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>13.68</td><td class='price-col'>13.85</td><td class='price-col positive'>+1.24%</td><td class='tech-col'>趨勢看漲</td><td class='tech-col'>46</td><td class='tech-col'>中性</td><td class='fin-col'>+0.42% (溢價)</td><td class='fin-col'>0.10%</td><td class='fin-col'>不配息</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>13.60</td><td class='price-col'>13.68</td><td class='price-col positive'>+0.59%</td><td class='tech-col'>趨勢看漲</td><td class='tech-col'>46</td><td class='tech-col'>中性</td><td class='fin-col'>+0.42% (溢價)</td><td class='fin-col'>0.10%</td><td class='fin-col'>不配息</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>13.05</td><td class='price-col'>13.60</td><td class='price-col positive'>+4.21%</td><td class='tech-col'>趨勢看漲</td><td class='tech-col'>46</td><td class='tech-col'>中性</td><td class='fin-col'>+0.42% (溢價)</td><td class='fin-col'>0.10%</td><td class='fin-col'>不配息</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>13.05</td><td>0.00%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-29</td><td>13.05</td><td>-0.76%</td><td>上升趨勢</td><td>50</td><td>中性</td><td>+0.50% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-28</td><td>13.15</td><td>-0.15%</td><td>看漲趨勢穩定</td><td>51.95</td><td>中性盤整</td><td>+2.80% (溢價)</td><td>約0.1%</td><td>不配息</td></tr><tr><td>2026-04-27</td><td>13.17</td><td>+2.33%</td><td>多頭 (隨大盤)</td><td>偏多</td><td>偏多</td><td>+0.08% (溢價)</td><td>約0.01% (極低)</td><td>不配息 (自動滾入)</td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">元大台灣50正2 (00631L)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">元大台灣50正2 (00631L)</div>
+        <div id='chart_00631L' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】正2 隨台股權值股大漲，終場強勢上漲 2.61% 至 31.89 元。多頭力道強勁，但需注意高檔震盪風險，嚴格執行停利停損紀律。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 上移支撐至 30.5，跌破則建議縮減部位保護獲利。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>31.08</td><td class='price-col'>31.89</td><td class='price-col positive'>+2.61%</td><td class='tech-col'>多頭修正</td><td class='tech-col'>52</td><td class='tech-col'>高檔收斂</td><td class='fin-col'>+0.20% (溢價)</td><td class='fin-col'>1.04%</td><td class='fin-col'>無配息</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>31.00</td><td class='price-col'>31.08</td><td class='price-col positive'>+0.26%</td><td class='tech-col'>多頭修正</td><td class='tech-col'>52</td><td class='tech-col'>高檔收斂</td><td class='fin-col'>+0.20% (溢價)</td><td class='fin-col'>1.04%</td><td class='fin-col'>無配息</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>28.61</td><td class='price-col'>31.00</td><td class='price-col positive'>+8.35%</td><td class='tech-col'>多頭修正</td><td class='tech-col'>52</td><td class='tech-col'>高檔收斂</td><td class='fin-col'>+0.20% (溢價)</td><td class='fin-col'>1.04%</td><td class='fin-col'>無配息</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>28.61</td><td>-0.73%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-29</td><td>28.82</td><td>-1.54%</td><td>多頭回檔</td><td>55</td><td>紅柱縮減</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-28</td><td>29.27</td><td>-1.18%</td><td>強烈看漲</td><td>52.33</td><td>多頭排列 (0.05)</td><td>+0.75% (溢價)</td><td>1.04%</td><td>槓桿型無配息</td></tr><tr><td>2026-04-27</td><td>29.62</td><td>+4.15%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">元大台灣50 (0050)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">元大台灣50 (0050)</div>
+        <div id='chart_0050' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】今日受惠於半導體等權值股帶動，上漲 1.22% 收 95.75 元，重回上升軌道。整體大盤趨勢仍偏多，長期存股族可安心續抱。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 90-93 元區間為強勁支撐，建議維持定期定額。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>94.60</td><td class='price-col'>95.75</td><td class='price-col positive'>+1.22%</td><td class='tech-col'>上升軌道</td><td class='tech-col'>48</td><td class='tech-col'>紅柱萎縮</td><td class='fin-col'>+0.38% (溢價)</td><td class='fin-col'>0.32%</td><td class='fin-col'>1.92%</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>94.60</td><td class='price-col'>94.60</td><td class='price-col '>0.00%</td><td class='tech-col'>上升軌道</td><td class='tech-col'>48</td><td class='tech-col'>紅柱萎縮</td><td class='fin-col'>+0.38% (溢價)</td><td class='fin-col'>0.32%</td><td class='fin-col'>1.92%</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>90.50</td><td class='price-col'>94.60</td><td class='price-col positive'>+4.53%</td><td class='tech-col'>上升軌道</td><td class='tech-col'>48</td><td class='tech-col'>紅柱萎縮</td><td class='fin-col'>+0.38% (溢價)</td><td class='fin-col'>0.32%</td><td class='fin-col'>1.92%</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>90.50</td><td>-0.28%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-04-29</td><td>90.75</td><td>-1.36%</td><td>穩健多頭</td><td>52</td><td>中性</td><td>+0.50% (溢價)</td><td>0.32%</td><td>1.90%</td></tr><tr><td>2026-04-28</td><td>92.00</td><td>-1.08%</td><td>長期看漲</td><td>44.65</td><td>微弱金叉 (0.02)</td><td>+2.74% (溢價)</td><td>0.32%</td><td>1.89%</td></tr><tr><td>2026-04-27</td><td>93.00</td><td>+3.39%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div>
+        <div id='chart_QQQM' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】科技股漲勢延續，QQQM 上漲 1.30% 來到 280.62 元。受惠於美股科技巨頭財報亮眼，多頭氣勢強勁。逢回都是不錯的佈局機會，不建議預設高點。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 維持定期定額，若拉回至 10 日線可視為買點。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>277.01</td><td class='price-col'>280.62</td><td class='price-col positive'>+1.30%</td><td class='tech-col'>高檔整理</td><td class='tech-col'>60</td><td class='tech-col'>高檔鈍化</td><td class='fin-col'>0%</td><td class='fin-col'>0.15%</td><td class='fin-col'>0.55%</td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>277.54</td><td class='price-col'>277.05</td><td class='price-col negative'>-0.18%</td><td class='tech-col'>高檔整理</td><td class='tech-col'>60</td><td class='tech-col'>高檔鈍化</td><td class='fin-col'>0%</td><td class='fin-col'>0.15%</td><td class='fin-col'>0.55%</td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>274.90</td><td class='price-col'>277.54</td><td class='price-col positive'>+0.96%</td><td class='tech-col'>高檔整理</td><td class='tech-col'>60</td><td class='tech-col'>高檔鈍化</td><td class='fin-col'>0%</td><td class='fin-col'>0.15%</td><td class='fin-col'>0.55%</td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>272.39</td><td>+0.60%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-29</td><td>270.76</td><td>-1.01%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-28</td><td>273.51</td><td>+0.05%</td><td>穩健看漲</td><td>68</td><td>多頭排列</td><td>趨近 0%</td><td>0.15%</td><td>0.53%</td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">統一台股升級50主動式ETF (00403A)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">統一台股升級50主動式ETF (00403A)</div>
+        
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】目前仍在 IPO 階段或缺乏即時報價數據，建議持續關注正式掛牌後的市場流動性及是否有明顯的折溢價情況發生。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 觀察 15.0 元發行價附近的支撐力道。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'></td><td class='price-col'></td><td class='price-col '></td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'></td><td class='price-col'></td><td class='price-col '></td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'></td><td class='price-col'></td><td class='price-col '></td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-29</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">統一台股增長主動式ETF (00981A)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">統一台股增長主動式ETF (00981A)</div>
+        <div id='chart_00981A' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】今日收跌 0.54% 至 29.30 元。主動型 ETF 短期表現受到經理人持股調整影響，目前處於橫盤整理。建議先以小額試單為主。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 28.5-29.0 元區間可考慮小量佈局。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>29.46</td><td class='price-col'>29.30</td><td class='price-col negative'>-0.54%</td><td class='tech-col'>橫盤</td><td class='tech-col'>50</td><td class='tech-col'>中性</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>29.63</td><td class='price-col'>29.46</td><td class='price-col negative'>-0.57%</td><td class='tech-col'>橫盤</td><td class='tech-col'>50</td><td class='tech-col'>中性</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>28.28</td><td class='price-col'>29.63</td><td class='price-col positive'>+4.77%</td><td class='tech-col'>橫盤</td><td class='tech-col'>50</td><td class='tech-col'>中性</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>28.28</td><td>+1.95%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-04-29</td><td>27.74</td><td>-0.25%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card"><div class="symbol-name">Xtrackers Nasdaq 100 UCITS ETF (LSE) (XNAS.L)</div><div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody>
+        <div class="card"><div class="symbol-name">Xtrackers Nasdaq 100 UCITS ETF (LSE) (XNAS.L)</div>
+        <div id='chart_XNAS_L' class='chart-container'></div>
+        <div class="advice-section">
+            <strong>💡 AI 今日投資建議：</strong> 【AI 盤後分析】受美股科技股帶動，今日上漲 0.96% 至 64.91 元。其免稅優勢使其長線投資價值極高，只要美國科技巨頭維持競爭力，股價長線看好。 <br>
+            <strong class='price-advice'>🎯 建議買賣價位：</strong> 長線標的，建議定期定額不看價位無腦扣款。
+        </div>
+        <div class="table-responsive">
+        <table class="history-table"><thead>
+            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
+            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
+        </thead><tbody><tr><td class='date-col'>2026-05-06</td><td class='price-col'>64.29</td><td class='price-col'>64.91</td><td class='price-col positive'>+0.96%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-05</td><td class='price-col'>63.22</td><td class='price-col'>64.29</td><td class='price-col positive'>+1.69%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-04</td><td class='price-col'>63.22</td><td class='price-col'>64.29</td><td class='price-col positive'>+1.69%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-04-30</td><td>62.91</td><td>+0.94%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div></div>
     </div>
-<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price"], ["04-27", 358.5], ["04-28", 394.0], ["04-29", 383.0], ["04-30", 421.0], ["05-04", 432.5], ["05-05", 426.5]], '#10b981'));
-google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price"], ["04-28", 350.34], ["04-29", 349.78], ["04-30", 349.94], ["05-04", 385.69], ["05-05", 383.25]], '#10b981'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price"], ["04-27", 14.79], ["04-28", 14.78], ["04-29", 14.82], ["04-30", 14.76], ["05-04", 14.79], ["05-05", 14.73]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price"], ["04-27", 13.17], ["04-28", 13.15], ["04-29", 13.05], ["04-30", 13.05], ["05-04", 13.6], ["05-05", 13.68]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price"], ["04-27", 29.62], ["04-28", 29.27], ["04-29", 28.82], ["04-30", 28.61], ["05-04", 31.0], ["05-05", 31.08]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price"], ["04-27", 93.0], ["04-28", 92.0], ["04-29", 90.75], ["04-30", 90.5], ["05-04", 94.6], ["05-05", 94.6]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price"], ["04-28", 273.51], ["04-29", 270.76], ["04-30", 272.39], ["05-04", 277.54], ["05-05", 277.05]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price"], ["04-29", 27.74], ["04-30", 28.28], ["05-04", 29.63], ["05-05", 29.46]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price"], ["04-30", 62.91], ["05-04", 64.29], ["05-05", 64.29]], '#8b5cf6'));
+<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price"], ["04-27", 358.5], ["04-28", 394.0], ["04-29", 383.0], ["04-30", 421.0], ["05-04", 432.5], ["05-05", 426.5], ["05-06", 412.0]], '#10b981'));
+google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price"], ["04-28", 350.34], ["04-29", 349.78], ["04-30", 349.94], ["05-04", 385.69], ["05-05", 383.25], ["05-06", 388.43]], '#10b981'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price"], ["04-27", 14.79], ["04-28", 14.78], ["04-29", 14.82], ["04-30", 14.76], ["05-04", 14.79], ["05-05", 14.73], ["05-06", 14.81]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price"], ["04-27", 13.17], ["04-28", 13.15], ["04-29", 13.05], ["04-30", 13.05], ["05-04", 13.6], ["05-05", 13.68], ["05-06", 13.85]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price"], ["04-27", 29.62], ["04-28", 29.27], ["04-29", 28.82], ["04-30", 28.61], ["05-04", 31.0], ["05-05", 31.08], ["05-06", 31.89]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price"], ["04-27", 93.0], ["04-28", 92.0], ["04-29", 90.75], ["04-30", 90.5], ["05-04", 94.6], ["05-05", 94.6], ["05-06", 95.75]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price"], ["04-28", 273.51], ["04-29", 270.76], ["04-30", 272.39], ["05-04", 277.54], ["05-05", 277.05], ["05-06", 280.62]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price"], ["04-29", 27.74], ["04-30", 28.28], ["05-04", 29.63], ["05-05", 29.46], ["05-06", 29.3]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price"], ["04-30", 62.91], ["05-04", 64.29], ["05-05", 64.29], ["05-06", 64.91]], '#8b5cf6'));
 </script></body>
 </html>
