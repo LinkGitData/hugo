@@ -13,6 +13,7 @@ cover:
 ---
 
 > 🔗 **官方資料來源**：[Google Cloud Foundation Fabric GitHub](https://github.com/GoogleCloudPlatform/cloud-foundation-fabric)
+> 📥 **相關資源下載**：[Cloud Foundation Fabric 架構簡報 (PPTX)](/downloads/cloud-foundation-fabric.pptx)
 
 當企業將龐大業務遷移至雲端時，平台工程師最常面臨的夢魘便是：「如何為不同的團隊建立一致、安全且具備完善權限隔離的雲端環境？」如果每次開設新專案都必須手刻 Terraform 腳本，不僅耗時，更容易因為人為疏失導致資安破口。
 
