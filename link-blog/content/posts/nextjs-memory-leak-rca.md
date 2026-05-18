@@ -13,6 +13,7 @@ cover:
 ---
 
 > 🔗 **官方資料來源**：本篇報告改編自團隊內部的 RCA (Root Cause Analysis) 紀錄，旨在紀錄除錯歷程並作為未來開發的防雷指南。
+> 📥 **原始調查報告下載**：您可以點擊此處下載 [📄 memory_leak_rca_report.md](/docs/memory_leak_rca_report.md) 原始文件以供參考。
 
 這是一份以 **5W2H** 結構整理的系統事故分析報告。我們將透過生活化的比喻與深度的技術解析，完整還原本次 Next.js 伺服器在 Cloud Run 環境下，因為不當使用模組載入而引發的 **Memory Leak** （記憶體洩漏）問題，以及最終的科學驗證與解決方案。
 
