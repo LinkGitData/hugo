@@ -50,7 +50,7 @@ cover:
 
 > 💡 **生活化比喻** ：這就像是為了解決「圖書館不能大聲說話」的規定，發明了一招：「那我每次都花錢請一個『外送員』把紙條偷偷送進來！」。
 > 
-> 結果，只要有人點擊網頁，系統就叫一個外送員。悲劇的是，因為 Node.js 與 Webpack 底層機制的缺陷， **這些外送員送完紙條後，產生的紀錄竟然留在圖書館不走了** （系統無法自動回收他們）！最後幾千個外送員把圖書館擠爆，伺服器資源耗盡而崩潰。
+> 結果，只要有人點擊網頁，系統就叫一個外送員。悲劇的是，這並非外送員（動態載入）本身不走，而是因為 **Next.js 內部的 `AsyncLocalStorage` Request Context 所產生的 Closure (閉包) 沒有被正確釋放**！這導致每個 Request 結束後，外送員身上的上下文紀錄依舊被系統緊緊抓著，最後幾千個未釋放的 Request 把記憶體擠爆，伺服器崩潰。
 
 以下我們用流程圖來解析這場記憶體災難的發生路徑：
 
@@ -91,9 +91,9 @@ cacheMaxMemorySize: 5 * 1024 * 1024, // 限制在 5MB
 *   **排除原因** ：掃描了近期的所有變更，並沒有引入任何伺服器端的持續性 Timer 或全域 Event Listener。
 
 **🎯 結論：為什麼矛頭還是指向 await import？**
-在排除了上述所有常見的 Node.js/Next.js 記憶體洩漏源之後，`app/_lib/core/fetcher.js` 裡的 `await import('next/headers')` 成為了唯一在 Hot Path（高頻執行路徑）上不斷產生動態記憶體配置的程式碼。
+在排除了上述所有常見的 Node.js/Next.js 記憶體洩漏源之後，`app/_lib/core/fetcher.js` 裡的 `await import('next/headers')` 成為了唯一在 Hot Path（高頻執行路徑）上不斷引發問題的程式碼。
 
-在 Webpack 打包環境中，`await import` 不像標準的 Node.js `require` 那樣簡單。Webpack 為了處理動態加載，會把它轉譯成一段負責解析模組、分配 Promise 與 Context 的 Runtime Code。當一秒鐘幾十個 Request 都在呼叫它時，Webpack 的 Module Registry 會產生大量微小的閉包 (Closures) 與 Promise，這些東西被底層牽扯，導致 Garbage Collector (GC) 無法順利回收。
+必須釐清的是，這並不是因為 Webpack 或 Node.js 的動態載入本身會無限產生新模組（`import()` 會有 Module Cache），**真正的核心兇手在於 Next.js 的 Request Context**。當你在高頻請求中動態載入 `next/headers`，這會牽扯到底層的 `AsyncLocalStorage`，導致每個 Request Context 產生的 Closure 沒有被正確垃圾回收 (Garbage Collector, GC)，進而引發嚴重的記憶體洩漏。
 
 ---
 
@@ -105,26 +105,16 @@ cacheMaxMemorySize: 5 * 1024 * 1024, // 限制在 5MB
 
 **🕵️‍♂️ 證明方式一：A/B 壓力測試對比 (推薦)**
 1. **壓測當前版本（異常版）** ：使用測試軟體在一秒內對伺服器發送大量請求。監控圖表顯示伺服器記憶體瞬間飆高，且測試結束後， **記憶體使用量無法回落** （外送員不走），這證實了洩漏確實存在。
-2. **壓測修復版本（正常版）** ：只要把那行 `await import` 改回「靜態載入」，用 autocannon 壓測 30 秒。如果記憶體水位線立刻恢復正常，且測試結束後 **會迅速掉回原本的安全基準線** ，那兇手就 100% 確鑿了！
+2. **壓測修復版本（正常版）** ：將架構徹底解耦（移除 `await import`，改由上層參數傳遞），用 autocannon 壓測 30 秒。如果記憶體水位線立刻恢復正常，且測試結束後 **會迅速掉回原本的安全基準線** ，那兇手就 100% 確鑿了！
 
 **🕵️‍♂️ 證明方式二：Heap Snapshot 記憶體快照**
 如果改了之後還是漏水，那我們就能利用 Heap Snapshot 直接抓出真正的深層 Leak 來源。
 
-**✅ 修復建議**
-絕對要避免在每次請求（Request）生命週期內頻繁地動態載入核心模組。應將代碼修改如下：
+**❌ 錯誤的修法（會直接炸掉 Client Build）**
+如果直覺地把動態載入改成檔案頂端的靜態載入：
 
 ```javascript
-// ❌ 錯誤示範：於 Request 生命週期內頻繁動態載入
-const fetcher = async () => {
-  const { headers } = await import('next/headers');
-  // ... 執行 API 請求
-}
-```
-
-改為在檔案頂端進行靜態宣告：
-
-```javascript
-// ✅ 正確示範：於檔案頂部靜態載入
+// 💣 絕對不要這樣改：fetcher.js 同時跑在 Client 和 Server
 import { headers } from 'next/headers'; 
 
 const fetcher = async () => {
@@ -132,7 +122,35 @@ const fetcher = async () => {
 }
 ```
 
-> 💡 **最佳實踐** ： **不要在最底層的 fetcher 讀取 Request Context** 。應由最外層的頁面（Page 或 Layout）準備好需要的資料（如 Correlation ID 或 Token），再以參數形式「傳遞」給 fetcher，從根本上解耦並消除潛在的快取衝突與記憶體問題。
+因為 `next/headers` 是 **Server-only 模組**，而這個 `fetcher.js` 檔案同時會在 Client 端（瀏覽器）被打包與執行。一旦這樣改，Webpack 在打包 Client Bundle 時會直接報錯，導致所有呼叫 `fetcher` 的服務全面癱瘓！
+
+**✅ 真正可行的修法：架構解耦 (Decoupling)**
+唯一安全的作法是將讀取 Headers 的動作移交給最外層的 Server Component (例如 `page.js` 或 `layout.js`)，並將需要的資料（如 `correlationId`）以參數形式往下「傳遞」給 `fetcher`。
+
+```javascript
+// ✅ 1. page.js (Server Component) — 在頂層安全讀取 headers
+import { headers } from 'next/headers';
+import { orderBookingInit } from '@/lib/api';
+
+const headersList = await headers();
+const correlationId = headersList.get('x-correlation-id');
+
+// 往下傳給需要的 API function
+const result = await orderBookingInit({ ...params, correlationId });
+```
+
+```javascript
+// ✅ 2. fetcher.js — 完全移除 next/headers，改為接收參數
+export const getServerHeaders = async (url, method = 'GET', correlationId) => {
+  // ...
+  return {
+    'X-Correlation-Id': correlationId || `sys-${uuid()}`,
+    // ...
+  };
+};
+```
+
+> 💡 **最佳實踐** ： **不要在底層的共用工具 (fetcher) 讀取 Request Context** 。`fetcher` 只應該專心負責打 API。透過參數傳遞機制，不只 Client/Server 兩端都安全，也徹底消除了 `AsyncLocalStorage` 所帶來的記憶體洩漏隱患。
 
 ### 💰 7. How much (影響程度與代價？)
 *   **系統可用性受損** ：記憶體被耗盡後，Cloud Run 容器會觸發保護機制被迫重啟。這會導致瞬間的 API 請求中斷，使用者會遇到介面卡頓或看到 502/503 錯誤畫面。
