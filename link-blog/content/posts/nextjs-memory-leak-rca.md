@@ -94,7 +94,9 @@ cacheMaxMemorySize: 5 * 1024 * 1024, // 限制在 5MB
 **🎯 結論：為什麼矛頭還是指向 await import？**
 在排除了上述所有常見的 Node.js/Next.js 記憶體洩漏源之後，`app/_lib/core/fetcher.js` 裡的 `await import('next/headers')` 成為了唯一在 Hot Path（高頻執行路徑）上不斷引發問題的程式碼。
 
-必須釐清的是，這並不是因為 Webpack 或 Node.js 的動態載入本身會無限產生新模組（`import()` 會有 Module Cache），**真正的核心兇手在於 Next.js 的 Request Context**。當你在高頻請求中動態載入 `next/headers`，這會牽扯到底層的 `AsyncLocalStorage`，導致每個 Request Context 產生的 Closure 沒有被正確垃圾回收 (Garbage Collector, GC)，進而引發嚴重的記憶體洩漏。
+必須釐清的是，這並非 Webpack 的動態載入（`import()`）或其內部快取（如 `installedChunks`）有缺陷——實驗證明 Webpack 在載入完成後會正確釋放 Promise 的參照。**真正的核心兇手在於 Next.js 的 Server Runtime 內部機制（如 `unstable_cache`、fetch patch 或是 Middleware）**。
+
+當你在高頻請求的熱點中動態載入 `next/headers`，這些 Next.js 底層機制會意外建立「長期存活的 Closure (閉包)」，進而捕捉並死鎖了 `AsyncLocalStorage` 追蹤的 Request Context。這導致每個 Request 結束後，龐大的上下文依舊被系統緊緊扣著，無法被正確垃圾回收 (Garbage Collector, GC)，最終引發災難性的記憶體洩漏。
 
 ---
 
