@@ -11,6 +11,7 @@
             --text-color: #f8fafc;
             --card-bg: rgba(30, 41, 59, 0.7);
             --card-border: rgba(255, 255, 255, 0.1);
+            --accent-color: #3b82f6;
             --stock-color: #10b981;
             --etf-color: #8b5cf6;
         }
@@ -18,35 +19,105 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 0; padding: 40px 20px;
+            margin: 0;
+            padding: 40px 20px;
             background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
             min-height: 100vh;
         }
         h1 {
-            text-align: center; font-weight: 800; font-size: 2.5rem; margin-bottom: 40px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             background: -webkit-linear-gradient(45deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-title { border-bottom: 2px solid var(--card-border); padding-bottom: 10px; margin-top: 50px; font-size: 1.8rem; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .update-info {
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title {
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 10px;
+            margin-top: 50px;
+            font-size: 1.8rem;
+        }
         .stock-title { color: var(--stock-color); }
         .etf-title { color: var(--etf-color); }
-        .card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .symbol-name { font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; }
-        .history-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-        .history-table th, .history-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
-        .history-table th { color: #94a3b8; font-weight: 600; background: rgba(0,0,0,0.2); }
-        .date-col { font-weight: 600; color: #e2e8f0; }
-        .price-col { font-weight: 600; color: #facc15; }
+        
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .symbol-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .history-table th, .history-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .history-table th {
+            color: #94a3b8;
+            font-weight: 600;
+            background: rgba(0,0,0,0.2);
+        }
+        .date-col {
+            font-weight: 600;
+            color: #e2e8f0;
+        }
         .tech-col { color: #60a5fa; }
         .fin-col { color: #f472b6; }
-        .table-responsive { overflow-x: auto; }
-        .advice-box { margin-top: 15px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 4px; line-height: 1.6; color: #e2e8f0; font-size: 0.95rem; }
-        .advice-box strong { color: #60a5fa; }
-        .price-advice { color: #10b981 !important; margin-top: 8px; display: inline-block; }
-        .positive { color: #ef4444; } /* 台股紅漲 */
-        .negative { color: #22c55e; } /* 台股綠跌 */
+        
+        .empty-state {
+            text-align: center;
+            color: #94a3b8;
+            font-style: italic;
+        }
+        
+        /* 表格響應式捲動 */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
         details {
             margin-top: 15px;
             background: rgba(255, 255, 255, 0.03);
@@ -87,7 +158,7 @@
         }
         .advice-section {
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(167, 139, 250, 0.1));
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid var(--accent-color);
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
@@ -99,20 +170,34 @@
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         function drawChart(containerId, chartData, color) {
-            const data = google.visualization.arrayToDataTable(chartData);
+            const data = new google.visualization.DataTable();
+            data.addColumn('string', chartData[0][0]);
+            for (let i = 1; i < chartData[0].length; i++) {
+                data.addColumn('number', chartData[0][i]);
+            }
+            data.addRows(chartData.slice(1));
+            
+            const seriesColors = [color];
+            for (let i = 2; i < chartData[0].length; i++) {
+                if (chartData[0][i] === 'MA20') seriesColors.push('#f59e0b');
+                else if (chartData[0][i] === 'MA60') seriesColors.push('#ec4899');
+                else seriesColors.push('#94a3b8');
+            }
+
             const options = {
                 backgroundColor: 'transparent',
-                colors: [color],
+                colors: seriesColors,
                 chartArea: {width: '90%', height: '80%'},
                 hAxis: { textStyle: {color: '#94a3b8', fontSize: 10}, gridlines: {color: 'transparent'} },
                 vAxis: { textStyle: {color: '#94a3b8', fontSize: 10}, gridlines: {color: 'rgba(255,255,255,0.05)'} },
-                legend: 'none',
+                legend: { position: 'top', alignment: 'end', textStyle: {color: '#94a3b8', fontSize: 12} },
                 curveType: 'function',
-                lineWidth: 3,
+                lineWidth: 2,
                 pointsVisible: true,
-                areaOpacity: 0.1
+                seriesType: 'line',
+                series: { 0: {type: 'area', areaOpacity: 0.1, lineWidth: 3} }
             };
-            const chart = new google.visualization.AreaChart(document.getElementById(containerId));
+            const chart = new google.visualization.ComboChart(document.getElementById(containerId));
             chart.draw(data, options);
         }
     </script>
@@ -120,130 +205,941 @@
 <body>
     <div class="container">
         <h1>投資觀察日報表</h1>
+        <div class="update-info">
+            🕒 最後更新：2026-05-28 14:02:55 &nbsp;|&nbsp; ⏳ 下次排程更新：2026-05-29 09:35
+        </div>
+        
+        <!-- 股票區塊 -->
         <h2 class="section-title stock-title">📈 股票觀察清單 (Stocks)</h2>
         <div id="stocks-container">
-        <div class="card"><div class="symbol-name">臻鼎-KY (4958)</div>
-        <div id='chart_4958' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 臻鼎-KY今日重挫8.65%至486.00元，主要受外資與投信合計大賣逾5千張拖累，顯示短期法人資金大幅獲利了結。儘管籌碼面急轉弱，但技術面仍維持多頭架構，股價站穩月線及季線，且MACD呈零軸上黃金交叉、紅柱放大，RSI亦偏多。建議密切觀察法人賣壓能否止歇，若能守穩關鍵均線，多頭趨勢仍有機會延續，但短期需提防回檔風險。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
+            
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">臻鼎-KY (4958)</div>
+            </div>
+            <div id='chart_4958' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>臻鼎-KY儘管今日下跌4.14%至510元，技術面仍維持強勁多頭架構，站穩月線與季線，RSI 68.3及MACD零軸上黃金交叉紅柱放大，顯示中長期動能充沛。然而，三大法人今日同步大幅賣超逾5200張，顯示短線獲利了結或調整壓力沉重。建議投資人短期宜觀察法人籌碼變化，避免追高，待賣壓消化後再尋布局點。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 短線強勢飆升，防守點可大幅上移至 495 元（約半根停板位置）。空手者絕對不建議在此追高，若有回測五日線再伺機佈局；持股者可續抱讓獲利奔跑。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>營收 YoY</th>
+                            <th>毛利率</th>
+                            <th>EPS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">486.00</td>
+                            <td style="color: #eab308;">-8.65%</td>
+                            <td class="tech-col">站穩月線與季線，多頭架構不變</td>
+                            <td class="tech-col">447.58</td>
+                            <td class="tech-col">308.83</td>
+                            <td class="tech-col">68.3 (偏多)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">-2,711 張</td>
+                            <td style="color: #f87171;">-2,338 張</td>
+                            <td style="color: #f87171;">-175 張</td>
+                            <td class="fin-col">+12.5%</td>
+                            <td class="fin-col">18.2%</td>
+                            <td class="fin-col">8.50</td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">532.00</td>
+                            <td style="color: #eab308;">-1.48%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">441.23</td>
+                            <td class="tech-col">303.62</td>
+                            <td class="tech-col">74.6 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+3,230 張</td>
+                            <td style="color: #f87171;">+272 張</td>
+                            <td style="color: #f87171;">+163 張</td>
+                            <td class="fin-col">+12.5%</td>
+                            <td class="fin-col">18.2%</td>
+                            <td class="fin-col">8.50</td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">535.00</td>
+                            <td style="color: #eab308;">+1.13%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">434.08</td>
+                            <td class="tech-col">298.15</td>
+                            <td class="tech-col">76.6 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">-6,680 張</td>
+                            <td style="color: #f87171;">+1,551 張</td>
+                            <td style="color: #f87171;">-588 張</td>
+                            <td class="fin-col">+12.5%</td>
+                            <td class="fin-col">18.2%</td>
+                            <td class="fin-col">8.50</td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-05-25</td><td>529.00</td><td>+2.52%</td><td>站穩所有均線，強勢多頭排列</td><td>425.25</td><td>292.66</td><td>76.1 (高檔超買區)</td><td>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td>-4,207 張</td><td>+3,536 張</td><td>+425 張</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-22</td><td>516.00</td><td>+9.90%</td><td>站穩所有均線，強勢多頭排列</td><td>-</td><td>-</td><td>74.1 (高檔超買區)</td><td>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td>+779 張</td><td>+3,420 張</td><td>+269 張</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-21</td><td>469.50</td><td>+6.95%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>-</td><td>-</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+4,812 張</td><td>+5,761 張</td><td>+36 張</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-20</td><td>439.00</td><td>+7.47%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>-</td><td>-</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+5,154 張</td><td>+1,254 張</td><td>+151 張</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-19</td><td>408.50</td><td>+5.15%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>-</td><td>-</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td></td><td></td><td></td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-18</td><td>388.50</td><td>-3.12%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>-</td><td>-</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td></td><td></td><td></td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-15</td><td>401.00</td><td>-8.13%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>-</td><td>-</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td></td><td></td><td></td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-14</td><td>436.50</td><td>-1.36%</td><td>遭遇月線反壓，回測 5 日線支撐</td><td>-</td><td>-</td><td>55 (轉中性)</td><td>MACD 紅柱意外縮小，高檔賣壓湧現，多方動能受阻。</td><td></td><td></td><td></td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-13</td><td>442.50</td><td>+8.72%</td><td>突破月線 (MA20)，短均線上揚</td><td>-</td><td>-</td><td>68 (偏多)</td><td>MACD 低檔黃金交叉，紅柱大幅放大，顯示多方力道強勁。</td><td></td><td></td><td></td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-12</td><td>408.00</td><td>-0.97%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>412.00</td><td>+2.74%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>401.00</td><td>-6.09%</td><td>高檔回檔</td><td>-</td><td>-</td><td>62</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-07</td><td>427.00</td><td>+3.64%</td><td>高檔回檔</td><td>-</td><td>-</td><td>62</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-06</td><td>412.00</td><td>-3.40%</td><td>高檔回檔</td><td>-</td><td>-</td><td>62</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-05</td><td>426.50</td><td>-1.39%</td><td>高檔回檔</td><td>-</td><td>-</td><td>62</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-04</td><td>432.50</td><td>+2.73%</td><td>高檔回檔</td><td>-</td><td>-</td><td>62</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-30</td><td>421.00</td><td>+9.92%</td><td>高檔回檔</td><td>-</td><td>-</td><td>62</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-29</td><td>383.00</td><td>-2.79%</td><td>強勢突破</td><td>-</td><td>-</td><td>78 (超買)</td><td>紅柱放大</td><td></td><td></td><td></td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-28</td><td>394.00</td><td>+9.90%</td><td>強勢多頭</td><td>-</td><td>-</td><td>56.31</td><td>多頭排列 (0.39)</td><td></td><td></td><td></td><td>+1.30%</td><td>19.8%</td><td>6.78</td></tr><tr><td>2026-04-27</td><td>358.50</td><td>+3.17%</td><td>多頭 (乖離偏大)</td><td>-</td><td>-</td><td>偏高 (超買疑慮)</td><td>多頭動能</td><td></td><td></td><td></td><td>+7.18% (3月)</td><td>22.56% (2025Q4)</td><td>1.27元 (3月自結)</td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">Alphabet (Class A) (GOOGL)</div>
+            </div>
+            <div id='chart_GOOGL' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>GOOGL今日價格持平，但技術面顯現轉弱跡象。股價跌破月線，目前正回測季線尋求支撐。MACD出現高檔死亡交叉或紅柱縮減，顯示上漲動能明顯轉弱。儘管RSI仍維持在61的偏多區間，但在動能減退下，短期趨勢偏向下行風險增加。建議投資人密切觀察季線支撐是否有效，若跌破應考慮減碼或暫緩建立新倉，等待止穩訊號。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 建議維持 380 - 385 元區間分批建立部位的策略，跌破季線 375 元則守紀律暫停加碼。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">籌碼面 (美股指標)</th>
+                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>機構大單</th>
+                            <th>期權情緒</th>
+                            <th>空單比例</th>
+                            <th>營收 YoY</th>
+                            <th>毛利率</th>
+                            <th>EPS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">388.83</td>
+                            <td style="color: #eab308;">-0.01%</td>
+                            <td class="tech-col">跌破月線，回測季線支撐</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">61.0 (偏多)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col">+14.8%</td>
+                            <td class="fin-col">56.4%</td>
+                            <td class="fin-col">5.80</td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-25</td>
+                            <td style="font-weight: 600; color: #eab308;">388.83</td>
+                            <td style="color: #eab308;">-0.01%</td>
+                            <td class="tech-col">跌破月線，回測季線支撐</td>
+                            <td class="tech-col">389.36</td>
+                            <td class="tech-col">337.76</td>
+                            <td class="tech-col">61.0 (偏多)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col">+14.8%</td>
+                            <td class="fin-col">56.4%</td>
+                            <td class="fin-col">5.80</td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-22</td>
+                            <td style="font-weight: 600; color: #eab308;">387.66</td>
+                            <td style="color: #eab308;">-0.32%</td>
+                            <td class="tech-col">站穩月線與季線，多頭架構不變</td>
+                            <td class="tech-col">-</td>
+                            <td class="tech-col">-</td>
+                            <td class="tech-col">61.6 (偏多)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col">+14.8%</td>
+                            <td class="fin-col">56.4%</td>
+                            <td class="fin-col">5.80</td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>機構大單</th><th>期權情緒</th><th>空單比例</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-05-21</td><td>388.91</td><td>+0.32%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td></td><td></td><td></td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-20</td><td>387.66</td><td>-2.34%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td>-24.5M</td><td>偏空 (Bearish)</td><td>1.1%</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-19</td><td>396.94</td><td>+0.04%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td></td><td></td><td></td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-18</td><td>396.78</td><td>-1.07%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td></td><td></td><td></td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-15</td><td>401.07</td><td>-0.38%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td></td><td></td><td></td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-14</td><td>402.62</td><td>+3.94%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 綠柱快速縮減，零軸附近有醞釀黃金交叉跡象。</td><td></td><td></td><td></td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-13</td><td>387.35</td><td>-0.33%</td><td>季線 (MA60) 附近震盪</td><td>-</td><td>-</td><td>52 (中性)</td><td>MACD 零軸附近糾結，綠柱微幅浮現。</td><td></td><td></td><td></td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-12</td><td>388.64</td><td>-3.01%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>400.71</td><td>+0.66%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>397.99</td><td>+0.04%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-07</td><td>398.04</td><td>+2.41%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-06</td><td>388.43</td><td>+1.35%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-05</td><td>383.25</td><td>-0.63%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-04</td><td>385.69</td><td>+0.23%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-30</td><td>349.94</td><td>+0.04%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-29</td><td>349.78</td><td>-0.16%</td><td>高檔震盪</td><td>-</td><td>-</td><td>65</td><td>多頭收斂</td><td></td><td></td><td></td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-28</td><td>350.34</td><td>+1.72%</td><td>強勢看漲</td><td>-</td><td>-</td><td>72 (超買)</td><td>多頭排列</td><td></td><td></td><td></td><td>18.00%</td><td>59.65%</td><td>10.83 USD</td></tr></tbody></table></div></details></div>
         </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>532.00</td><td class='price-col'>486.00</td><td class='price-col negative'>-8.65%</td><td class='tech-col'>站穩月線與季線，多頭架構不變</td><td class='tech-col'>67.0 (偏多)</td><td class='tech-col'>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>540.00</td><td class='price-col'>532.00</td><td class='price-col negative'>-1.48%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>529.00</td><td class='price-col'>540.00</td><td class='price-col positive'>+2.08%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-05-25</td><td>529.00</td><td>+2.52%</td><td>站穩所有均線，強勢多頭排列</td><td>76.5 (高檔超買區)</td><td>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-22</td><td>516.00</td><td>+9.90%</td><td>站穩所有均線，強勢多頭排列</td><td>74.1 (高檔超買區)</td><td>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-21</td><td>469.50</td><td>+6.95%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-20</td><td>439.00</td><td>+7.47%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-19</td><td>408.50</td><td>+5.15%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-18</td><td>388.50</td><td>-3.12%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-15</td><td>401.00</td><td>-8.13%</td><td>一舉跌破 5 日、10 日、月線所有短中期均線</td><td>35 (弱勢超賣區)</td><td>MACD 出現高檔死亡交叉且綠柱急遽放大，空頭表態。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-14</td><td>436.50</td><td>-1.36%</td><td>遭遇月線反壓，回測 5 日線支撐</td><td>55 (轉中性)</td><td>MACD 紅柱意外縮小，高檔賣壓湧現，多方動能受阻。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-13</td><td>442.50</td><td>+8.72%</td><td>突破月線 (MA20)，短均線上揚</td><td>68 (偏多)</td><td>MACD 低檔黃金交叉，紅柱大幅放大，顯示多方力道強勁。</td><td>+12.5%</td><td>18.2%</td><td>8.50</td></tr><tr><td>2026-05-12</td><td>408.00</td><td>-0.97%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>412.00</td><td>+2.74%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>401.00</td><td>-6.09%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-07</td><td>427.00</td><td>+3.64%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-06</td><td>412.00</td><td>-3.40%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-05</td><td>426.50</td><td>-1.39%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-05-04</td><td>432.50</td><td>+2.73%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-30</td><td>421.00</td><td>+9.92%</td><td>高檔回檔</td><td>62</td><td>紅柱縮減</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-29</td><td>383.00</td><td>-2.79%</td><td>強勢突破</td><td>78 (超買)</td><td>紅柱放大</td><td>+1.50%</td><td>20.1%</td><td>7.1</td></tr><tr><td>2026-04-28</td><td>394.00</td><td>+9.90%</td><td>強勢多頭</td><td>56.31</td><td>多頭排列 (0.39)</td><td>+1.30%</td><td>19.8%</td><td>6.78</td></tr><tr><td>2026-04-27</td><td>358.50</td><td>+3.17%</td><td>多頭 (乖離偏大)</td><td>偏高 (超買疑慮)</td><td>多頭動能</td><td>+7.18% (3月)</td><td>22.56% (2025Q4)</td><td>1.27元 (3月自結)</td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">Alphabet (Class A) (GOOGL)</div>
-        <div id='chart_GOOGL' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> GOOGL目前微幅盤整於388.83，技術面顯示股價已跌破月線，且MACD出現高檔死亡交叉或紅柱縮減，顯示短期動能轉弱，賣壓浮現。儘管RSI仍維持在61.0的偏多區間，但股價正回測季線支撐，此處為關鍵轉折點。建議投資人密切觀察季線支撐是否有效，若未能守穩，恐有進一步下探風險；反之，若能在此處止穩，則有望醞釀反彈。短期宜保守觀望。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>營收 YoY</th><th>毛利率</th><th>EPS</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>388.88</td><td class='price-col'>388.83</td><td class='price-col negative'>-0.01%</td><td class='tech-col'>跌破月線，回測季線支撐</td><td class='tech-col'>61.0 (偏多)</td><td class='tech-col'>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>382.97</td><td class='price-col'>388.88</td><td class='price-col positive'>+1.54%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>387.66</td><td class='price-col'>382.97</td><td class='price-col negative'>-1.21%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>營收</th><th>毛利</th><th>EPS</th></tr></thead><tbody><tr><td>2026-05-25</td><td>382.97</td><td>-1.21%</td><td>跌破月線，回測季線支撐</td><td>57.5 (偏多)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-22</td><td>387.66</td><td>-0.32%</td><td>站穩月線與季線，多頭架構不變</td><td>61.6 (偏多)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-21</td><td>388.91</td><td>+0.32%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-20</td><td>387.66</td><td>-2.34%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-19</td><td>396.94</td><td>+0.04%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-18</td><td>396.78</td><td>-1.07%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-15</td><td>401.07</td><td>-0.38%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 零軸附近震盪，綠柱維持縮減狀態。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-14</td><td>402.62</td><td>+3.94%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 綠柱快速縮減，零軸附近有醞釀黃金交叉跡象。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-13</td><td>387.35</td><td>-0.33%</td><td>季線 (MA60) 附近震盪</td><td>52 (中性)</td><td>MACD 零軸附近糾結，綠柱微幅浮現。</td><td>+14.8%</td><td>56.4%</td><td>5.80</td></tr><tr><td>2026-05-12</td><td>388.64</td><td>-3.01%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>400.71</td><td>+0.66%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>397.99</td><td>+0.04%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-07</td><td>398.04</td><td>+2.41%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-06</td><td>388.43</td><td>+1.35%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-05</td><td>383.25</td><td>-0.63%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-05-04</td><td>385.69</td><td>+0.23%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-30</td><td>349.94</td><td>+0.04%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-29</td><td>349.78</td><td>-0.16%</td><td>高檔震盪</td><td>65</td><td>多頭收斂</td><td>18.5%</td><td>59.8%</td><td>11.2 USD</td></tr><tr><td>2026-04-28</td><td>350.34</td><td>+1.72%</td><td>強勢看漲</td><td>72 (超買)</td><td>多頭排列</td><td>18.00%</td><td>59.65%</td><td>10.83 USD</td></tr></tbody></table></div></details></div></div>
+
+        <!-- ETF區塊 -->
         <h2 class="section-title etf-title">📊 ETF觀察清單 (ETFs)</h2>
         <div id="etfs-container">
-        <div class="card"><div class="symbol-name">群益ESG投等債20+ (00937B)</div>
-        <div id='chart_00937B' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 00937B今日收跌0.27%至14.72元，儘管股價略為走弱，籌碼面卻顯現強勁的法人買盤。外資與自營商合計大買逾3.2萬張，顯示機構法人對其ESG投等債的配置需求與未來展望持積極態度。考量其為長天期債券ETF，法人積極佈局或反映對未來利率走勢的預期。建議投資人可持續關注法人買盤是否延續，逢低分批佈局，作為核心固定收益配置。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
+            
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">群益ESG投等債20+ (00937B)</div>
+            </div>
+            <div id='chart_00937B' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>00937B今日收平盤14.76，然技術面已呈強勢多頭排列，站穩所有均線，RSI偏多，MACD更於低檔黃金交叉，顯示空方力道衰退，多方動能轉強。籌碼面，外資與自營商合計大買逾3.2萬張，法人買盤積極。綜合研判，儘管今日未動，但多方架構確立且法人持續加碼，後市向上動能值得期待。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 短線具備高殖利率與法人籌碼保護，建議在 14.5 - 14.6 元區間分批承接，長期投資者可續抱。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">14.72</td>
+                            <td style="color: #eab308;">-0.27%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">14.69</td>
+                            <td class="tech-col">14.74</td>
+                            <td class="tech-col">54.1 (偏多)</td>
+                            <td class="tech-col">MACD 低檔黃金交叉或綠柱縮減，空方力道衰退。</td>
+                            <td style="color: #f87171;">+20,942 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+11,374 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">14.76</td>
+                            <td style="color: #eab308;">-0.07%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">14.69</td>
+                            <td class="tech-col">14.75</td>
+                            <td class="tech-col">54.1 (偏多)</td>
+                            <td class="tech-col">MACD 低檔黃金交叉或綠柱縮減，空方力道衰退。</td>
+                            <td style="color: #f87171;">+42,106 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+7,227 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">14.72</td>
+                            <td style="color: #eab308;">+0.27%</td>
+                            <td class="tech-col">跌破 5 日線</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">48 (中性)</td>
+                            <td class="tech-col">MACD 零軸附近出現微弱死亡交叉。</td>
+                            <td style="color: #f87171;">+30,546 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+21,850 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>14.72</td><td>+0.27%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td>+30,546 張</td><td>0 張</td><td>+21,850 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>14.68</td><td>+0.48%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td>+19,952 張</td><td>0 張</td><td>+7,569 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>14.61</td><td>+0.62%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td>+25,678 張</td><td>0 張</td><td>+11,119 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>14.52</td><td>-0.68%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td>-1,520 張</td><td>+120 張</td><td>-340 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>14.62</td><td>-0.48%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>14.69</td><td>-0.41%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>14.75</td><td>-0.41%</td><td>跌破 5 日線</td><td>-</td><td>-</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>14.81</td><td>+0.07%</td><td>均線多頭排列</td><td>-</td><td>-</td><td>60 (偏多)</td><td>MACD 在零軸附近平穩運行，無明顯多空趨勢。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>14.80</td><td>+0.14%</td><td>均線多頭排列</td><td>-</td><td>-</td><td>60 (偏多)</td><td>MACD 零軸之上平穩運行。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>14.78</td><td>0.00%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>14.78</td><td>+0.07%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>14.77</td><td>-0.34%</td><td>回穩向上</td><td>-</td><td>-</td><td>48</td><td>轉強</td><td></td><td></td><td></td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-07</td><td>14.82</td><td>+0.07%</td><td>回穩向上</td><td>-</td><td>-</td><td>48</td><td>轉強</td><td></td><td></td><td></td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-06</td><td>14.81</td><td>+0.54%</td><td>回穩向上</td><td>-</td><td>-</td><td>48</td><td>轉強</td><td></td><td></td><td></td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-05</td><td>14.73</td><td>-0.41%</td><td>回穩向上</td><td>-</td><td>-</td><td>48</td><td>轉強</td><td></td><td></td><td></td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-04</td><td>14.79</td><td>+0.20%</td><td>回穩向上</td><td>-</td><td>-</td><td>48</td><td>轉強</td><td></td><td></td><td></td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-04-30</td><td>14.76</td><td>-0.40%</td><td>回穩向上</td><td>-</td><td>-</td><td>48</td><td>轉強</td><td></td><td></td><td></td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-04-29</td><td>14.82</td><td>+0.27%</td><td>橫盤整理</td><td>-</td><td>-</td><td>43</td><td>平緩</td><td></td><td></td><td></td><td>-0.50% (折價)</td><td>0.40%</td><td>6.05%</td></tr><tr><td>2026-04-28</td><td>14.78</td><td>-0.07%</td><td>低檔震盪</td><td>-</td><td>-</td><td>44.20</td><td>盤整</td><td></td><td></td><td></td><td>-0.67% (折價)</td><td>0.40%</td><td>5.93%</td></tr><tr><td>2026-04-27</td><td>14.79</td><td>-0.47%</td><td>中性盤整</td><td>-</td><td>-</td><td>中性 (~50)</td><td>平緩</td><td></td><td></td><td></td><td>-0.2% (折價)</td><td>約0.26%</td><td>月配息穩定</td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div>
+            </div>
+            <div id='chart_009816' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>009816今日勁揚3.05%至15.21元，技術面呈現強勢多頭排列，站穩所有均線且MACD零軸上黃金交叉紅柱放大，多頭格局確立。外資大幅買超逾萬張是主要推手，籌碼面偏多。然而，RSI高達79.4已進入超買區，短線漲多可能面臨獲利了結壓力。建議持有者續抱，但考量超買警訊，新進者宜待回檔或謹慎分批佈局。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 籌碼轉佳但技術面偏弱，建議待站穩月線後再行加碼，防守點設於 13.8 元。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">14.80</td>
+                            <td style="color: #eab308;">-2.31%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">13.92</td>
+                            <td class="tech-col">12.12</td>
+                            <td class="tech-col">79.4 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+11,376 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">-5,163 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">15.15</td>
+                            <td style="color: #eab308;">+2.64%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">13.92</td>
+                            <td class="tech-col">12.12</td>
+                            <td class="tech-col">79.0 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">-11,844 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">-36,375 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">14.78</td>
+                            <td style="color: #eab308;">+0.14%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">13.82</td>
+                            <td class="tech-col">12.06</td>
+                            <td class="tech-col">76.0 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+18,497 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">-52,149 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>14.76</td><td>+4.02%</td><td>站穩所有均線，強勢多頭排列</td><td>13.74</td><td>12.00</td><td>75.8 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td>+10,765 張</td><td>0 張</td><td>+21,612 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>14.19</td><td>+2.16%</td><td>跌破月線支撐</td><td>-</td><td>-</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td>+15,196 張</td><td>0 張</td><td>+22,320 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>13.89</td><td>+4.12%</td><td>跌破月線支撐</td><td>-</td><td>-</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td>-2,763 張</td><td>0 張</td><td>-26,864 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>13.34</td><td>-0.52%</td><td>跌破月線支撐</td><td>-</td><td>-</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td>-1,230 張</td><td>+80 張</td><td>-150 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>13.41</td><td>-1.76%</td><td>跌破月線支撐</td><td>-</td><td>-</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>13.65</td><td>-0.66%</td><td>跌破月線支撐</td><td>-</td><td>-</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>13.74</td><td>-1.15%</td><td>跌破月線支撐</td><td>-</td><td>-</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>13.90</td><td>0.00%</td><td>跌破 5 日線，向月線靠攏</td><td>-</td><td>-</td><td>45 (轉弱)</td><td>MACD 於高檔糾結，動能陷入停滯。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>13.90</td><td>-1.14%</td><td>跌破 5 日線，向月線靠攏</td><td>-</td><td>-</td><td>45 (轉弱)</td><td>MACD 紅柱持續縮減，短期上漲動能逐漸轉弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>14.10</td><td>-0.35%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>14.15</td><td>+0.71%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>14.05</td><td>-0.64%</td><td>趨勢看漲</td><td>-</td><td>-</td><td>46</td><td>中性</td><td></td><td></td><td></td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-07</td><td>14.14</td><td>+2.09%</td><td>趨勢看漲</td><td>-</td><td>-</td><td>46</td><td>中性</td><td></td><td></td><td></td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-06</td><td>13.85</td><td>+1.24%</td><td>趨勢看漲</td><td>-</td><td>-</td><td>46</td><td>中性</td><td></td><td></td><td></td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-05</td><td>13.68</td><td>+0.59%</td><td>趨勢看漲</td><td>-</td><td>-</td><td>46</td><td>中性</td><td></td><td></td><td></td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-04</td><td>13.60</td><td>+4.21%</td><td>趨勢看漲</td><td>-</td><td>-</td><td>46</td><td>中性</td><td></td><td></td><td></td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-30</td><td>13.05</td><td>0.00%</td><td>趨勢看漲</td><td>-</td><td>-</td><td>46</td><td>中性</td><td></td><td></td><td></td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-29</td><td>13.05</td><td>-0.76%</td><td>上升趨勢</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td>+0.50% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-28</td><td>13.15</td><td>-0.15%</td><td>看漲趨勢穩定</td><td>-</td><td>-</td><td>51.95</td><td>中性盤整</td><td></td><td></td><td></td><td>+2.80% (溢價)</td><td>約0.1%</td><td>不配息</td></tr><tr><td>2026-04-27</td><td>13.17</td><td>+2.33%</td><td>多頭 (隨大盤)</td><td>-</td><td>-</td><td>偏多</td><td>偏多</td><td></td><td></td><td></td><td>+0.08% (溢價)</td><td>約0.01% (極低)</td><td>不配息 (自動滾入)</td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">元大台灣50正2 (00631L)</div>
+            </div>
+            <div id='chart_00631L' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>00631L今日強勢上漲逾6%，技術面呈現均線多頭排列且MACD零軸上黃金交叉，多頭格局確立。外資單日大買逾1.4萬張，為主要推升動能。然而，RSI已達75.7高檔超買區，顯示短期漲勢過熱，潛在修正壓力漸增。建議投資人可續抱，但應留意追高風險，並考慮分批獲利了結或等待拉回再布局。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 槓桿型 ETF 波動劇烈，季線支撐不破可偏多操作，若跌破季線則建議嚴格執行停損以控制風險。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">34.47</td>
+                            <td style="color: #eab308;">-3.53%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">31.85</td>
+                            <td class="tech-col">25.85</td>
+                            <td class="tech-col">75.4 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+14,552 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">-12,592 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">35.73</td>
+                            <td style="color: #eab308;">+3.87%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">31.82</td>
+                            <td class="tech-col">25.84</td>
+                            <td class="tech-col">74.1 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+232 張</td>
+                            <td style="color: #f87171;">-730 張</td>
+                            <td style="color: #f87171;">-8,521 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">34.39</td>
+                            <td style="color: #eab308;">-0.49%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">31.49</td>
+                            <td class="tech-col">25.65</td>
+                            <td class="tech-col">70.7 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;">+3,454 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+7,491 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>34.56</td><td>+6.14%</td><td>站穩所有均線，強勢多頭排列</td><td>31.26</td><td>25.48</td><td>71.8 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td>+9,520 張</td><td>0 張</td><td>+48,755 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>32.56</td><td>+3.10%</td><td>跌破月線，季線保衛戰</td><td>-</td><td>-</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td>+22,852 張</td><td>0 張</td><td>-3,387 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>31.58</td><td>+7.01%</td><td>跌破月線，季線保衛戰</td><td>-</td><td>-</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td>-2,734 張</td><td>0 張</td><td>-46,136 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>29.51</td><td>-1.40%</td><td>跌破月線，季線保衛戰</td><td>-</td><td>-</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td>-8,540 張</td><td>0 張</td><td>-3,210 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>29.93</td><td>-3.17%</td><td>跌破月線，季線保衛戰</td><td>-</td><td>-</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>30.91</td><td>-1.12%</td><td>跌破月線，季線保衛戰</td><td>-</td><td>-</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>31.26</td><td>-2.19%</td><td>跌破月線，季線保衛戰</td><td>-</td><td>-</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>31.96</td><td>+0.35%</td><td>跌破 10 日均線，下探月線支撐</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 死亡交叉延續，綠柱微縮。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>31.85</td><td>-2.06%</td><td>跌破 10 日均線，下探月線支撐</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 出現高檔死亡交叉，綠柱開始擴大。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>32.68</td><td>+0.06%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>32.66</td><td>+0.59%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>32.47</td><td>-1.78%</td><td>多頭修正</td><td>-</td><td>-</td><td>52</td><td>高檔收斂</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-07</td><td>33.06</td><td>+3.67%</td><td>多頭修正</td><td>-</td><td>-</td><td>52</td><td>高檔收斂</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-06</td><td>31.89</td><td>+2.61%</td><td>多頭修正</td><td>-</td><td>-</td><td>52</td><td>高檔收斂</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-05</td><td>31.08</td><td>+0.26%</td><td>多頭修正</td><td>-</td><td>-</td><td>52</td><td>高檔收斂</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-04</td><td>31.00</td><td>+8.35%</td><td>多頭修正</td><td>-</td><td>-</td><td>52</td><td>高檔收斂</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-30</td><td>28.61</td><td>-0.73%</td><td>多頭修正</td><td>-</td><td>-</td><td>52</td><td>高檔收斂</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-29</td><td>28.82</td><td>-1.54%</td><td>多頭回檔</td><td>-</td><td>-</td><td>55</td><td>紅柱縮減</td><td></td><td></td><td></td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-28</td><td>29.27</td><td>-1.18%</td><td>強烈看漲</td><td>-</td><td>-</td><td>52.33</td><td>多頭排列 (0.05)</td><td></td><td></td><td></td><td>+0.75% (溢價)</td><td>1.04%</td><td>槓桿型無配息</td></tr><tr><td>2026-04-27</td><td>29.62</td><td>+4.15%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">元大台灣50 (0050)</div>
+            </div>
+            <div id='chart_0050' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>0050今日強勢上漲4.05%至104.15元，技術面站穩所有均線，呈現強勢多頭排列，MACD零軸上黃金交叉且紅柱放大，顯示多頭動能充沛。籌碼面亦獲三大法人一致買超，尤其外資與自營商大幅加碼，提供堅實支撐。然而，RSI已達75.9高檔超買區，短線漲勢恐過熱。建議投資人可續抱，但須留意追高風險，並提防高檔震盪或潛在拉回修正。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 法人買盤歸隊提供下檔保護，建議採定期定額或於 95 - 96 元區間分批低接。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">100.50</td>
+                            <td style="color: #eab308;">-2.00%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">95.99</td>
+                            <td class="tech-col">84.85</td>
+                            <td class="tech-col">75.4 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+3,238 張</td>
+                            <td style="color: #f87171;">+28 張</td>
+                            <td style="color: #f87171;">+7,013 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">102.55</td>
+                            <td style="color: #eab308;">+2.45%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">95.94</td>
+                            <td class="tech-col">84.83</td>
+                            <td class="tech-col">74.0 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">-14,393 張</td>
+                            <td style="color: #f87171;">+2,131 張</td>
+                            <td style="color: #f87171;">-9,331 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">100.60</td>
+                            <td style="color: #eab308;">-0.20%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">95.43</td>
+                            <td class="tech-col">84.49</td>
+                            <td class="tech-col">72.3 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;">+19,246 張</td>
+                            <td style="color: #f87171;">+1,866 張</td>
+                            <td style="color: #f87171;">+7,357 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>100.80</td><td>+3.60%</td><td>站穩所有均線，強勢多頭排列</td><td>95.05</td><td>84.16</td><td>73.1 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td>+7,809 張</td><td>+85 張</td><td>+16,868 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>97.30</td><td>+1.51%</td><td>跌破所有短均線</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td>+12,025 張</td><td>+3,770 張</td><td>+5,150 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>95.85</td><td>+3.62%</td><td>跌破所有短均線</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td>-15,132 張</td><td>+885 張</td><td>-34,865 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>92.50</td><td>-0.64%</td><td>跌破所有短均線</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td>-21,340 張</td><td>+410 張</td><td>-1,850 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>93.10</td><td>-1.90%</td><td>跌破所有短均線</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>94.90</td><td>-0.52%</td><td>跌破所有短均線</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>95.40</td><td>-0.68%</td><td>跌破所有短均線</td><td>-</td><td>-</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>96.05</td><td>+0.58%</td><td>跌破短均線，高檔震盪整理</td><td>-</td><td>-</td><td>48 (中性偏弱)</td><td>MACD 零軸之上高檔平移，紅柱微減。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>95.50</td><td>-1.39%</td><td>跌破短均線，高檔震盪整理</td><td>-</td><td>-</td><td>48 (中性偏弱)</td><td>MACD 紅柱明顯縮小，趨勢走平。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>96.95</td><td>+0.05%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>96.90</td><td>-0.10%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>97.00</td><td>-0.72%</td><td>上升軌道</td><td>-</td><td>-</td><td>48</td><td>紅柱萎縮</td><td></td><td></td><td></td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-07</td><td>97.70</td><td>+2.04%</td><td>上升軌道</td><td>-</td><td>-</td><td>48</td><td>紅柱萎縮</td><td></td><td></td><td></td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-06</td><td>95.75</td><td>+1.22%</td><td>上升軌道</td><td>-</td><td>-</td><td>48</td><td>紅柱萎縮</td><td></td><td></td><td></td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-05</td><td>94.60</td><td>0.00%</td><td>上升軌道</td><td>-</td><td>-</td><td>48</td><td>紅柱萎縮</td><td></td><td></td><td></td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-04</td><td>94.60</td><td>+4.53%</td><td>上升軌道</td><td>-</td><td>-</td><td>48</td><td>紅柱萎縮</td><td></td><td></td><td></td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-04-30</td><td>90.50</td><td>-0.28%</td><td>上升軌道</td><td>-</td><td>-</td><td>48</td><td>紅柱萎縮</td><td></td><td></td><td></td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-04-29</td><td>90.75</td><td>-1.36%</td><td>穩健多頭</td><td>-</td><td>-</td><td>52</td><td>中性</td><td></td><td></td><td></td><td>+0.50% (溢價)</td><td>0.32%</td><td>1.90%</td></tr><tr><td>2026-04-28</td><td>92.00</td><td>-1.08%</td><td>長期看漲</td><td>-</td><td>-</td><td>44.65</td><td>微弱金叉 (0.02)</td><td></td><td></td><td></td><td>+2.74% (溢價)</td><td>0.32%</td><td>1.89%</td></tr><tr><td>2026-04-27</td><td>93.00</td><td>+3.39%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div>
+            </div>
+            <div id='chart_QQQM' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>QQQM目前仍站穩所有均線，維持強勢多頭格局。然而，RSI已達74.7高檔超買區，且MACD在高檔出現死亡交叉或紅柱縮減，顯示短期上漲動能轉弱，潛在回檔壓力浮現。建議投資人宜留意追高風險，可考慮分批獲利了結，或等待技術面修正、動能回穩後再尋求佈局機會。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 季線為重要多空分水嶺，建議在季線附近 290 - 293 美元間分批建倉，長線看好科技股發展。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">籌碼面 (美股指標)</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>機構大單</th>
+                            <th>期權情緒</th>
+                            <th>空單比例</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">300.38</td>
+                            <td style="color: #eab308;">-0.10%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">74.7 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-25</td>
+                            <td style="font-weight: 600; color: #eab308;">300.38</td>
+                            <td style="color: #eab308;">-0.10%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">288.95</td>
+                            <td class="tech-col">263.47</td>
+                            <td class="tech-col">74.7 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-22</td>
+                            <td style="font-weight: 600; color: #eab308;">294.21</td>
+                            <td style="color: #eab308;">+0.20%</td>
+                            <td class="tech-col">接近季線支撐，短均線下彎</td>
+                            <td class="tech-col">-</td>
+                            <td class="tech-col">-</td>
+                            <td class="tech-col">46 (中性偏弱)</td>
+                            <td class="tech-col">MACD 零軸之上出現黃金交叉，多頭確立。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>機構大單</th><th>期權情緒</th><th>空單比例</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-21</td><td>293.63</td><td>+1.66%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>288.84</td><td>-0.62%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td>-15.8M</td><td>中性偏空 (Neutral-Bearish)</td><td>1.5%</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>290.63</td><td>-0.43%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>291.89</td><td>-1.51%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>296.37</td><td>+0.75%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>294.16</td><td>+1.04%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 綠柱微幅縮減，低檔有初步止跌跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>291.14</td><td>-0.88%</td><td>接近季線支撐，短均線下彎</td><td>-</td><td>-</td><td>46 (中性偏弱)</td><td>MACD 綠柱持續放大，動能轉弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>293.71</td><td>+0.30%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>292.82</td><td>+2.34%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>286.12</td><td>-0.10%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-07</td><td>286.40</td><td>+2.06%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-06</td><td>280.62</td><td>+1.30%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-05</td><td>277.05</td><td>-0.18%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-04</td><td>277.54</td><td>+0.96%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-30</td><td>272.39</td><td>+0.60%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-29</td><td>270.76</td><td>-1.01%</td><td>高檔整理</td><td>-</td><td>-</td><td>60</td><td>高檔鈍化</td><td></td><td></td><td></td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-28</td><td>273.51</td><td>+0.05%</td><td>穩健看漲</td><td>-</td><td>-</td><td>68</td><td>多頭排列</td><td></td><td></td><td></td><td>趨近 0%</td><td>0.15%</td><td>0.53%</td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">統一台股升級50主動式ETF (00403A)</div>
+            </div>
+            <div id='chart_00403A' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>00403A 今日上漲3.73%，收10.58元，主要受惠於RSI極度超賣(22)帶動的技術性反彈，並獲外資與自營商合計逾14萬張買超強力支撐。然而，均線仍維持空頭排列，且MACD零軸下綠柱持續擴大，毫無止跌跡象。顯示此波上漲可能僅為超跌修正，整體下行趨勢未變。建議投資人宜謹慎觀望，避免追高，待技術面出現明確止穩訊號再考慮佈局。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 空頭排列且籌碼渙散，建議空手觀望，切勿輕易摸底，待打底成型並站上 5 日線後再做評估。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">10.47</td>
+                            <td style="color: #eab308;">-2.88%</td>
+                            <td class="tech-col">上市時間較短，均線資料不足</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">資料不足</td>
+                            <td class="tech-col">資料不足</td>
+                            <td style="color: #f87171;">+88,667 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+1,592 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">10.78</td>
+                            <td style="color: #eab308;">+1.32%</td>
+                            <td class="tech-col">上市時間較短，均線資料不足</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">資料不足</td>
+                            <td class="tech-col">資料不足</td>
+                            <td style="color: #f87171;">+50,954 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+96,930 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">10.58</td>
+                            <td style="color: #eab308;">+3.73%</td>
+                            <td class="tech-col">空頭排列延續</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">22 (極度超賣)</td>
+                            <td class="tech-col">MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td>
+                            <td style="color: #f87171;">+92,888 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">+44,268 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>10.58</td><td>+3.73%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td>+130,828 張</td><td>0 張</td><td>+25,640 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>10.20</td><td>+1.90%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td>+7,245 張</td><td>0 張</td><td>-49,038 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>10.01</td><td>+3.62%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td>-56,611 張</td><td>0 張</td><td>-458,525 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>9.66</td><td>-0.62%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td>-850 張</td><td>+120 張</td><td>-230 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>9.72</td><td>-1.22%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>9.84</td><td>-1.60%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>10.00</td><td>-2.34%</td><td>空頭排列延續</td><td>-</td><td>-</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>10.24</td><td>+0.59%</td><td>跌破所有均線，空頭排列</td><td>-</td><td>-</td><td>28 (超賣)</td><td>MACD 零軸下深處，綠柱略見縮減，技術性反彈。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>10.18</td><td>-5.74%</td><td>跌破所有均線，空頭排列</td><td>-</td><td>-</td><td>28 (超賣)</td><td>MACD 在零軸下綠柱急遽放大，趨勢明顯轉弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>10.76</td><td>-1.56%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-29</td><td></td><td></td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">統一台股增長主動式ETF (00981A)</div>
+            </div>
+            <div id='chart_00981A' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>00981A今日漲幅顯著，股價站穩所有均線，形成強勢多頭排列，配合MACD零軸上黃金交叉且紅柱放大，技術面極為強勁。外資大幅買超逾2.4萬張，顯見資金青睞。然而，RSI已達73.1超買區，且自營商有獲利了結跡象，短線追高宜謹慎。建議可觀察量價變化，或待拉回整理後再考慮佈局，以降低追高風險。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 短線強彈但趨勢未改，搶反彈者應嚴格設停損；穩健型投資者建議等待右側交易訊號出現。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>外資</th>
+                            <th>投信</th>
+                            <th>自營商</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">30.72</td>
+                            <td style="color: #eab308;">-3.88%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">29.32</td>
+                            <td class="tech-col">24.41</td>
+                            <td class="tech-col">72.2 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">+24,299 張</td>
+                            <td style="color: #f87171;">0 張</td>
+                            <td style="color: #f87171;">-16,720 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">31.96</td>
+                            <td style="color: #eab308;">+1.49%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">29.33</td>
+                            <td class="tech-col">24.41</td>
+                            <td class="tech-col">72.4 (高檔超買區)</td>
+                            <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
+                            <td style="color: #f87171;">-32,901 張</td>
+                            <td style="color: #f87171;">+12,600 張</td>
+                            <td style="color: #f87171;">-18,790 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">31.50</td>
+                            <td style="color: #eab308;">-0.35%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">29.12</td>
+                            <td class="tech-col">24.20</td>
+                            <td class="tech-col">70.9 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;">+22,872 張</td>
+                            <td style="color: #f87171;">+220 張</td>
+                            <td style="color: #f87171;">-27,407 張</td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>外資</th><th>投信</th><th>自營商</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>31.61</td><td>+5.54%</td><td>站穩所有均線，強勢多頭排列</td><td>28.94</td><td>24.01</td><td>71.8 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td>+98,462 張</td><td>0 張</td><td>+56,949 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>29.95</td><td>+3.78%</td><td>空頭排列</td><td>-</td><td>-</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td>+21,726 張</td><td>0 張</td><td>+25,827 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>28.86</td><td>+5.99%</td><td>空頭排列</td><td>-</td><td>-</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td>-15,822 張</td><td>-1,255 張</td><td>+2,278 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>27.23</td><td>-0.95%</td><td>空頭排列</td><td>-</td><td>-</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td>-2,100 張</td><td>+150 張</td><td>-450 張</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>27.49</td><td>-2.66%</td><td>空頭排列</td><td>-</td><td>-</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>28.24</td><td>-0.63%</td><td>空頭排列</td><td>-</td><td>-</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>28.42</td><td>-3.46%</td><td>空頭排列</td><td>-</td><td>-</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>29.44</td><td>+0.55%</td><td>跌破月線，季線上揚提供支撐</td><td>-</td><td>-</td><td>40 (弱勢)</td><td>MACD 零軸下維持向下發散，趨勢偏弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>29.28</td><td>-2.30%</td><td>跌破月線，季線上揚提供支撐</td><td>-</td><td>-</td><td>40 (弱勢)</td><td>MACD 出現死亡交叉且向下發散。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>30.05</td><td>+1.21%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>29.69</td><td>+2.70%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>28.91</td><td>-2.27%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td>29.58</td><td>+0.96%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td>29.30</td><td>-0.54%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td>29.46</td><td>-0.57%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td>29.63</td><td>+4.77%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td>28.28</td><td>+1.95%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-29</td><td>27.74</td><td>-0.25%</td><td>橫盤</td><td>-</td><td>-</td><td>50</td><td>中性</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
+        <div class="card">
+            <div class="card-header">
+                <div class="symbol-name">Xtrackers Nasdaq 100 UCITS ETF (LSE) (XNAS.L)</div>
+            </div>
+            <div id='chart_XNAS_L' class='chart-container'></div>
+            <div class="advice-section">
+                <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(14:02)</span>：</strong>XNAS.L雖上市不久，技術面已現警訊。RSI高達71.1，處於超買區，暗示短線修正壓力。MACD亦出現高檔死亡交叉或紅柱縮減，顯示上漲動能明顯趨緩。在缺乏其他市場數據支持下，投資人應對此ETF保持謹慎。建議避免追高，並密切觀察後續走勢，待技術面修正並動能恢復再考慮進場，或分批佈局以降低單一時間點風險。 <br>
+                <strong style="color: #34d399;">🎯 操作策略：</strong>🎯 季線支撐為關鍵防線，若能守穩 67 元不破，可視為長期投資的良好切入點。
+            </div>
+            <div class="table-responsive">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">日期</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#f87171;">籌碼面 (美股指標)</th>
+                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                        </tr>
+                        <tr>
+                            <th>均線趨勢</th>
+                            <th>月線(MA20)</th>
+                            <th>季線(MA60)</th>
+                            <th>RSI 狀態</th>
+                            <th>MACD 狀態</th>
+                            <th>機構大單</th>
+                            <th>期權情緒</th>
+                            <th>空單比例</th>
+                            <th>折溢價</th>
+                            <th>內扣費用</th>
+                            <th>殖利率/配息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td class="date-col">2026-05-28</td>
+                            <td style="font-weight: 600; color: #eab308;">69.31</td>
+                            <td style="color: #eab308;">-0.09%</td>
+                            <td class="tech-col">上市時間較短，均線資料不足</td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col"></td>
+                            <td class="tech-col">71.1 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-27</td>
+                            <td style="font-weight: 600; color: #eab308;">69.37</td>
+                            <td style="color: #eab308;">+1.03%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">66.33</td>
+                            <td class="tech-col">60.64</td>
+                            <td class="tech-col">71.1 (高檔超買區)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                        <tr>
+                            <td class="date-col">2026-05-26</td>
+                            <td style="font-weight: 600; color: #eab308;">68.66</td>
+                            <td style="color: #eab308;">+1.76%</td>
+                            <td class="tech-col">站穩所有均線，強勢多頭排列</td>
+                            <td class="tech-col">66.01</td>
+                            <td class="tech-col">60.45</td>
+                            <td class="tech-col">69.0 (偏多)</td>
+                            <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td style="color: #f87171;"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                            <td class="fin-col"></td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>機構大單</th><th>期權情緒</th><th>空單比例</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>68.66</td><td>+1.76%</td><td>站穩所有均線，強勢多頭排列</td><td>66.01</td><td>60.45</td><td>69.0 (偏多)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>67.47</td><td>-0.47%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>67.79</td><td>+1.91%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>66.52</td><td>-0.79%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td>-5.2M</td><td>中性 (Neutral)</td><td>0.8%</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>67.05</td><td>-1.11%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>67.80</td><td>-1.34%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>68.72</td><td>+1.49%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>67.71</td><td>+1.44%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱縮減，空方力道減弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>66.75</td><td>-1.75%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱延續，空方控盤。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>67.94</td><td>+0.80%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>67.40</td><td>+1.06%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>66.69</td><td>+1.11%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td>65.96</td><td>+1.62%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td>64.91</td><td>+0.96%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td>64.29</td><td>+1.69%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td>64.29</td><td>+1.69%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td>62.91</td><td>+0.94%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
         </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>14.76</td><td class='price-col'>14.72</td><td class='price-col negative'>-0.27%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>14.77</td><td class='price-col'>14.76</td><td class='price-col negative'>-0.07%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>14.72</td><td class='price-col'>14.77</td><td class='price-col positive'>+0.34%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>14.72</td><td>+0.27%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>14.68</td><td>+0.48%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>14.61</td><td>+0.62%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>14.52</td><td>-0.68%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>14.62</td><td>-0.48%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>14.69</td><td>-0.41%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>14.75</td><td>-0.41%</td><td>跌破 5 日線</td><td>48 (中性)</td><td>MACD 零軸附近出現微弱死亡交叉。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>14.81</td><td>+0.07%</td><td>均線多頭排列</td><td>60 (偏多)</td><td>MACD 在零軸附近平穩運行，無明顯多空趨勢。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>14.80</td><td>+0.14%</td><td>均線多頭排列</td><td>60 (偏多)</td><td>MACD 零軸之上平穩運行。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>14.78</td><td>0.00%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>14.78</td><td>+0.07%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>14.77</td><td>-0.34%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-07</td><td>14.82</td><td>+0.07%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-06</td><td>14.81</td><td>+0.54%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-05</td><td>14.73</td><td>-0.41%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-05-04</td><td>14.79</td><td>+0.20%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-04-30</td><td>14.76</td><td>-0.40%</td><td>回穩向上</td><td>48</td><td>轉強</td><td>-0.35% (折價)</td><td>0.40%</td><td>6.02%</td></tr><tr><td>2026-04-29</td><td>14.82</td><td>+0.27%</td><td>橫盤整理</td><td>43</td><td>平緩</td><td>-0.50% (折價)</td><td>0.40%</td><td>6.05%</td></tr><tr><td>2026-04-28</td><td>14.78</td><td>-0.07%</td><td>低檔震盪</td><td>44.20</td><td>盤整</td><td>-0.67% (折價)</td><td>0.40%</td><td>5.93%</td></tr><tr><td>2026-04-27</td><td>14.79</td><td>-0.47%</td><td>中性盤整</td><td>中性 (~50)</td><td>平緩</td><td>-0.2% (折價)</td><td>約0.26%</td><td>月配息穩定</td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">凱基台灣TOP 50 ETF (009816)</div>
-        <div id='chart_009816' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 009816今日下跌2.38%至14.79元，表現較弱。然而，技術面仍呈現強勢多頭格局，均線多頭排列穩固，MACD黃金交叉紅柱放大。但RSI已達高檔超買區79.2，顯示短線漲多修正壓力。籌碼面以外資大幅買超11,376張，自營商調節5,163張，法人呈現對作。綜合來看，雖趨勢仍強，但短線超買及今日跌幅，建議投資人留意可能的回檔風險，可在回測均線支撐時再行評估。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>15.15</td><td class='price-col'>14.77</td><td class='price-col negative'>-2.51%</td><td class='tech-col'>站穩所有均線，強勢多頭排列</td><td class='tech-col'>79.2 (高檔超買區)</td><td class='tech-col'>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>14.76</td><td class='price-col'>15.15</td><td class='price-col positive'>+2.64%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>14.76</td><td class='price-col'>14.76</td><td class='price-col '>0.00%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>14.76</td><td>+4.02%</td><td>站穩所有均線，強勢多頭排列</td><td>75.6 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>14.19</td><td>+2.16%</td><td>跌破月線支撐</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>13.89</td><td>+4.12%</td><td>跌破月線支撐</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>13.34</td><td>-0.52%</td><td>跌破月線支撐</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>13.41</td><td>-1.76%</td><td>跌破月線支撐</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>13.65</td><td>-0.66%</td><td>跌破月線支撐</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>13.74</td><td>-1.15%</td><td>跌破月線支撐</td><td>38 (轉弱)</td><td>MACD 高檔向下發散，綠柱放大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>13.90</td><td>0.00%</td><td>跌破 5 日線，向月線靠攏</td><td>45 (轉弱)</td><td>MACD 於高檔糾結，動能陷入停滯。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>13.90</td><td>-1.14%</td><td>跌破 5 日線，向月線靠攏</td><td>45 (轉弱)</td><td>MACD 紅柱持續縮減，短期上漲動能逐漸轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>14.10</td><td>-0.35%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>14.15</td><td>+0.71%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>14.05</td><td>-0.64%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-07</td><td>14.14</td><td>+2.09%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-06</td><td>13.85</td><td>+1.24%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-05</td><td>13.68</td><td>+0.59%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-05-04</td><td>13.60</td><td>+4.21%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-30</td><td>13.05</td><td>0.00%</td><td>趨勢看漲</td><td>46</td><td>中性</td><td>+0.42% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-29</td><td>13.05</td><td>-0.76%</td><td>上升趨勢</td><td>50</td><td>中性</td><td>+0.50% (溢價)</td><td>0.10%</td><td>不配息</td></tr><tr><td>2026-04-28</td><td>13.15</td><td>-0.15%</td><td>看漲趨勢穩定</td><td>51.95</td><td>中性盤整</td><td>+2.80% (溢價)</td><td>約0.1%</td><td>不配息</td></tr><tr><td>2026-04-27</td><td>13.17</td><td>+2.33%</td><td>多頭 (隨大盤)</td><td>偏多</td><td>偏多</td><td>+0.08% (溢價)</td><td>約0.01% (極低)</td><td>不配息 (自動滾入)</td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">元大台灣50正2 (00631L)</div>
-        <div id='chart_00631L' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 00631L今日重挫3.53%，顯示大盤回檔壓力。技術面數據雖未提供，但籌碼面卻出現顯著分歧：外資逆勢大買逾1.4萬張，而自營商則大幅賣超。此現象暗示外資可能正在逢低承接，認為短期修正為進場機會。建議投資人密切觀察大盤能否止穩，若外資買盤持續，可考慮分批佈局，但鑒於其槓桿特性，仍需嚴控風險。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>35.73</td><td class='price-col'>34.47</td><td class='price-col negative'>-3.53%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>34.40</td><td class='price-col'>35.73</td><td class='price-col positive'>+3.87%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>34.56</td><td class='price-col'>34.40</td><td class='price-col negative'>-0.46%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>34.56</td><td>+6.14%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>32.56</td><td>+3.10%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>31.58</td><td>+7.01%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>29.51</td><td>-1.40%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>29.93</td><td>-3.17%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>30.91</td><td>-1.12%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>31.26</td><td>-2.19%</td><td>跌破月線，季線保衛戰</td><td>32 (極弱)</td><td>MACD 死亡交叉，綠柱再度擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>31.96</td><td>+0.35%</td><td>跌破 10 日均線，下探月線支撐</td><td>42 (偏弱)</td><td>MACD 死亡交叉延續，綠柱微縮。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>31.85</td><td>-2.06%</td><td>跌破 10 日均線，下探月線支撐</td><td>42 (偏弱)</td><td>MACD 出現高檔死亡交叉，綠柱開始擴大。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>32.68</td><td>+0.06%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>32.66</td><td>+0.59%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>32.47</td><td>-1.78%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-07</td><td>33.06</td><td>+3.67%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-06</td><td>31.89</td><td>+2.61%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-05</td><td>31.08</td><td>+0.26%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-05-04</td><td>31.00</td><td>+8.35%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-30</td><td>28.61</td><td>-0.73%</td><td>多頭修正</td><td>52</td><td>高檔收斂</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-29</td><td>28.82</td><td>-1.54%</td><td>多頭回檔</td><td>55</td><td>紅柱縮減</td><td>+0.20% (溢價)</td><td>1.04%</td><td>無配息</td></tr><tr><td>2026-04-28</td><td>29.27</td><td>-1.18%</td><td>強烈看漲</td><td>52.33</td><td>多頭排列 (0.05)</td><td>+0.75% (溢價)</td><td>1.04%</td><td>槓桿型無配息</td></tr><tr><td>2026-04-27</td><td>29.62</td><td>+4.15%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">元大台灣50 (0050)</div>
-        <div id='chart_0050' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 0050今日雖下跌2%至100.50，但技術面維持強勢多頭排列，MACD零軸上黃金交叉，多頭表態明確。RSI處於超買區，顯示本次回檔可能為市場過熱後的健康修正。籌碼面上，外資、投信、自營商三大法人同步大買逾萬張，顯示機構法人對後市持續看好。建議可利用短期拉回逢低佈局，中長期趨勢仍偏多。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>102.55</td><td class='price-col'>100.50</td><td class='price-col negative'>-2.00%</td><td class='tech-col'>站穩所有均線，強勢多頭排列</td><td class='tech-col'>75.1 (高檔超買區)</td><td class='tech-col'>MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>100.10</td><td class='price-col'>102.55</td><td class='price-col positive'>+2.45%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>100.80</td><td class='price-col'>100.10</td><td class='price-col negative'>-0.69%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>100.80</td><td>+3.60%</td><td>站穩所有均線，強勢多頭排列</td><td>72.6 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>97.30</td><td>+1.51%</td><td>跌破所有短均線</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>95.85</td><td>+3.62%</td><td>跌破所有短均線</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>92.50</td><td>-0.64%</td><td>跌破所有短均線</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>93.10</td><td>-1.90%</td><td>跌破所有短均線</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>94.90</td><td>-0.52%</td><td>跌破所有短均線</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>95.40</td><td>-0.68%</td><td>跌破所有短均線</td><td>42 (偏弱)</td><td>MACD 高檔死叉成形。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>96.05</td><td>+0.58%</td><td>跌破短均線，高檔震盪整理</td><td>48 (中性偏弱)</td><td>MACD 零軸之上高檔平移，紅柱微減。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>95.50</td><td>-1.39%</td><td>跌破短均線，高檔震盪整理</td><td>48 (中性偏弱)</td><td>MACD 紅柱明顯縮小，趨勢走平。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>96.95</td><td>+0.05%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>96.90</td><td>-0.10%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>97.00</td><td>-0.72%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-07</td><td>97.70</td><td>+2.04%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-06</td><td>95.75</td><td>+1.22%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-05</td><td>94.60</td><td>0.00%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-05-04</td><td>94.60</td><td>+4.53%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-04-30</td><td>90.50</td><td>-0.28%</td><td>上升軌道</td><td>48</td><td>紅柱萎縮</td><td>+0.38% (溢價)</td><td>0.32%</td><td>1.92%</td></tr><tr><td>2026-04-29</td><td>90.75</td><td>-1.36%</td><td>穩健多頭</td><td>52</td><td>中性</td><td>+0.50% (溢價)</td><td>0.32%</td><td>1.90%</td></tr><tr><td>2026-04-28</td><td>92.00</td><td>-1.08%</td><td>長期看漲</td><td>44.65</td><td>微弱金叉 (0.02)</td><td>+2.74% (溢價)</td><td>0.32%</td><td>1.89%</td></tr><tr><td>2026-04-27</td><td>93.00</td><td>+3.39%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">Invesco NASDAQ 100 ETF (QQQM)</div>
-        <div id='chart_QQQM' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> QQQM目前報價300.38，小幅下跌0.10%。儘管股價站穩所有均線，維持強勢多頭格局，顯示長期趨勢仍向上。然而，技術面已現警訊。RSI高達74.7，處於高檔超買區，且MACD已出現高檔死亡交叉或紅柱縮減，顯示短線漲勢動能轉弱，有修正壓力。建議投資人此時宜審慎觀望，留意追高風險，等待技術性修正或有效拉回至支撐位後再考慮進場，以降低潛在風險。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>300.68</td><td class='price-col'>300.38</td><td class='price-col negative'>-0.10%</td><td class='tech-col'>站穩所有均線，強勢多頭排列</td><td class='tech-col'>74.7 (高檔超買區)</td><td class='tech-col'>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>295.44</td><td class='price-col'>300.68</td><td class='price-col positive'>+1.77%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>294.21</td><td class='price-col'>295.44</td><td class='price-col positive'>+0.42%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>295.44</td><td>+0.42%</td><td>站穩所有均線，強勢多頭排列</td><td>71.4 (高檔超買區)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>294.21</td><td>+0.20%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>293.63</td><td>+1.66%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>288.84</td><td>-0.62%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>290.63</td><td>-0.43%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>291.89</td><td>-1.51%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>296.37</td><td>+0.75%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 零軸之上出現黃金交叉，多頭確立。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>294.16</td><td>+1.04%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 綠柱微幅縮減，低檔有初步止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>291.14</td><td>-0.88%</td><td>接近季線支撐，短均線下彎</td><td>46 (中性偏弱)</td><td>MACD 綠柱持續放大，動能轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>293.71</td><td>+0.30%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>292.82</td><td>+2.34%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>286.12</td><td>-0.10%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-07</td><td>286.40</td><td>+2.06%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-06</td><td>280.62</td><td>+1.30%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-05</td><td>277.05</td><td>-0.18%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-05-04</td><td>277.54</td><td>+0.96%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-30</td><td>272.39</td><td>+0.60%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-29</td><td>270.76</td><td>-1.01%</td><td>高檔整理</td><td>60</td><td>高檔鈍化</td><td>0%</td><td>0.15%</td><td>0.55%</td></tr><tr><td>2026-04-28</td><td>273.51</td><td>+0.05%</td><td>穩健看漲</td><td>68</td><td>多頭排列</td><td>趨近 0%</td><td>0.15%</td><td>0.53%</td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">統一台股升級50主動式ETF (00403A)</div>
-        <div id='chart_00403A' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 00403A今日雖下跌2.60%至10.50元，顯示短期賣壓，但籌碼面卻呈現強勁的法人買超。外資大舉買超88,667張，自營商也買進1,592張，顯示主要法人資金正逢低布局。儘管技術指標數據未提供，市場價格回檔而法人卻積極承接，暗示當前價位可能被視為價值區。建議投資人可關注此波回檔後的承接力道，長線逢低布局或分批買進，待後續技術面轉強時加碼。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>10.78</td><td class='price-col'>10.49</td><td class='price-col negative'>-2.69%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>10.64</td><td class='price-col'>10.78</td><td class='price-col positive'>+1.32%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>10.58</td><td class='price-col'>10.64</td><td class='price-col positive'>+0.57%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>10.58</td><td>+3.73%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>10.20</td><td>+1.90%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>10.01</td><td>+3.62%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>9.66</td><td>-0.62%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>9.72</td><td>-1.22%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>9.84</td><td>-1.60%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>10.00</td><td>-2.34%</td><td>空頭排列延續</td><td>22 (極度超賣)</td><td>MACD 零軸下深處綠柱持續擴大，毫無止跌跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>10.24</td><td>+0.59%</td><td>跌破所有均線，空頭排列</td><td>28 (超賣)</td><td>MACD 零軸下深處，綠柱略見縮減，技術性反彈。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>10.18</td><td>-5.74%</td><td>跌破所有均線，空頭排列</td><td>28 (超賣)</td><td>MACD 在零軸下綠柱急遽放大，趨勢明顯轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>10.76</td><td>-1.56%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-29</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">統一台股增長主動式ETF (00981A)</div>
-        <div id='chart_00981A' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> 00981A今日下跌3.60%至30.81元，短期賣壓顯著。然而，籌碼面出現顯著分歧：外資逆勢大舉買超24,299張，顯示其對長期價值或當前價位具信心。反觀自營商則大幅賣超16,720張，或為短期獲利了結。此內外資籌碼對作，使盤勢短線具不確定性。在技術面資訊不完整下，建議投資人密切觀察後續量價變化，並考量自身風險偏好再做決策。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>31.96</td><td class='price-col'>30.80</td><td class='price-col negative'>-3.63%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>31.49</td><td class='price-col'>31.96</td><td class='price-col positive'>+1.49%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>31.61</td><td class='price-col'>31.49</td><td class='price-col negative'>-0.38%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>31.61</td><td>+5.54%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>29.95</td><td>+3.78%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>28.86</td><td>+5.99%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>27.23</td><td>-0.95%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>27.49</td><td>-2.66%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>28.24</td><td>-0.63%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>28.42</td><td>-3.46%</td><td>空頭排列</td><td>25 (極度超賣)</td><td>MACD 零軸下快速向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>29.44</td><td>+0.55%</td><td>跌破月線，季線上揚提供支撐</td><td>40 (弱勢)</td><td>MACD 零軸下維持向下發散，趨勢偏弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>29.28</td><td>-2.30%</td><td>跌破月線，季線上揚提供支撐</td><td>40 (弱勢)</td><td>MACD 出現死亡交叉且向下發散。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>30.05</td><td>+1.21%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>29.69</td><td>+2.70%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>28.91</td><td>-2.27%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td>29.58</td><td>+0.96%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td>29.30</td><td>-0.54%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td>29.46</td><td>-0.57%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td>29.63</td><td>+4.77%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td>28.28</td><td>+1.95%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr><tr><td>2026-04-29</td><td>27.74</td><td>-0.25%</td><td>橫盤</td><td>50</td><td>中性</td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
-        <div class="card"><div class="symbol-name">Xtrackers Nasdaq 100 UCITS ETF (LSE) (XNAS.L)</div>
-        <div id='chart_XNAS_L' class='chart-container'></div>
-        <div class="advice-section">
-            <strong>💡 AI 今日投資建議：</strong> XNAS.L目前報價69.31，漲跌幅幾近持平，顯示震盪整理格局。技術面來看，均線糾結且RSI高達71.1已進入超買區，搭配MACD高檔出現死亡交叉或紅柱縮減，顯示上漲動能明顯轉弱。在多項指標警示下，建議投資人宜保持謹慎，避免追高，並留意獲利了結或等待底部支撐訊號再行佈局。 <br>
-            <strong class='price-advice'>🎯 建議買賣價位：</strong> 
-        </div>
-        <div class="table-responsive">
-        <table class="history-table"><thead>
-            <tr><th rowspan="2">日期</th><th colspan="3" style="text-align:center; color:#facc15;">即時價格資訊</th><th colspan="3" style="text-align:center; color:#60a5fa;">技術分析</th><th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th></tr>
-            <tr><th>前日收盤</th><th>當日收盤</th><th>漲跌幅</th><th>均線趨勢</th><th>RSI 狀態</th><th>MACD 狀態</th><th>折溢價</th><th>內扣費用</th><th>配息/殖利率</th></tr>
-        </thead><tbody><tr><td class='date-col'>2026-05-28</td><td class='price-col'>69.37</td><td class='price-col'>69.31</td><td class='price-col negative'>-0.09%</td><td class='tech-col'>均線糾結，震盪整理</td><td class='tech-col'>71.1 (高檔超買區)</td><td class='tech-col'>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-27</td><td class='price-col'>68.66</td><td class='price-col'>69.37</td><td class='price-col positive'>+1.03%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr><tr><td class='date-col'>2026-05-26</td><td class='price-col'>67.47</td><td class='price-col'>68.66</td><td class='price-col positive'>+1.76%</td><td class='tech-col'></td><td class='tech-col'></td><td class='tech-col'></td><td class='fin-col'></td><td class='fin-col'></td><td class='fin-col'></td></tr></tbody></table></div><details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>RSI</th><th>MACD</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-25</td><td>68.66</td><td>+1.76%</td><td>站穩所有均線，強勢多頭排列</td><td>69.0 (偏多)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>67.47</td><td>-0.47%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>67.79</td><td>+1.91%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>66.52</td><td>-0.79%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>67.05</td><td>-1.11%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>67.80</td><td>-1.34%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>68.72</td><td>+1.49%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>67.71</td><td>+1.44%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱縮減，空方力道減弱。</td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>66.75</td><td>-1.75%</td><td>跌破短均線，季線支撐測試中</td><td>44 (轉弱)</td><td>MACD 綠柱延續，空方控盤。</td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>67.94</td><td>+0.80%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>67.40</td><td>+1.06%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>66.69</td><td>+1.11%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td>65.96</td><td>+1.62%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td>64.91</td><td>+0.96%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td>64.29</td><td>+1.69%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td>64.29</td><td>+1.69%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td>62.91</td><td>+0.94%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div></div>
     </div>
-<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price"], ["05-15", 401.0], ["05-18", 388.5], ["05-19", 408.5], ["05-20", 439.0], ["05-21", 469.5], ["05-22", 516.0], ["05-25", 529.0], ["05-26", 540.0], ["05-27", 532.0], ["05-28", 486.0]], '#10b981'));
-google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price"], ["05-15", 401.07], ["05-18", 396.78], ["05-19", 396.94], ["05-20", 387.66], ["05-21", 388.91], ["05-22", 387.66], ["05-25", 382.97], ["05-26", 382.97], ["05-27", 388.88], ["05-28", 388.83]], '#10b981'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price"], ["05-15", 14.75], ["05-18", 14.69], ["05-19", 14.62], ["05-20", 14.52], ["05-21", 14.61], ["05-22", 14.68], ["05-25", 14.72], ["05-26", 14.77], ["05-27", 14.76], ["05-28", 14.72]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price"], ["05-15", 13.74], ["05-18", 13.65], ["05-19", 13.41], ["05-20", 13.34], ["05-21", 13.89], ["05-22", 14.19], ["05-25", 14.76], ["05-26", 14.76], ["05-27", 15.15], ["05-28", 14.77]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price"], ["05-15", 31.26], ["05-18", 30.91], ["05-19", 29.93], ["05-20", 29.51], ["05-21", 31.58], ["05-22", 32.56], ["05-25", 34.56], ["05-26", 34.4], ["05-27", 35.73], ["05-28", 34.47]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price"], ["05-15", 95.4], ["05-18", 94.9], ["05-19", 93.1], ["05-20", 92.5], ["05-21", 95.85], ["05-22", 97.3], ["05-25", 100.8], ["05-26", 100.1], ["05-27", 102.55], ["05-28", 100.5]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price"], ["05-15", 296.37], ["05-18", 291.89], ["05-19", 290.63], ["05-20", 288.84], ["05-21", 293.63], ["05-22", 294.21], ["05-25", 295.44], ["05-26", 295.44], ["05-27", 300.68], ["05-28", 300.38]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00403A', [["Date", "Price"], ["05-15", 10.0], ["05-18", 9.84], ["05-19", 9.72], ["05-20", 9.66], ["05-21", 10.01], ["05-22", 10.2], ["05-25", 10.58], ["05-26", 10.64], ["05-27", 10.78], ["05-28", 10.49]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price"], ["05-15", 28.42], ["05-18", 28.24], ["05-19", 27.49], ["05-20", 27.23], ["05-21", 28.86], ["05-22", 29.95], ["05-25", 31.61], ["05-26", 31.49], ["05-27", 31.96], ["05-28", 30.8]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price"], ["05-15", 68.72], ["05-18", 67.8], ["05-19", 67.05], ["05-20", 66.52], ["05-21", 67.79], ["05-22", 67.47], ["05-25", 68.66], ["05-26", 68.66], ["05-27", 69.37], ["05-28", 69.31]], '#8b5cf6'));
+<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price", "MA20", "MA60"], ["05-15", 401.0, null, null], ["05-18", 388.5, null, null], ["05-19", 408.5, null, null], ["05-20", 439.0, null, null], ["05-21", 469.5, null, null], ["05-22", 516.0, null, null], ["05-25", 529.0, 425.25, 292.66], ["05-26", 535.0, 434.08, 298.15], ["05-27", 532.0, 441.23, 303.62], ["05-28", 486.0, 447.58, 308.83]], '#10b981'));
+google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price", "MA20", "MA60"], ["05-13", 387.35, null, null], ["05-14", 402.62, null, null], ["05-15", 401.07, null, null], ["05-18", 396.78, null, null], ["05-19", 396.94, null, null], ["05-20", 387.66, null, null], ["05-21", 388.91, null, null], ["05-22", 387.66, null, null], ["05-25", 388.83, 389.36, 337.76], ["05-28", 388.83, null, null]], '#10b981'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price", "MA20", "MA60"], ["05-15", 14.75, null, null], ["05-18", 14.69, null, null], ["05-19", 14.62, null, null], ["05-20", 14.52, null, null], ["05-21", 14.61, null, null], ["05-22", 14.68, null, null], ["05-25", 14.72, null, null], ["05-26", 14.72, null, null], ["05-27", 14.76, 14.69, 14.75], ["05-28", 14.72, 14.69, 14.74]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price", "MA20", "MA60"], ["05-15", 13.74, null, null], ["05-18", 13.65, null, null], ["05-19", 13.41, null, null], ["05-20", 13.34, null, null], ["05-21", 13.89, null, null], ["05-22", 14.19, null, null], ["05-25", 14.76, 13.74, 12.0], ["05-26", 14.78, 13.82, 12.06], ["05-27", 15.15, 13.92, 12.12], ["05-28", 14.8, 13.92, 12.12]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price", "MA20", "MA60"], ["05-15", 31.26, null, null], ["05-18", 30.91, null, null], ["05-19", 29.93, null, null], ["05-20", 29.51, null, null], ["05-21", 31.58, null, null], ["05-22", 32.56, null, null], ["05-25", 34.56, 31.26, 25.48], ["05-26", 34.39, 31.49, 25.65], ["05-27", 35.73, 31.82, 25.84], ["05-28", 34.47, 31.85, 25.85]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price", "MA20", "MA60"], ["05-15", 95.4, null, null], ["05-18", 94.9, null, null], ["05-19", 93.1, null, null], ["05-20", 92.5, null, null], ["05-21", 95.85, null, null], ["05-22", 97.3, null, null], ["05-25", 100.8, 95.05, 84.16], ["05-26", 100.6, 95.43, 84.49], ["05-27", 102.55, 95.94, 84.83], ["05-28", 100.5, 95.99, 84.85]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price", "MA20", "MA60"], ["05-13", 291.14, null, null], ["05-14", 294.16, null, null], ["05-15", 296.37, null, null], ["05-18", 291.89, null, null], ["05-19", 290.63, null, null], ["05-20", 288.84, null, null], ["05-21", 293.63, null, null], ["05-22", 294.21, null, null], ["05-25", 300.38, 288.95, 263.47], ["05-28", 300.38, null, null]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00403A', [["Date", "Price"], ["05-15", 10.0], ["05-18", 9.84], ["05-19", 9.72], ["05-20", 9.66], ["05-21", 10.01], ["05-22", 10.2], ["05-25", 10.58], ["05-26", 10.58], ["05-27", 10.78], ["05-28", 10.47]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price", "MA20", "MA60"], ["05-15", 28.42, null, null], ["05-18", 28.24, null, null], ["05-19", 27.49, null, null], ["05-20", 27.23, null, null], ["05-21", 28.86, null, null], ["05-22", 29.95, null, null], ["05-25", 31.61, 28.94, 24.01], ["05-26", 31.5, 29.12, 24.2], ["05-27", 31.96, 29.33, 24.41], ["05-28", 30.72, 29.32, 24.41]], '#8b5cf6'));
+google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price", "MA20", "MA60"], ["05-15", 68.72, null, null], ["05-18", 67.8, null, null], ["05-19", 67.05, null, null], ["05-20", 66.52, null, null], ["05-21", 67.79, null, null], ["05-22", 67.47, null, null], ["05-25", 68.66, 66.01, 60.45], ["05-26", 68.66, 66.01, 60.45], ["05-27", 69.37, 66.33, 60.64], ["05-28", 69.31, null, null]], '#8b5cf6'));
 </script></body>
 </html>
