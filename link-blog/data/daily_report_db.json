@@ -6,19 +6,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "532.00",
-          "price": "505.00",
-          "change": "-5.08%",
+          "price": "480.00",
+          "change": "-9.77%",
           "technical": {
             "MA_Trend": "站穩月線與季線，多頭架構不變",
             "RSI_Value": "67.0 (偏多)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
-          "advice": "",
+          "advice": "臻鼎-KY今日股價雖重挫近一成至480.00元，主要受三大法人同步大幅賣超影響。然而，技術面顯示其多頭架構未變，仍站穩月線與季線。RSI 67.0及MACD零軸上黃金交叉且紅柱放大，均維持偏多表態。短線賣壓雖重，但若能守穩關鍵均線，可視為中長線布局者逢低承接機會，須留意法人賣超是否持續。",
           "suggested_price": "",
           "financial": {
             "Revenue_YoY": "",
             "Gross_Margin": "",
             "EPS": ""
+          },
+          "institutional": {
+            "Foreign": "-2,711 張",
+            "InvestmentTrust": "-2,338 張",
+            "Dealer": "-175 張"
           }
         },
         {
@@ -532,12 +537,17 @@
             "RSI_Value": "61.0 (偏多)",
             "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
-          "advice": "",
+          "advice": "GOOGL股價388.83，微跌0.01%。技術面顯示，股價跌破月線並回測季線支撐。MACD高檔死亡交叉或紅柱縮減，動能明顯轉弱。雖RSI仍達61.0偏多，但短線轉弱跡象顯著。建議密切觀察季線支撐，若能守穩，方有止跌機會；反之，跌破季線則修正壓力增高。",
           "suggested_price": "",
           "financial": {
             "Revenue_YoY": "",
             "Gross_Margin": "",
             "EPS": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
           }
         },
         {
@@ -1023,19 +1033,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "14.76",
-          "price": "14.76",
-          "change": "0.00%",
+          "price": "14.71",
+          "change": "-0.34%",
           "technical": {
             "MA_Trend": "",
             "RSI_Value": "",
             "MACD_Status": ""
           },
-          "advice": "",
+          "advice": "00937B今日雖小幅下跌0.30%至14.71元，但籌碼面呈現強勁的法人買超，外資與自營商合計買超逾3.2萬張。此顯示法人對此ESG投等債ETF後市持續看好，可能預期未來利率環境將轉為有利。考量法人積極佈局，建議投資人可將短線拉回視為分批建立部位的機會。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "+20,942 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "+11,374 張"
           }
         },
         {
@@ -1542,19 +1557,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "15.15",
-          "price": "15.18",
-          "change": "+0.17%",
+          "price": "14.74",
+          "change": "-2.71%",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
             "RSI_Value": "79.2 (高檔超買區)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
-          "advice": "",
+          "advice": "009816 今日雖收跌2.51%，但整體技術面仍維持強勢多頭排列，站穩所有均線，MACD零軸上黃金交叉紅柱放大，顯示中長期趨勢不變。外資大幅買超逾1.1萬張，支撐後市信心。然而，RSI已達79.2超買區，搭配今日修正，短線可能面臨獲利了結賣壓。建議投資人宜觀察短期震盪，但憑藉強勁多頭結構與外資籌碼，中長期展望仍偏樂觀。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "+11,376 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-5,163 張"
           }
         },
         {
@@ -2061,19 +2081,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "35.73",
-          "price": "36.16",
-          "change": "+1.19%",
+          "price": "34.03",
+          "change": "-4.76%",
           "technical": {
             "MA_Trend": "",
             "RSI_Value": "",
             "MACD_Status": ""
           },
-          "advice": "",
+          "advice": "今日00631L大幅下跌4.76%，顯示大盤承壓。儘管股價重挫，外資卻大幅淨買超逾1.4萬張，與自營商的積極賣超形成對比，顯示籌碼面存在分歧。技術面因重挫恐有轉弱疑慮。建議投資人短期操作仍需謹慎，但可觀察外資連續買超是否能為後續行情提供支撐，留意低檔承接機會。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "+14,552 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-12,592 張"
           }
         },
         {
@@ -2580,19 +2605,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "102.55",
-          "price": "103.47",
-          "change": "+0.90%",
+          "price": "100.22",
+          "change": "-2.27%",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
             "RSI_Value": "75.1 (高檔超買區)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
-          "advice": "",
+          "advice": "0050今日雖下跌2.22%收於100.28，但技術面仍維持強勢多頭排列，MACD零軸上黃金交叉顯示多頭格局未變。籌碼面見外資與自營商大幅買超逾萬張，法人對後市信心仍在。然而，RSI達75.1處於高檔超買區，暗示短線漲多可能面臨獲利了結壓力。建議投資人觀察回檔是否能守穩重要均線支撐，中長期偏多格局不變，但追高風險需審慎評估。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "+3,238 張",
+            "InvestmentTrust": "+28 張",
+            "Dealer": "+7,013 張"
           }
         },
         {
@@ -3106,12 +3136,17 @@
             "RSI_Value": "74.7 (高檔超買區)",
             "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
-          "advice": "",
+          "advice": "QQQM目前雖站穩所有均線，呈現強勢多頭排列，但短線警訊已浮現。RSI達74.7處高檔超買區，且MACD高檔死亡交叉或紅柱縮減，預示上漲動能已明顯減緩。儘管長期趨勢仍偏多，短期可能面臨修正或高檔整理壓力。建議已持有者可考慮部分獲利了結或緊設停利點，新建倉者宜觀察回檔後支撐再行評估。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
           }
         },
         {
@@ -3595,19 +3630,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "10.78",
-          "price": "10.84",
-          "change": "+0.56%",
+          "price": "10.44",
+          "change": "-3.15%",
           "technical": {
             "MA_Trend": "",
             "RSI_Value": "",
             "MACD_Status": ""
           },
-          "advice": "",
+          "advice": "00403A今日收盤價10.47，下跌2.88%，顯示短期承壓。儘管技術面目前呈現短期修正格局，籌碼面卻出現顯著變化，外資大舉買超88,667張，自營商亦有小幅加碼。這反映出在外資眼中，該ETF在下跌後具備潛在買進價值。建議投資人可觀察後續量價表現，若能止穩，可視為中長期布局的機會。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "+88,667 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "+1,592 張"
           }
         },
         {
@@ -4068,19 +4108,24 @@
         {
           "date": "2026-05-28",
           "prev_price": "31.96",
-          "price": "31.66",
-          "change": "-0.92%",
+          "price": "30.61",
+          "change": "-4.22%",
           "technical": {
             "MA_Trend": "",
             "RSI_Value": "",
             "MACD_Status": ""
           },
-          "advice": "",
+          "advice": "00981A今日重挫4.01%至30.68元，顯示短期賣壓顯著。然而，在股價大跌之際，外資卻逆勢大幅買超24,299張，而自營商則同步大賣16,720張。這種外資籌碼的積極介入，可能暗示市場對此檔ETF在回檔中看到價值，為後續反彈提供潛在支撐。建議投資人密切留意技術面止穩訊號，並觀察外資是否延續買超，再考慮分批布局。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "+24,299 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-16,720 張"
           }
         },
         {
@@ -4548,12 +4593,17 @@
             "RSI_Value": "71.1 (高檔超買區)",
             "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
-          "advice": "",
+          "advice": "XNAS.L目前報價69.31，微幅下跌0.09%。技術面顯示均線糾結，維持震盪整理格局。RSI達71.1已處高檔超買區，且MACD呈現高檔死亡交叉或紅柱縮減，顯示上漲動能明顯轉弱。短期內，ETF面臨回檔壓力較大，建議投資人應保持謹慎，宜觀望或逢高減碼，避免追高風險。",
           "suggested_price": "",
           "financial": {
             "Premium_Discount": "",
             "Expense_Ratio": "",
             "Yield_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
           }
         },
         {
