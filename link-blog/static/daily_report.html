@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --accent-color: #3b82f6;
-            --stock-color: #10b981;
-            --etf-color: #8b5cf6;
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(15, 23, 42, 0.08);
+            --accent-color: #2563eb;
+            --stock-color: #059669;
+            --etf-color: #7c3aed;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -21,7 +21,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 40px 20px;
-            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+            background-image: radial-gradient(circle at top right, #f1f5f9, #e2e8f0);
             min-height: 100vh;
         }
         h1 {
@@ -29,7 +29,7 @@
             font-weight: 800;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            background: -webkit-linear-gradient(45deg, #60a5fa, #a78bfa);
+            background: -webkit-linear-gradient(45deg, #2563eb, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -42,8 +42,8 @@
             margin-top: -20px;
             margin-bottom: 40px;
             font-size: 0.95rem;
-            color: #94a3b8;
-            background: rgba(255, 255, 255, 0.05);
+            color: #475569;
+            background: rgba(15, 23, 42, 0.04);
             display: inline-block;
             padding: 8px 16px;
             border-radius: 20px;
@@ -68,7 +68,7 @@
             border-radius: 16px;
             padding: 24px;
             margin-bottom: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
             transition: transform 0.3s ease;
         }
         .card:hover {
@@ -96,20 +96,20 @@
             border-bottom: 1px solid var(--card-border);
         }
         .history-table th {
-            color: #94a3b8;
+            color: #475569;
             font-weight: 600;
-            background: rgba(0,0,0,0.2);
+            background: rgba(15, 23, 42, 0.03);
         }
         .date-col {
             font-weight: 600;
-            color: #e2e8f0;
+            color: #334155;
         }
-        .tech-col { color: #60a5fa; }
-        .fin-col { color: #f472b6; }
+        .tech-col { color: #2563eb; }
+        .fin-col { color: #db2777; }
         
         .empty-state {
             text-align: center;
-            color: #94a3b8;
+            color: #64748b;
             font-style: italic;
         }
         
@@ -120,14 +120,14 @@
         }
         details {
             margin-top: 15px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(15, 23, 42, 0.01);
             border-radius: 12px;
             padding: 15px;
             border: 1px solid var(--card-border);
         }
         summary {
             cursor: pointer;
-            color: #94a3b8;
+            color: #64748b;
             font-size: 0.9rem;
             font-weight: 600;
             user-select: none;
@@ -142,7 +142,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.85rem;
-            color: #94a3b8;
+            color: #475569;
         }
         .older-records-table th, .older-records-table td {
             padding: 10px;
@@ -154,16 +154,17 @@
             margin-top: 20px;
             border-radius: 12px;
             overflow: hidden;
-            background: rgba(0,0,0,0.1);
+            background: rgba(15, 23, 42, 0.01);
         }
         .advice-section {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(167, 139, 250, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
             border-left: 4px solid var(--accent-color);
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
             font-size: 0.95rem;
             line-height: 1.6;
+            color: #334155;
         }
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -181,21 +182,21 @@
             for (let i = 2; i < chartData[0].length; i++) {
                 if (chartData[0][i] === 'MA20') seriesColors.push('#f59e0b');
                 else if (chartData[0][i] === 'MA60') seriesColors.push('#ec4899');
-                else seriesColors.push('#94a3b8');
+                else seriesColors.push('#64748b');
             }
 
             const options = {
                 backgroundColor: 'transparent',
                 colors: seriesColors,
                 chartArea: {width: '90%', height: '80%'},
-                hAxis: { textStyle: {color: '#94a3b8', fontSize: 10}, gridlines: {color: 'transparent'} },
-                vAxis: { textStyle: {color: '#94a3b8', fontSize: 10}, gridlines: {color: 'rgba(255,255,255,0.05)'} },
-                legend: { position: 'top', alignment: 'end', textStyle: {color: '#94a3b8', fontSize: 12} },
+                hAxis: { textStyle: {color: '#64748b', fontSize: 10}, gridlines: {color: 'transparent'} },
+                vAxis: { textStyle: {color: '#64748b', fontSize: 10}, gridlines: {color: 'rgba(15,23,42,0.04)'} },
+                legend: { position: 'top', alignment: 'end', textStyle: {color: '#64748b', fontSize: 12} },
                 curveType: 'function',
                 lineWidth: 2,
                 pointsVisible: true,
                 seriesType: 'line',
-                series: { 0: {type: 'area', areaOpacity: 0.1, lineWidth: 3} }
+                series: { 0: {type: 'area', areaOpacity: 0.06, lineWidth: 3} }
             };
             const chart = new google.visualization.ComboChart(document.getElementById(containerId));
             chart.draw(data, options);
@@ -206,7 +207,7 @@
     <div class="container">
         <h1>投資觀察日報表</h1>
         <div class="update-info">
-            🕒 最後更新：2026-05-29 11:36:42 &nbsp;|&nbsp; ⏳ 下次排程更新：2026-05-29 12:35
+            🕒 最後更新：2026-05-29 12:05:39 &nbsp;|&nbsp; ⏳ 下次排程更新：2026-05-29 12:35
         </div>
         
         <!-- 股票區塊 -->
@@ -220,15 +221,15 @@
             <div id='chart_4958' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>臻鼎-KY目前股價501.00，漲幅達3.09%。技術面MACD在零軸上方黃金交叉且紅柱放大，顯示多頭強勢表態，已穩健站上月季線。惟需留意投信與自營商近期呈現減碼，籌碼相對零亂，建議投資人順勢操作時仍應嚴控停損，不宜過度追價，關注後續量能是否持續擴增以支撐漲勢。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>臻鼎-KY今日強勢上漲4.53%，收於508.00元，技術面MACD於零軸上黃金交叉且紅柱放大，顯示多頭動能強勁。雖投信連日調節，但外資買盤進駐，股價穩居月季線之上，建議順勢操作，可採分批佈局策略，需留意均線支撐力道與籌碼後續流向，避免追高。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮投信賣壓尚存，保守型投資人應避開高檔追價風險，靜待回測支撐。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：475~480元 &nbsp;|&nbsp; 賣出防守：530元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術指標偏多，市場信心回溫，中庸型可採分批佈局策略，參與多頭續航力。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：490~495元 &nbsp;|&nbsp; 賣出防守：550元</span></div><div>⚡ <strong>積極型</strong>：MACD紅柱放大顯示動能強勁，積極型投資人可沿五日線短線操作，突破前高積極跟進。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：501~505元 &nbsp;|&nbsp; 賣出防守：565元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：股價位於相對高檔，且投信賣壓較重，保守型投資人建議待拉回月線支撐附近再佈局，降低波動風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：485~490元 &nbsp;|&nbsp; 賣出防守：530元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術指標偏多，市場氣氛轉強，建議在震盪回測時切入，兼顧短線獲利與風險控管。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：500~505元 &nbsp;|&nbsp; 賣出防守：545元</span></div><div>⚡ <strong>積極型</strong>：多頭趨勢明顯且量能充沛，適合於趨勢突破時積極進場，挑戰前波高點，嚴守停損點位。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：508~512元 &nbsp;|&nbsp; 賣出防守：560元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">建議採【中庸】策略。儘管技術面呈強勢多頭架構，但籌碼面投信與自營商呈現連續減碼，顯示法人對高檔震盪仍有疑慮，採取區間操作並分批佈局，可在享受多頭趨勢的同時規避籌碼鬆動之風險。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">中庸。雖然技術面轉強且外資轉買，但投信持續調節籌碼，顯示短期震盪難免，採取中庸策略在回檔時佈局，較能平衡潛在獲利與追高風險。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -236,11 +237,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#db2777;">財報重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -260,16 +261,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">501.00</td>
-                            <td style="color: #eab308;">+3.09%</td>
+                            <td style="font-weight: 600; color: #d97706;">508.00</td>
+                            <td style="color: #d97706;">+4.53%</td>
                             <td class="tech-col">站穩月線與季線，多頭架構不變</td>
                             <td class="tech-col">450.38</td>
                             <td class="tech-col">313.56</td>
                             <td class="tech-col">64.5 (偏多)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">+239 張</td>
-                            <td style="color: #f87171;">-2,619 張</td>
-                            <td style="color: #f87171;">-462 張</td>
+                            <td style="color: #dc2626;">+239 張</td>
+                            <td style="color: #dc2626;">-2,619 張</td>
+                            <td style="color: #dc2626;">-462 張</td>
                             <td class="fin-col">+12.5%</td>
                             <td class="fin-col">18.2%</td>
                             <td class="fin-col">8.50</td>
@@ -277,16 +278,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">486.00</td>
-                            <td style="color: #eab308;">-8.65%</td>
+                            <td style="font-weight: 600; color: #d97706;">486.00</td>
+                            <td style="color: #d97706;">-8.65%</td>
                             <td class="tech-col">站穩月線與季線，多頭架構不變</td>
                             <td class="tech-col">447.58</td>
                             <td class="tech-col">308.83</td>
                             <td class="tech-col">68.3 (偏多)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">+239 張</td>
-                            <td style="color: #f87171;">-2,619 張</td>
-                            <td style="color: #f87171;">-462 張</td>
+                            <td style="color: #dc2626;">+239 張</td>
+                            <td style="color: #dc2626;">-2,619 張</td>
+                            <td style="color: #dc2626;">-462 張</td>
                             <td class="fin-col">+12.5%</td>
                             <td class="fin-col">18.2%</td>
                             <td class="fin-col">8.50</td>
@@ -294,16 +295,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">532.00</td>
-                            <td style="color: #eab308;">-1.48%</td>
+                            <td style="font-weight: 600; color: #d97706;">532.00</td>
+                            <td style="color: #d97706;">-1.48%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">441.23</td>
                             <td class="tech-col">303.62</td>
                             <td class="tech-col">74.6 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">+3,230 張</td>
-                            <td style="color: #f87171;">+272 張</td>
-                            <td style="color: #f87171;">+163 張</td>
+                            <td style="color: #dc2626;">+3,230 張</td>
+                            <td style="color: #dc2626;">+272 張</td>
+                            <td style="color: #dc2626;">+163 張</td>
                             <td class="fin-col">+12.5%</td>
                             <td class="fin-col">18.2%</td>
                             <td class="fin-col">8.50</td>
@@ -320,15 +321,15 @@
             <div id='chart_GOOGL' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>GOOGL目前報價390.13元，雖小幅上漲0.33%，但技術面已跌破月線，MACD動能亦顯轉弱。儘管RSI維持在61.8的偏多區間，但考量股價正回測季線支撐，建議投資人靜待股價站穩關鍵均線後再行佈局，目前操作應以風險控管優先，避免在高檔死亡交叉過程中過度追價。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>GOOGL目前股價390.13，雖微漲0.33%，但技術面已跌破月線並向下測試季線支撐，且MACD呈現紅柱縮減，顯示短期上漲動能轉弱。儘管RSI維持在61.8偏多區間，但在均線糾結且動能減弱下，建議採取分批佈局策略，避免在弱勢震盪中一次性投入，並密切關注季線防守強度，若有效跌破建議嚴控風險。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：MACD出現轉弱訊號且均線向下，採取觀望策略避免承擔過高回檔風險。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：370.00~375.00元 &nbsp;|&nbsp; 賣出防守：405.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術指標顯示多頭格局未完全破壞，但在回測季線時採取分批佈局較為穩健。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：380.00~385.00元 &nbsp;|&nbsp; 賣出防守：410.00元</span></div><div>⚡ <strong>積極型</strong>：看好RSI數值偏多，欲在季線支撐處博取反彈行情，需嚴格設定停損點。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：388.00~390.13元 &nbsp;|&nbsp; 賣出防守：415.00元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標顯示動能減弱，保守型投資人應等待股價回測季線確認支撐力度後再進場，優先降低曝險並保留現金。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：370~375 元 &nbsp;|&nbsp; 賣出防守：410 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：MACD出現死亡交叉跡象，適合採取區間震盪策略，在支撐區間布局並於壓力區間適度獲利了結。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：380~385 元 &nbsp;|&nbsp; 賣出防守：400 元</span></div><div>⚡ <strong>積極型</strong>：儘管動能轉弱，但RSI仍處於強勢區，積極投資人可利用回調尋求技術性反彈，但需嚴格執行停損。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：388~390 元 &nbsp;|&nbsp; 賣出防守：405 元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">推薦採取【中庸】策略。理由在於股價處於季線支撐與月線壓力之間的震盪期，MACD轉弱警示短線波動加劇，採取分批佈局既能避免錯失反彈，也能在破線時保有靈活撤出的空間。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">中庸策略。目前技術面處於轉折點，跌破月線後動能不足但未全面破位，採取中庸策略既能在關鍵支撐位介入，又能保持適當的資產配置靈活度，以應對後續趨勢變化。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -336,11 +337,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">籌碼面 (美股指標)</th>
-                            <th colspan="3" style="text-align:center; color:#f472b6;">財報重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">籌碼面 (美股指標)</th>
+                            <th colspan="3" style="text-align:center; color:#db2777;">財報重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -360,16 +361,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">390.13</td>
-                            <td style="color: #eab308;">+0.33%</td>
+                            <td style="font-weight: 600; color: #d97706;">390.13</td>
+                            <td style="color: #d97706;">+0.33%</td>
                             <td class="tech-col">跌破月線，回測季線支撐</td>
                             <td class="tech-col">391.64</td>
                             <td class="tech-col">340.66</td>
                             <td class="tech-col">61.8 (偏多)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col">+14.8%</td>
                             <td class="fin-col">56.4%</td>
                             <td class="fin-col">5.80</td>
@@ -377,16 +378,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">388.83</td>
-                            <td style="color: #eab308;">-0.01%</td>
+                            <td style="font-weight: 600; color: #d97706;">388.83</td>
+                            <td style="color: #d97706;">-0.01%</td>
                             <td class="tech-col">跌破月線，回測季線支撐</td>
                             <td class="tech-col"></td>
                             <td class="tech-col"></td>
                             <td class="tech-col">61.0 (偏多)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col">+14.8%</td>
                             <td class="fin-col">56.4%</td>
                             <td class="fin-col">5.80</td>
@@ -394,16 +395,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-25</td>
-                            <td style="font-weight: 600; color: #eab308;">388.83</td>
-                            <td style="color: #eab308;">-0.01%</td>
+                            <td style="font-weight: 600; color: #d97706;">388.83</td>
+                            <td style="color: #d97706;">-0.01%</td>
                             <td class="tech-col">跌破月線，回測季線支撐</td>
                             <td class="tech-col">389.36</td>
                             <td class="tech-col">337.76</td>
                             <td class="tech-col">61.0 (偏多)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col">+14.8%</td>
                             <td class="fin-col">56.4%</td>
                             <td class="fin-col">5.80</td>
@@ -426,15 +427,15 @@
             <div id='chart_00937B' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>00937B受惠債市回溫，目前股價14.83元上漲0.75%，技術面均線呈多頭排列且MACD黃金交叉，顯示空方力道減弱。法人方面外資大幅買超逾5萬張，籌碼動能強勁。預期在降息預期支撐下，該檔ETF具穩健上行空間，建議投資人可順勢操作，並留意法人進出動向以控管短線風險。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>00937B目前報價14.84，漲幅0.82%，技術面站穩所有均線呈強勢多頭排列，且MACD空方力道衰退，顯示底部支撐穩固。籌碼面外資大幅買超逾5萬張，抵銷部分自營商賣壓，資金面充沛，整體趨勢偏向樂觀，建議投資人可順勢佈局，觀察後續能否進一步突破盤整區間。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：看重債券部位的避險與配息穩定性，適合在股價回調時分批佈局，降低持倉成本並享受長期債息收益。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.65~14.75 元 &nbsp;|&nbsp; 賣出防守：15.10 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術指標RSI偏多且站穩所有均線，適合在目前多頭趨勢下，於盤中回測支撐時進場，設定合理停利區間。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.80~14.83 元 &nbsp;|&nbsp; 賣出防守：15.25 元</span></div><div>⚡ <strong>積極型</strong>：外資籌碼持續湧入，股價動能強勁，適合採取強勢追價策略，但需嚴格遵守移動停損點以因應市場波動。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.85~14.90 元 &nbsp;|&nbsp; 賣出防守：15.40 元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：保守型投資人建議避開追價風險，待股價拉回支撐點位再分批進場，確保安全邊際。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.60~14.70 元 &nbsp;|&nbsp; 賣出防守：15.10 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：中庸型投資人可趁勢小幅布局，利用強勢均線支撐作為防守點，同步採取分批加碼策略以降低成本。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.80 元 &nbsp;|&nbsp; 賣出防守：15.20 元</span></div><div>⚡ <strong>積極型</strong>：積極型投資人可依據外資籌碼強勢買進跡象進行短線操作，若成交量維持高檔可續抱挑戰前高。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.84~14.90 元 &nbsp;|&nbsp; 賣出防守：15.35 元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">推薦採取【中庸】策略。理由在於目前00937B技術面呈現完整多頭，外資買盤強勁，但自營商調節籌碼顯示短線獲利了結壓力存在，採取中庸策略既能順勢捕捉上漲動能，亦能透過區間操作分散追高風險。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">推薦採取【中庸】策略。目前市場處於技術面多頭反彈階段，外資籌碼面給予強勁支撐，但需留意自營商調節賣壓，採取分批進場能有效平衡收益與風險。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -442,11 +443,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -466,16 +467,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">14.83</td>
-                            <td style="color: #eab308;">+0.75%</td>
+                            <td style="font-weight: 600; color: #d97706;">14.84</td>
+                            <td style="color: #d97706;">+0.82%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">14.69</td>
                             <td class="tech-col">14.74</td>
                             <td class="tech-col">54.1 (偏多)</td>
                             <td class="tech-col">MACD 低檔黃金交叉或綠柱縮減，空方力道衰退。</td>
-                            <td style="color: #f87171;">+51,229 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-17,455 張</td>
+                            <td style="color: #dc2626;">+51,229 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-17,455 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -483,16 +484,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">14.72</td>
-                            <td style="color: #eab308;">-0.27%</td>
+                            <td style="font-weight: 600; color: #d97706;">14.72</td>
+                            <td style="color: #d97706;">-0.27%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">14.69</td>
                             <td class="tech-col">14.74</td>
                             <td class="tech-col">54.1 (偏多)</td>
                             <td class="tech-col">MACD 低檔黃金交叉或綠柱縮減，空方力道衰退。</td>
-                            <td style="color: #f87171;">+51,229 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-17,455 張</td>
+                            <td style="color: #dc2626;">+51,229 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-17,455 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -500,16 +501,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">14.76</td>
-                            <td style="color: #eab308;">-0.07%</td>
+                            <td style="font-weight: 600; color: #d97706;">14.76</td>
+                            <td style="color: #d97706;">-0.07%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">14.69</td>
                             <td class="tech-col">14.75</td>
                             <td class="tech-col">54.1 (偏多)</td>
                             <td class="tech-col">MACD 低檔黃金交叉或綠柱縮減，空方力道衰退。</td>
-                            <td style="color: #f87171;">+42,106 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">+7,227 張</td>
+                            <td style="color: #dc2626;">+42,106 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">+7,227 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -526,15 +527,15 @@
             <div id='chart_009816' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>凱基台灣TOP 50現價15.18元，漲幅0.20%，技術面呈現強勢多頭排列且MACD紅柱擴大，多方趨勢明確。惟RSI指標已達79.0進入超買區，短線過熱風險增加，加上外資與自營商近期賣超壓力較大，建議投資人留意追高風險，採取分批佈局策略以平衡波動。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>凱基台灣TOP 50 ETF目前收盤價為15.21元，漲幅0.40%。技術面上均線呈強勢多頭排列且MACD紅柱放大，顯示中長期趨勢向上。然而RSI高達79.0進入超買區，短線乖離過大，加上外資與自營商近期賣壓沉重，建議投資人應提防回檔風險，不宜盲目追高，觀察是否能守穩關鍵支撐。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到技術指標嚴重過熱且籌碼面呈現法人調節，保守型投資人應避開短線乖離過大的追價風險，耐心等待回測均線支撐。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.20~14.50元 &nbsp;|&nbsp; 賣出防守：15.80元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：均線架構強勢支撐多頭格局，建議採分批佈局，逢回檔靠近5日均線附近適度建立部位，以應對大盤可能的震盪調整。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.80~15.00元 &nbsp;|&nbsp; 賣出防守：16.00元</span></div><div>⚡ <strong>積極型</strong>：技術指標強勢多頭，短線動能仍強，積極型投資人可沿五日線短線操作，但需嚴格執行跌破關鍵點位時的停損策略。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：15.10~15.20元 &nbsp;|&nbsp; 賣出防守：15.50元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到RSI指標過熱及籌碼面外資賣壓，保守型投資人應避開超買風險，等待技術面修正後再佈局。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.20~14.50元 &nbsp;|&nbsp; 賣出防守：16.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：市場技術面維持強勢，可採取分批佈局策略，待股價出現合理回檔修正後介入，平衡風險與獲利空間。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.80~15.00元 &nbsp;|&nbsp; 賣出防守：15.80元</span></div><div>⚡ <strong>積極型</strong>：強勢多頭格局明確，積極型投資人可嘗試在強勢格局中順勢操作，但需設定嚴格的停損點以應對籌碼面動盪。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：15.20~15.30元 &nbsp;|&nbsp; 賣出防守：15.70元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">推薦採取【中庸】策略。理由是儘管市場趨勢強勢，但RSI高檔且法人賣超籌碼不穩定，建議不宜過度追高，採取逢回分批進場的策略最能兼顧獲利與風險管理。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">建議採【中庸】策略。雖然技術面處於多頭強勢區，但高檔超買訊號與外資的大幅賣超顯示短線震盪加劇，採取中庸策略分批佈局，既能參與強勢行情，也能在面臨修正時保有資金彈性。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -542,11 +543,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -566,16 +567,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">15.18</td>
-                            <td style="color: #eab308;">+0.20%</td>
+                            <td style="font-weight: 600; color: #d97706;">15.22</td>
+                            <td style="color: #d97706;">+0.46%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">14.02</td>
                             <td class="tech-col">12.18</td>
                             <td class="tech-col">79.0 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-41,988 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-93,013 張</td>
+                            <td style="color: #dc2626;">-41,988 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-93,013 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -583,16 +584,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">14.80</td>
-                            <td style="color: #eab308;">-2.31%</td>
+                            <td style="font-weight: 600; color: #d97706;">14.80</td>
+                            <td style="color: #d97706;">-2.31%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">13.92</td>
                             <td class="tech-col">12.12</td>
                             <td class="tech-col">79.4 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-41,988 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-93,013 張</td>
+                            <td style="color: #dc2626;">-41,988 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-93,013 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -600,16 +601,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">15.15</td>
-                            <td style="color: #eab308;">+2.64%</td>
+                            <td style="font-weight: 600; color: #d97706;">15.15</td>
+                            <td style="color: #d97706;">+2.64%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">13.92</td>
                             <td class="tech-col">12.12</td>
                             <td class="tech-col">79.0 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-11,844 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-36,375 張</td>
+                            <td style="color: #dc2626;">-11,844 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-36,375 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -626,15 +627,15 @@
             <div id='chart_00631L' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>00631L目前強勢站穩所有均線，MACD呈黃金交叉且紅柱放大，展現強勁的多頭動能。然而，RSI來到75.4的高檔超買區，且外資與自營商近期呈現大幅調節跡象，顯示獲利了結賣壓沉重。考量報價36.57元已處短線高點，建議投資人留意追高風險，操作宜採分批佈局或嚴格執行停利停損。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>00631L目前報價36.56，漲幅2.32%。技術面呈現多頭排列且MACD紅柱放大，顯示強勢格局；然而RSI已達75.4的高檔超買區，且外資與自營商近期賣超壓力顯現，追高風險攀升，建議投資人留意技術性回調風險，不宜過度追價。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標進入超買區且法人籌碼鬆動，保守型投資人應規避過熱風險，待回檔修正後再尋求低接機會。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：32.50~33.50元 &nbsp;|&nbsp; 賣出防守：38.50元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：雖趨勢偏多但法人逢高減碼明顯，建議保持中性立場，採取拉回分批承接策略以平攤成本。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：34.50~35.50元 &nbsp;|&nbsp; 賣出防守：39.00元</span></div><div>⚡ <strong>積極型</strong>：強勢多頭排列明顯，積極型可沿短均線操作，唯需緊盯法人動向，設定嚴格移動停利。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：36.57元左右 &nbsp;|&nbsp; 賣出防守：37.50元停利，35.80元停損</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到RSI進入超買區且法人籌碼賣超，保守型投資人應規避追高，靜待回檔確認支撐。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：33.50~34.50 元 &nbsp;|&nbsp; 賣出防守：38.50 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術面趨勢強勁，適合採取分批佈局策略，於回調時適度承接，避開過熱訊號。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：35.00~35.50 元 &nbsp;|&nbsp; 賣出防守：39.50 元</span></div><div>⚡ <strong>積極型</strong>：多頭格局確立，積極型投資人可利用強勢動能短打，但須嚴守停損以應對法人調節賣壓。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：36.56 元 &nbsp;|&nbsp; 賣出防守：35.00 元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">建議採【中庸】策略。目前指數雖然展現多頭氣勢，但法人籌碼呈現大幅流出，且指標過熱，顯示市場存在短期震盪整理的需求。建議採取不追高、拉回分批佈局的靈活操作，以平衡獲利機會與風險控制。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">推薦採取【中庸】策略。儘管技術面處於多頭，但指標過熱與法人賣超跡象顯示短線波動加劇，採取分批佈局可有效平衡追價風險與多頭獲利機會。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -642,11 +643,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -666,16 +667,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">36.55</td>
-                            <td style="color: #eab308;">+2.29%</td>
+                            <td style="font-weight: 600; color: #d97706;">36.59</td>
+                            <td style="color: #d97706;">+2.41%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">31.85</td>
                             <td class="tech-col">25.85</td>
                             <td class="tech-col">75.4 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-30,592 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-48,296 張</td>
+                            <td style="color: #dc2626;">-30,592 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-48,296 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -683,16 +684,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">34.47</td>
-                            <td style="color: #eab308;">-3.53%</td>
+                            <td style="font-weight: 600; color: #d97706;">34.47</td>
+                            <td style="color: #d97706;">-3.53%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">31.85</td>
                             <td class="tech-col">25.85</td>
                             <td class="tech-col">75.4 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-30,592 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-48,296 張</td>
+                            <td style="color: #dc2626;">-30,592 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-48,296 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -700,16 +701,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">35.73</td>
-                            <td style="color: #eab308;">+3.87%</td>
+                            <td style="font-weight: 600; color: #d97706;">35.73</td>
+                            <td style="color: #d97706;">+3.87%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">31.82</td>
                             <td class="tech-col">25.84</td>
                             <td class="tech-col">74.1 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">+232 張</td>
-                            <td style="color: #f87171;">-730 張</td>
-                            <td style="color: #f87171;">-8,521 張</td>
+                            <td style="color: #dc2626;">+232 張</td>
+                            <td style="color: #dc2626;">-730 張</td>
+                            <td style="color: #dc2626;">-8,521 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -726,15 +727,15 @@
             <div id='chart_0050' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>0050目前報價103.95元，漲幅達1.37%，技術面呈現多頭排列且MACD紅柱擴大，顯示趨勢強勁。然而RSI已達75.6超買區，且外資與自營商近期呈現減碼，籌碼面出現調節壓力。建議操作應區分風險屬性，短線勿過度追高，留意回測均線支撐的布局機會，以防高檔震盪修正風險。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>0050目前報價103.85，受惠於技術面強勢多頭排列與MACD紅柱放大，漲幅達1.27%。然而RSI來到75.6高檔超買區，且外資與自營商近期呈現大幅調節跡象，籌碼面出現背離風險，建議投資人應居高思危，避免在技術指標高檔時過度追價，採取分批佈局策略較為妥當。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮目前位於超買區且法人買氣轉弱，採取防守策略，等待回測支撐以確保安全性。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：98.00~100.00元 &nbsp;|&nbsp; 賣出防守：108.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：順勢操作，利用均線支撐作為參考，於多頭趨勢延續期間進行穩健配置。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：101.00~102.50元 &nbsp;|&nbsp; 賣出防守：110.00元</span></div><div>⚡ <strong>積極型</strong>：強勢多頭趨勢明確，適合積極參與漲勢，但須嚴格執行跌破短期均線的停損機制。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：103.50~103.95元 &nbsp;|&nbsp; 賣出防守：106.50元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到RSI進入超買區且外資持續賣超，建議保守型投資人等待回檔測試支撐，避免追高。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：98.5~100元 &nbsp;|&nbsp; 賣出防守：108元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術趨勢強勁但籌碼動盪，採中庸策略進行分批佈局，利用均線支撐作為加碼依據。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：101~102.5元 &nbsp;|&nbsp; 賣出防守：110元</span></div><div>⚡ <strong>積極型</strong>：儘管籌碼鬆動，但多頭表態明顯，積極型可於強勢整理時進場，並嚴格設定停利停損點。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：103.5~103.85元 &nbsp;|&nbsp; 賣出防守：112元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">建議採取【中庸】策略。理由在於雖技術面顯示多頭走勢極為強勁，但籌碼面外資與自營商呈現賣超且RSI進入超買區，存在短線回調風險，中庸操作可兼顧趨勢獲利與風險管控。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">現階段建議採取【中庸】策略。理由在於技術指標雖呈現強勢多頭，但RSI高檔且法人籌碼呈現雙邊賣出壓力，預期後續震盪將加劇，中庸操作可兼顧趨勢行情與風險控管。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -742,11 +743,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -766,16 +767,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">103.95</td>
-                            <td style="color: #eab308;">+1.37%</td>
+                            <td style="font-weight: 600; color: #d97706;">103.90</td>
+                            <td style="color: #d97706;">+1.32%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">96.59</td>
                             <td class="tech-col">85.22</td>
                             <td class="tech-col">75.6 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-39,726 張</td>
-                            <td style="color: #f87171;">+688 張</td>
-                            <td style="color: #f87171;">-21,962 張</td>
+                            <td style="color: #dc2626;">-39,726 張</td>
+                            <td style="color: #dc2626;">+688 張</td>
+                            <td style="color: #dc2626;">-21,962 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -783,16 +784,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">100.50</td>
-                            <td style="color: #eab308;">-2.00%</td>
+                            <td style="font-weight: 600; color: #d97706;">100.50</td>
+                            <td style="color: #d97706;">-2.00%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">95.99</td>
                             <td class="tech-col">84.85</td>
                             <td class="tech-col">75.4 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-39,726 張</td>
-                            <td style="color: #f87171;">+688 張</td>
-                            <td style="color: #f87171;">-21,962 張</td>
+                            <td style="color: #dc2626;">-39,726 張</td>
+                            <td style="color: #dc2626;">+688 張</td>
+                            <td style="color: #dc2626;">-21,962 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -800,16 +801,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">102.55</td>
-                            <td style="color: #eab308;">+2.45%</td>
+                            <td style="font-weight: 600; color: #d97706;">102.55</td>
+                            <td style="color: #d97706;">+2.45%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">95.94</td>
                             <td class="tech-col">84.83</td>
                             <td class="tech-col">74.0 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-14,393 張</td>
-                            <td style="color: #f87171;">+2,131 張</td>
-                            <td style="color: #f87171;">-9,331 張</td>
+                            <td style="color: #dc2626;">-14,393 張</td>
+                            <td style="color: #dc2626;">+2,131 張</td>
+                            <td style="color: #dc2626;">-9,331 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -826,15 +827,15 @@
             <div id='chart_QQQM' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>QQQM目前報價302.85元，單日上漲0.82%。技術面上均線呈強勢多頭排列，但RSI處於76.5高檔超買區，且MACD顯示動能轉弱，暗示短期乖離過大，面臨修正壓力。建議投資人勿過度追高，靜待回檔確認支撐後再行佈局，以應對潛在的技術性回調風險。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>QQQM目前報價302.85，受惠於美股科技成長動能，今日漲幅達0.82%。雖然技術面維持強勢多頭排列，但RSI已高達76.5進入超買區，且MACD出現高檔動能轉弱跡象，顯示短期乖離過大，追價風險攀升，建議採取分批佈局策略，避免於高檔一次性重押。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到RSI指標進入超買區，且動能指標顯示轉弱，保守型投資人應規避短期過熱風險，待股價回檔至關鍵支撐位再進場，優先保護本金。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：285.00~290.00 元 &nbsp;|&nbsp; 賣出防守：315.00 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：中庸型投資人可在現有強勢格局下，採取分批佈局策略，避免一次性重壓，並嚴格執行停利與停損，以應對可能的震盪洗盤。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：295.00~298.00 元 &nbsp;|&nbsp; 賣出防守：310.00 元</span></div><div>⚡ <strong>積極型</strong>：積極型投資人可嘗試續抱，但在MACD轉弱警訊下，若跌破短期五日線應立即執行停損，適合追求波段價差者，但需承擔回檔波動風險。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：302.00~303.00 元 &nbsp;|&nbsp; 賣出防守：312.00 元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮指標過熱，保守型投資人應避開超買風險，待技術性修正至支撐區再介入。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：285.00~290.00 元 &nbsp;|&nbsp; 賣出防守：320.00 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：中庸投資人應利用回檔時機建立部位，並嚴守停損，以應對高檔震盪整理。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：295.00~298.00 元 &nbsp;|&nbsp; 賣出防守：315.00 元</span></div><div>⚡ <strong>積極型</strong>：積極投資人可適量參與短線動能，但需嚴控部位大小，並在突破前高失敗時立即停利。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：302.00~303.00 元 &nbsp;|&nbsp; 賣出防守：308.00 元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">建議採取【中庸】策略。理由在於雖大盤維持強勢多頭排列，但技術指標RSI超買及MACD動能減弱顯示短線獲利了結賣壓增強，採用中庸策略可平衡追價風險與市場續漲可能性。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">現階段推薦【中庸】策略。理由是雖然趨勢維持強勢，但RSI高檔鈍化與MACD轉弱訊號暗示短線修正壓力大，過於積極可能面臨回檔震盪，保守則可能錯過成長行情，中庸策略能平衡風險與收益。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -842,11 +843,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">籌碼面 (美股指標)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">籌碼面 (美股指標)</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -866,16 +867,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">302.85</td>
-                            <td style="color: #eab308;">+0.82%</td>
+                            <td style="font-weight: 600; color: #d97706;">302.85</td>
+                            <td style="color: #d97706;">+0.82%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">291.87</td>
                             <td class="tech-col">265.26</td>
                             <td class="tech-col">76.5 (高檔超買區)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -883,16 +884,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">300.38</td>
-                            <td style="color: #eab308;">-0.10%</td>
+                            <td style="font-weight: 600; color: #d97706;">300.38</td>
+                            <td style="color: #d97706;">-0.10%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col"></td>
                             <td class="tech-col"></td>
                             <td class="tech-col">74.7 (高檔超買區)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -900,16 +901,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-25</td>
-                            <td style="font-weight: 600; color: #eab308;">300.38</td>
-                            <td style="color: #eab308;">-0.10%</td>
+                            <td style="font-weight: 600; color: #d97706;">300.38</td>
+                            <td style="color: #d97706;">-0.10%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">288.95</td>
                             <td class="tech-col">263.47</td>
                             <td class="tech-col">74.7 (高檔超買區)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -926,15 +927,15 @@
             <div id='chart_00403A' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>00403A近期受市場賣壓影響，股價回落至10.66元，跌幅達1.11%。由於上市時間尚短，技術指標參考性有限，但外資與自營商近期聯手大幅減碼，顯示短線籌碼極度凌亂且信心不足，建議投資人靜待籌碼沈澱，切勿在下跌趨勢中貿然接刀，應以控制部位資金水位為優先。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>00403A目前報價10.70元，單日跌幅0.74%。近期籌碼面顯示外資與自營商呈現大幅賣超，合計拋售逾十萬張，賣壓沉重且掛牌時間短，技術指標參考性有限。建議投資人避開短期空方強勢的亂流，優先觀察籌碼賣壓是否減緩，待成交量穩定後再行布局，避免過早接刀。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：籌碼面遭外資與自營商雙重拋售，短期震盪加劇，保守型投資人建議完全避開此下跌慣性。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：10.00元以下 &nbsp;|&nbsp; 賣出防守：11.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：考慮到市場流動性與股價修正，中庸型投資人建議分批布局，降低平均成本。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：10.30~10.50元 &nbsp;|&nbsp; 賣出防守：10.90元</span></div><div>⚡ <strong>積極型</strong>：儘管面臨賣壓，積極型投資人可嘗試抓取超跌後的強勁反彈契機，但須嚴格執行停損。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：10.60~10.66元 &nbsp;|&nbsp; 賣出防守：10.85元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：籌碼面呈現外資與自營商同步大舉拋售，技術面資訊不足，不確定性過高。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：10.00~10.20元 &nbsp;|&nbsp; 賣出防守：11.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：基於權值股波動風險，採取區間操作策略，觀察股價能否在整數關卡獲得支撐。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：10.40~10.50元 &nbsp;|&nbsp; 賣出防守：11.20元</span></div><div>⚡ <strong>積極型</strong>：雖面臨賣壓，但可視為短線修正後的切入點，採取分批布局方式應對下跌風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：10.60~10.70元 &nbsp;|&nbsp; 賣出防守：11.50元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">現階段推薦採取【保守】策略。主要原因在於籌碼面呈現外資與自營商大幅淨流出，賣壓沉重，且技術面缺乏支撐依據，建議投資人先觀察賣壓何時止穩再行介入，避免在弱勢震盪中損失本金。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">推薦採取【保守】策略。原因在於該標的上市時間尚短，缺乏足夠技術指標參考，加上籌碼面受法人大幅賣超壓制，短期波動風險極大，建議採取觀望態度，待賣壓消化完畢且量能趨穩後再進場布局較為穩妥。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -942,11 +943,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -966,16 +967,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">10.66</td>
-                            <td style="color: #eab308;">-1.11%</td>
+                            <td style="font-weight: 600; color: #d97706;">10.70</td>
+                            <td style="color: #d97706;">-0.74%</td>
                             <td class="tech-col">上市時間較短，均線資料不足</td>
                             <td class="tech-col"></td>
                             <td class="tech-col"></td>
                             <td class="tech-col">資料不足</td>
                             <td class="tech-col">資料不足</td>
-                            <td style="color: #f87171;">-80,094 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-20,212 張</td>
+                            <td style="color: #dc2626;">-80,094 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-20,212 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -983,16 +984,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">10.47</td>
-                            <td style="color: #eab308;">-2.88%</td>
+                            <td style="font-weight: 600; color: #d97706;">10.47</td>
+                            <td style="color: #d97706;">-2.88%</td>
                             <td class="tech-col">上市時間較短，均線資料不足</td>
                             <td class="tech-col"></td>
                             <td class="tech-col"></td>
                             <td class="tech-col">資料不足</td>
                             <td class="tech-col">資料不足</td>
-                            <td style="color: #f87171;">-80,094 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-20,212 張</td>
+                            <td style="color: #dc2626;">-80,094 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-20,212 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1000,16 +1001,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">10.78</td>
-                            <td style="color: #eab308;">+1.32%</td>
+                            <td style="font-weight: 600; color: #d97706;">10.78</td>
+                            <td style="color: #d97706;">+1.32%</td>
                             <td class="tech-col">上市時間較短，均線資料不足</td>
                             <td class="tech-col"></td>
                             <td class="tech-col"></td>
                             <td class="tech-col">資料不足</td>
                             <td class="tech-col">資料不足</td>
-                            <td style="color: #f87171;">+50,954 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">+96,930 張</td>
+                            <td style="color: #dc2626;">+50,954 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">+96,930 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1026,15 +1027,15 @@
             <div id='chart_00981A' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>00981A目前報價31.38，雖受籌碼面外資賣超影響回檔1.81%，但技術面展現強勁支撐，站穩所有均線且MACD維持紅柱多頭排列。唯RSI已達72.2高檔，短線過熱需留意漲多震盪，建議拉回佈局以延續多頭波段行情。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>00981A目前報價31.58元，雖盤中回檔1.19%，但技術面維持強勢多頭排列且MACD紅柱放大，顯示長線多頭架構未變。惟RSI已達72.2超買區，短線乖離過大，加上外資與自營商近期調節賣壓較重，建議投資人無需過度追高，等待籌碼沉澱或回測支撐後再行分批佈局。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮目前RSI處於超買區，建議避開追高風險，待回測支撐位以確保安全邊際。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：29.80~30.50 元 &nbsp;|&nbsp; 賣出防守：33.50 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術指標多頭格局完整，建議於均線支撐附近分批介入，平衡風險與獲利空間。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：30.80~31.20 元 &nbsp;|&nbsp; 賣出防守：32.80 元</span></div><div>⚡ <strong>積極型</strong>：看好MACD零軸上黃金交叉的持續動能，趁回檔直接切入，搶佔短期反彈行情。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：31.30~31.40 元 &nbsp;|&nbsp; 賣出防守：32.20 元</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：市場籌碼轉向賣方且技術指標過熱，保守型投資人應避開超買風險，等待回檔至月線支撐附近再考慮承接，以確保資產安全性。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：30.00~30.50 元 &nbsp;|&nbsp; 賣出防守：32.50 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：看好長期多頭趨勢，但在短線獲利回吐壓力下，建議採取分批佈局策略，於回測均線支撐時分段加碼，平衡技術面的風險與獲利潛力。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：30.80~31.20 元 &nbsp;|&nbsp; 賣出防守：33.00 元</span></div><div>⚡ <strong>積極型</strong>：儘管籌碼面呈現淨流出，但MACD多頭訊號強勁，積極型投資人可趁回檔時小量試單，嚴格設定跌破近期重要均線作為停損點，以參與後續多頭動能。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：31.40~31.58 元 &nbsp;|&nbsp; 賣出防守：33.50 元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">推薦採取【中庸】策略。儘管MACD顯示多頭強勢，但外資近期出現大幅賣超且RSI處於高檔過熱區，追價風險較高，採區間操作分批佈局最能兼顧獲利潛力與風險控管。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">建議採取【中庸】策略。目前技術面處於高檔過熱區且外資持續賣超，追高風險較大；但多頭架構未破，採取分批佈局不僅能分散短線震盪風險，也能在行情拉回時建立具競爭力的持倉成本。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -1042,11 +1043,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">三大法人買賣超</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">三大法人買賣超</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -1066,16 +1067,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">31.39</td>
-                            <td style="color: #eab308;">-1.78%</td>
+                            <td style="font-weight: 600; color: #d97706;">31.58</td>
+                            <td style="color: #d97706;">-1.19%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">29.32</td>
                             <td class="tech-col">24.41</td>
                             <td class="tech-col">72.2 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-93,498 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-19,811 張</td>
+                            <td style="color: #dc2626;">-93,498 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-19,811 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1083,16 +1084,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">30.72</td>
-                            <td style="color: #eab308;">-3.88%</td>
+                            <td style="font-weight: 600; color: #d97706;">30.72</td>
+                            <td style="color: #d97706;">-3.88%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">29.32</td>
                             <td class="tech-col">24.41</td>
                             <td class="tech-col">72.2 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-93,498 張</td>
-                            <td style="color: #f87171;">0 張</td>
-                            <td style="color: #f87171;">-19,811 張</td>
+                            <td style="color: #dc2626;">-93,498 張</td>
+                            <td style="color: #dc2626;">0 張</td>
+                            <td style="color: #dc2626;">-19,811 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1100,16 +1101,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">31.96</td>
-                            <td style="color: #eab308;">+1.49%</td>
+                            <td style="font-weight: 600; color: #d97706;">31.96</td>
+                            <td style="color: #d97706;">+1.49%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">29.33</td>
                             <td class="tech-col">24.41</td>
                             <td class="tech-col">72.4 (高檔超買區)</td>
                             <td class="tech-col">MACD 零軸上黃金交叉，紅柱放大，多頭表態。</td>
-                            <td style="color: #f87171;">-32,901 張</td>
-                            <td style="color: #f87171;">+12,600 張</td>
-                            <td style="color: #f87171;">-18,790 張</td>
+                            <td style="color: #dc2626;">-32,901 張</td>
+                            <td style="color: #dc2626;">+12,600 張</td>
+                            <td style="color: #dc2626;">-18,790 張</td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1126,15 +1127,15 @@
             <div id='chart_XNAS_L' class='chart-container'></div>
             <div class="advice-section" style="line-height: 1.8; font-size: 0.95rem;">
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #fbbf24;">💡 AI 分析 <span style="font-size: 0.85em; color: #9ca3af; font-weight: normal;">(11:36)</span>：</strong>目前 Nasdaq 100 ETF 技術面 RSI 指標高達 70.7 處於超買區，且 MACD 已出現高檔死叉與紅柱縮減跡象，顯示短期上漲動能轉弱。儘管均線糾結呈現震盪格局，但在買氣過熱及乖離過大背景下，建議投資人應提高警覺，切勿盲目追高，等待修正後的進場契機。
+                    <strong style="color: #d97706;">💡 AI 分析 <span style="font-size: 0.85em; color: #64748b; font-weight: normal;">(12:05)</span>：</strong>目前 Nasdaq 100 ETF 技術面出現 RSI 70.7 高檔超買訊號，且 MACD 動能減弱，均線呈現糾結整理態勢。由於報價為 nan，漲跌幅為 nan%，顯示市場正處於關鍵技術轉折點。建議投資人避開過熱風險，採取分批佈局策略，避免於高檔追價，耐心等待回檔整理結束後之趨勢確立。
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <strong style="color: #34d399; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
-                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到技術指標過熱且面臨修正壓力，保守型投資人應採取防禦策略，暫時停止買進動作。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：維持現金觀望，等待回測至均線支撐區 &nbsp;|&nbsp; 賣出防守：建議於現價分批獲利了結，鎖定近期獲利</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：市場呈現震盪整理，動能減弱，建議中庸型投資人採取區間操作，降低持倉比例以應對波動。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：待回檔至支撐區間介入 &nbsp;|&nbsp; 賣出防守：預設目標價上方分批停利</span></div><div>⚡ <strong>積極型</strong>：積極型投資人可利用技術面高檔死叉契機，採取順勢操作，並嚴格執行停損以控管風險。<br><span style='color: #60a5fa; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：於短線回調後的支撐位嘗試布局 &nbsp;|&nbsp; 賣出防守：跌破關鍵技術防守點位即刻停損</span></div>
+                    <strong style="color: #059669; display: block; margin-bottom: 4px;">🎯 操作策略：</strong>
+                    <div style="padding-left: 8px;"><div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮到技術指標 RSI 處於高檔超買區且 MACD 轉弱，保守型投資人應嚴控風險，靜待更明確的支撐確認再行介入。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：nan 元以下 &nbsp;|&nbsp; 賣出防守：nan 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：均線呈現糾結震盪，技術面缺乏明確多頭動能，中庸型投資人建議採取區間操作策略，高出低進。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：nan~nan 元區間 &nbsp;|&nbsp; 賣出防守：nan 元</span></div><div>⚡ <strong>積極型</strong>：雖然動能轉弱，但積極型投資人可嘗試在均線糾結處佈局，設定嚴格停損以防範指標轉空風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：nan 元 &nbsp;|&nbsp; 賣出防守：nan 元</span></div>
                 </div>
                 <div>
-                    <strong style="color: #a78bfa; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
-                    <div style="padding-left: 8px;">現階段推薦採取【保守】策略。主因是 RSI 超買訊號明顯且 MACD 動能轉弱，市場在技術面上正進入修正期，此時避開追高風險並保留資本，待趨勢確認或回測支撐後再行進場更為穩妥。</div>
+                    <strong style="color: #7c3aed; display: block; margin-bottom: 4px;">📢 AI 推薦策略：</strong>
+                    <div style="padding-left: 8px;">現階段建議採取【保守】策略。原因在於 RSI 超買且 MACD 出現高檔弱勢訊號，市場面臨回調壓力，不宜積極作多，建議保留現金並靜待技術面回穩後的進場點。</div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -1142,11 +1143,11 @@
                     <thead>
                         <tr>
                             <th rowspan="2">日期</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">收盤價</th>
-                            <th rowspan="2" style="text-align:center; color:#eab308;">漲跌幅</th>
-                            <th colspan="5" style="text-align:center; color:#60a5fa;">技術分析</th>
-                            <th colspan="3" style="text-align:center; color:#f87171;">籌碼面 (美股指標)</th>
-                            <th colspan="3" style="text-align:center; color:#c084fc;">財務重點</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">收盤價</th>
+                            <th rowspan="2" style="text-align:center; color:#d97706;">漲跌幅</th>
+                            <th colspan="5" style="text-align:center; color:#2563eb;">技術分析</th>
+                            <th colspan="3" style="text-align:center; color:#dc2626;">籌碼面 (美股指標)</th>
+                            <th colspan="3" style="text-align:center; color:#7c3aed;">財務重點</th>
                         </tr>
                         <tr>
                             <th>均線趨勢</th>
@@ -1166,16 +1167,16 @@
         
                         <tr>
                             <td class="date-col">2026-05-29</td>
-                            <td style="font-weight: 600; color: #eab308;">nan</td>
-                            <td style="color: #eab308;">nan%</td>
+                            <td style="font-weight: 600; color: #d97706;">nan</td>
+                            <td style="color: #d97706;">nan%</td>
                             <td class="tech-col">均線糾結，震盪整理</td>
-                            <td class="tech-col"></td>
-                            <td class="tech-col"></td>
+                            <td class="tech-col">-</td>
+                            <td class="tech-col">-</td>
                             <td class="tech-col">70.7 (高檔超買區)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1183,16 +1184,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-28</td>
-                            <td style="font-weight: 600; color: #eab308;">69.29</td>
-                            <td style="color: #eab308;">-0.03%</td>
+                            <td style="font-weight: 600; color: #d97706;">69.29</td>
+                            <td style="color: #d97706;">-0.03%</td>
                             <td class="tech-col">上市時間較短，均線資料不足</td>
                             <td class="tech-col"></td>
                             <td class="tech-col"></td>
                             <td class="tech-col">71.1 (高檔超買區)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1200,16 +1201,16 @@
             
                         <tr>
                             <td class="date-col">2026-05-27</td>
-                            <td style="font-weight: 600; color: #eab308;">69.37</td>
-                            <td style="color: #eab308;">+1.03%</td>
+                            <td style="font-weight: 600; color: #d97706;">69.37</td>
+                            <td style="color: #d97706;">+1.03%</td>
                             <td class="tech-col">站穩所有均線，強勢多頭排列</td>
                             <td class="tech-col">66.33</td>
                             <td class="tech-col">60.64</td>
                             <td class="tech-col">71.1 (高檔超買區)</td>
                             <td class="tech-col">MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
-                            <td style="color: #f87171;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
+                            <td style="color: #dc2626;"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
                             <td class="fin-col"></td>
@@ -1221,15 +1222,15 @@
         <details><summary>📁 查看更多歷史紀錄</summary><div class='table-responsive'><table class='older-records-table'><thead><tr><th>日期</th><th>收盤</th><th>漲跌</th><th>均線</th><th>月線</th><th>季線</th><th>RSI</th><th>MACD</th><th>機構大單</th><th>期權情緒</th><th>空單比例</th><th>折溢價</th><th>內扣費</th><th>殖利率</th></tr></thead><tbody><tr><td>2026-05-26</td><td>68.66</td><td>+1.76%</td><td>站穩所有均線，強勢多頭排列</td><td>66.01</td><td>60.45</td><td>69.0 (偏多)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-25</td><td>68.66</td><td>+1.76%</td><td>站穩所有均線，強勢多頭排列</td><td>66.01</td><td>60.45</td><td>69.0 (偏多)</td><td>MACD 高檔死亡交叉或紅柱縮減，動能轉弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-22</td><td>67.47</td><td>-0.47%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-21</td><td>67.79</td><td>+1.91%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-20</td><td>66.52</td><td>-0.79%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td>-5.2M</td><td>中性 (Neutral)</td><td>0.8%</td><td></td><td></td><td></td></tr><tr><td>2026-05-19</td><td>67.05</td><td>-1.11%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-18</td><td>67.80</td><td>-1.34%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-15</td><td>68.72</td><td>+1.49%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱快速縮減，低檔有黃金交叉跡象。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-14</td><td>67.71</td><td>+1.44%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱縮減，空方力道減弱。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-13</td><td>66.75</td><td>-1.75%</td><td>跌破短均線，季線支撐測試中</td><td>-</td><td>-</td><td>44 (轉弱)</td><td>MACD 綠柱延續，空方控盤。</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-12</td><td>67.94</td><td>+0.80%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-11</td><td>67.40</td><td>+1.06%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-08</td><td>66.69</td><td>+1.11%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-07</td><td>65.96</td><td>+1.62%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-06</td><td>64.91</td><td>+0.96%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-05</td><td>64.29</td><td>+1.69%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-05-04</td><td>64.29</td><td>+1.69%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2026-04-30</td><td>62.91</td><td>+0.94%</td><td></td><td>-</td><td>-</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></details></div>
         </div>
     </div>
-<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price", "MA20", "MA60"], ["05-18", 388.5, null, null], ["05-19", 408.5, null, null], ["05-20", 439.0, null, null], ["05-21", 469.5, null, null], ["05-22", 516.0, null, null], ["05-25", 529.0, 425.25, 292.66], ["05-26", 535.0, 434.08, 298.15], ["05-27", 532.0, 441.23, 303.62], ["05-28", 486.0, 447.58, 308.83], ["05-29", 501.0, 450.38, 313.56]], '#10b981'));
-google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price", "MA20", "MA60"], ["05-14", 402.62, null, null], ["05-15", 401.07, null, null], ["05-18", 396.78, null, null], ["05-19", 396.94, null, null], ["05-20", 387.66, null, null], ["05-21", 388.91, null, null], ["05-22", 387.66, null, null], ["05-25", 388.83, 389.36, 337.76], ["05-28", 388.83, null, null], ["05-29", 390.13, 391.64, 340.66]], '#10b981'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price", "MA20", "MA60"], ["05-18", 14.69, null, null], ["05-19", 14.62, null, null], ["05-20", 14.52, null, null], ["05-21", 14.61, null, null], ["05-22", 14.68, null, null], ["05-25", 14.72, null, null], ["05-26", 14.72, null, null], ["05-27", 14.76, 14.69, 14.75], ["05-28", 14.72, 14.69, 14.74], ["05-29", 14.83, 14.69, 14.74]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price", "MA20", "MA60"], ["05-18", 13.65, null, null], ["05-19", 13.41, null, null], ["05-20", 13.34, null, null], ["05-21", 13.89, null, null], ["05-22", 14.19, null, null], ["05-25", 14.76, 13.74, 12.0], ["05-26", 14.78, 13.82, 12.06], ["05-27", 15.15, 13.92, 12.12], ["05-28", 14.8, 13.92, 12.12], ["05-29", 15.18, 14.02, 12.18]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price", "MA20", "MA60"], ["05-18", 30.91, null, null], ["05-19", 29.93, null, null], ["05-20", 29.51, null, null], ["05-21", 31.58, null, null], ["05-22", 32.56, null, null], ["05-25", 34.56, 31.26, 25.48], ["05-26", 34.39, 31.49, 25.65], ["05-27", 35.73, 31.82, 25.84], ["05-28", 34.47, 31.85, 25.85], ["05-29", 36.55, 31.85, 25.85]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price", "MA20", "MA60"], ["05-18", 94.9, null, null], ["05-19", 93.1, null, null], ["05-20", 92.5, null, null], ["05-21", 95.85, null, null], ["05-22", 97.3, null, null], ["05-25", 100.8, 95.05, 84.16], ["05-26", 100.6, 95.43, 84.49], ["05-27", 102.55, 95.94, 84.83], ["05-28", 100.5, 95.99, 84.85], ["05-29", 103.95, 96.59, 85.22]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price", "MA20", "MA60"], ["05-14", 294.16, null, null], ["05-15", 296.37, null, null], ["05-18", 291.89, null, null], ["05-19", 290.63, null, null], ["05-20", 288.84, null, null], ["05-21", 293.63, null, null], ["05-22", 294.21, null, null], ["05-25", 300.38, 288.95, 263.47], ["05-28", 300.38, null, null], ["05-29", 302.85, 291.87, 265.26]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00403A', [["Date", "Price"], ["05-18", 9.84], ["05-19", 9.72], ["05-20", 9.66], ["05-21", 10.01], ["05-22", 10.2], ["05-25", 10.58], ["05-26", 10.58], ["05-27", 10.78], ["05-28", 10.47], ["05-29", 10.66]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price", "MA20", "MA60"], ["05-18", 28.24, null, null], ["05-19", 27.49, null, null], ["05-20", 27.23, null, null], ["05-21", 28.86, null, null], ["05-22", 29.95, null, null], ["05-25", 31.61, 28.94, 24.01], ["05-26", 31.5, 29.12, 24.2], ["05-27", 31.96, 29.33, 24.41], ["05-28", 30.72, 29.32, 24.41], ["05-29", 31.39, 29.32, 24.41]], '#8b5cf6'));
-google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price", "MA20", "MA60"], ["05-18", 67.8, null, null], ["05-19", 67.05, null, null], ["05-20", 66.52, null, null], ["05-21", 67.79, null, null], ["05-22", 67.47, null, null], ["05-25", 68.66, 66.01, 60.45], ["05-26", 68.66, 66.01, 60.45], ["05-27", 69.37, 66.33, 60.64], ["05-28", 69.29, null, null]], '#8b5cf6'));
+<script>google.charts.setOnLoadCallback(() => drawChart('chart_4958', [["Date", "Price", "MA20", "MA60"], ["05-18", 388.5, null, null], ["05-19", 408.5, null, null], ["05-20", 439.0, null, null], ["05-21", 469.5, null, null], ["05-22", 516.0, null, null], ["05-25", 529.0, 425.25, 292.66], ["05-26", 535.0, 434.08, 298.15], ["05-27", 532.0, 441.23, 303.62], ["05-28", 486.0, 447.58, 308.83], ["05-29", 508.0, 450.38, 313.56]], '#059669'));
+google.charts.setOnLoadCallback(() => drawChart('chart_GOOGL', [["Date", "Price", "MA20", "MA60"], ["05-14", 402.62, null, null], ["05-15", 401.07, null, null], ["05-18", 396.78, null, null], ["05-19", 396.94, null, null], ["05-20", 387.66, null, null], ["05-21", 388.91, null, null], ["05-22", 387.66, null, null], ["05-25", 388.83, 389.36, 337.76], ["05-28", 388.83, null, null], ["05-29", 390.13, 391.64, 340.66]], '#059669'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00937B', [["Date", "Price", "MA20", "MA60"], ["05-18", 14.69, null, null], ["05-19", 14.62, null, null], ["05-20", 14.52, null, null], ["05-21", 14.61, null, null], ["05-22", 14.68, null, null], ["05-25", 14.72, null, null], ["05-26", 14.72, null, null], ["05-27", 14.76, 14.69, 14.75], ["05-28", 14.72, 14.69, 14.74], ["05-29", 14.84, 14.69, 14.74]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_009816', [["Date", "Price", "MA20", "MA60"], ["05-18", 13.65, null, null], ["05-19", 13.41, null, null], ["05-20", 13.34, null, null], ["05-21", 13.89, null, null], ["05-22", 14.19, null, null], ["05-25", 14.76, 13.74, 12.0], ["05-26", 14.78, 13.82, 12.06], ["05-27", 15.15, 13.92, 12.12], ["05-28", 14.8, 13.92, 12.12], ["05-29", 15.22, 14.02, 12.18]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00631L', [["Date", "Price", "MA20", "MA60"], ["05-18", 30.91, null, null], ["05-19", 29.93, null, null], ["05-20", 29.51, null, null], ["05-21", 31.58, null, null], ["05-22", 32.56, null, null], ["05-25", 34.56, 31.26, 25.48], ["05-26", 34.39, 31.49, 25.65], ["05-27", 35.73, 31.82, 25.84], ["05-28", 34.47, 31.85, 25.85], ["05-29", 36.59, 31.85, 25.85]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_0050', [["Date", "Price", "MA20", "MA60"], ["05-18", 94.9, null, null], ["05-19", 93.1, null, null], ["05-20", 92.5, null, null], ["05-21", 95.85, null, null], ["05-22", 97.3, null, null], ["05-25", 100.8, 95.05, 84.16], ["05-26", 100.6, 95.43, 84.49], ["05-27", 102.55, 95.94, 84.83], ["05-28", 100.5, 95.99, 84.85], ["05-29", 103.9, 96.59, 85.22]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_QQQM', [["Date", "Price", "MA20", "MA60"], ["05-14", 294.16, null, null], ["05-15", 296.37, null, null], ["05-18", 291.89, null, null], ["05-19", 290.63, null, null], ["05-20", 288.84, null, null], ["05-21", 293.63, null, null], ["05-22", 294.21, null, null], ["05-25", 300.38, 288.95, 263.47], ["05-28", 300.38, null, null], ["05-29", 302.85, 291.87, 265.26]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00403A', [["Date", "Price"], ["05-18", 9.84], ["05-19", 9.72], ["05-20", 9.66], ["05-21", 10.01], ["05-22", 10.2], ["05-25", 10.58], ["05-26", 10.58], ["05-27", 10.78], ["05-28", 10.47], ["05-29", 10.7]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_00981A', [["Date", "Price", "MA20", "MA60"], ["05-18", 28.24, null, null], ["05-19", 27.49, null, null], ["05-20", 27.23, null, null], ["05-21", 28.86, null, null], ["05-22", 29.95, null, null], ["05-25", 31.61, 28.94, 24.01], ["05-26", 31.5, 29.12, 24.2], ["05-27", 31.96, 29.33, 24.41], ["05-28", 30.72, 29.32, 24.41], ["05-29", 31.58, 29.32, 24.41]], '#7c3aed'));
+google.charts.setOnLoadCallback(() => drawChart('chart_XNAS_L', [["Date", "Price", "MA20", "MA60"], ["05-18", 67.8, null, null], ["05-19", 67.05, null, null], ["05-20", 66.52, null, null], ["05-21", 67.79, null, null], ["05-22", 67.47, null, null], ["05-25", 68.66, 66.01, 60.45], ["05-26", 68.66, 66.01, 60.45], ["05-27", 69.37, 66.33, 60.64], ["05-28", 69.29, null, null]], '#7c3aed'));
 </script></body>
 </html>
