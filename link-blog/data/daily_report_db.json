@@ -4,6 +4,31 @@
       "name": "臻鼎-KY",
       "history": [
         {
+          "date": "2026-05-29",
+          "prev_price": "532.00",
+          "price": "486.00",
+          "change": "-8.65%",
+          "technical": {
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "62.4 (偏多)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
+          },
+          "institutional": {
+            "Foreign": "+239 張",
+            "InvestmentTrust": "-2,619 張",
+            "Dealer": "-462 張"
+          },
+          "advice": "臻鼎-KY今日股價收在486.00元，雖受大盤波動影響出現-8.65%的跌幅，但技術面仍維持多頭架構，股價站穩月線與季線，且RSI指標62.4偏多，MACD於零軸上呈現黃金交叉且紅柱放大，顯示長線多頭趨勢未變。籌碼面雖見投信與自營商調節，外資仍呈買超，建議投資人無需過度恐慌，可視為中長期多頭格局下的短線漲多修正，待賣壓消化後，逢低可持續留意佈局機會。",
+          "suggested_price": "🎯 短線強勢飆升，防守點可大幅上移至 495 元（約半根停板位置）。空手者絕對不建議在此追高，若有回測五日線再伺機佈局；持股者可續抱讓獲利奔跑。",
+          "financial": {
+            "Revenue_YoY": "+12.5%",
+            "Gross_Margin": "18.2%",
+            "EPS": "8.50"
+          }
+        },
+        {
           "date": "2026-05-28",
           "technical": {
             "MA_Trend": "站穩月線與季線，多頭架構不變",
@@ -546,6 +571,31 @@
       "name": "Alphabet (Class A)",
       "history": [
         {
+          "date": "2026-05-29",
+          "prev_price": "388.83",
+          "price": "390.13",
+          "change": "+0.33%",
+          "technical": {
+            "MA_Trend": "跌破月線，回測季線支撐",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "61.8 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "GOOGL 現報 390.13，今日微漲 0.33%。技術面來看，股價跌破月線後正回測季線支撐，MACD 出現高檔死亡交叉且紅柱縮減，顯示短線多頭動能轉弱。儘管 RSI 維持在 61.8 的偏多區間，但考量均線結構走疲，建議投資人暫且觀望。操作上應嚴守季線作為防守點，若後續無法帶量站回月線，應避免過度追價，建議分批佈局以降低震盪風險。",
+          "suggested_price": "🎯 建議維持 380 - 385 元區間分批建立部位的策略，跌破季線 375 元則守紀律暫停加碼。",
+          "financial": {
+            "Revenue_YoY": "+14.8%",
+            "Gross_Margin": "56.4%",
+            "EPS": "5.80"
+          }
+        },
+        {
           "date": "2026-05-28",
           "prev_price": "388.88",
           "price": "388.83",
@@ -1016,6 +1066,31 @@
     "00937B": {
       "name": "群益ESG投等債20+",
       "history": [
+        {
+          "date": "2026-05-29",
+          "prev_price": "14.76",
+          "price": "14.72",
+          "change": "-0.27%",
+          "technical": {
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "14.69",
+            "MA60": "14.74",
+            "RSI_Value": "54.1 (偏多)",
+            "MACD_Status": "MACD 低檔黃金交叉或綠柱縮減，空方力道衰退。"
+          },
+          "institutional": {
+            "Foreign": "+51,229 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-17,455 張"
+          },
+          "advice": "00937B最新收盤價報14.72，單日小幅回檔0.27%。技術面上，價格穩居所有均線之上，維持強勢多頭排列，配合RSI處於54.1多頭區間，以及MACD綠柱縮減與低檔黃金交叉訊號，顯示空方力道明顯減弱。籌碼面呈現外資強力回補51,229張的買盤支撐。整體趨勢偏多，投資人可持續關注後續漲勢，若回測均線支撐守穩，建議可分批佈局。",
+          "suggested_price": "🎯 短線具備高殖利率與法人籌碼保護，建議在 14.5 - 14.6 元區間分批承接，長期投資者可續抱。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-05-28",
           "technical": {
@@ -1556,6 +1631,31 @@
     "009816": {
       "name": "凱基台灣TOP 50 ETF",
       "history": [
+        {
+          "date": "2026-05-29",
+          "prev_price": "15.15",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "79.0 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-41,988 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-93,013 張"
+          },
+          "advice": "凱基台灣TOP 50 ETF目前股價為nan，漲跌幅nan%。技術面上，MACD於零軸上方黃金交叉且紅柱放大，顯示多頭氣勢強勁，惟RSI指標高達79.0，已進入超買區，短線過熱風險浮現。籌碼面呈現外資與自營商雙雙大舉調節，合計賣超逾13萬張，顯示大戶獲利了結意圖明顯。在均線糾結且量能分歧下，建議投資人審慎應對，不宜過度追高，可待高檔指標修正後，伺機分批布局。",
+          "suggested_price": "🎯 籌碼轉佳但技術面偏弱，建議待站穩月線後再行加碼，防守點設於 13.8 元。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-05-28",
           "technical": {
@@ -2099,6 +2199,31 @@
       "name": "元大台灣50正2",
       "history": [
         {
+          "date": "2026-05-29",
+          "prev_price": "35.73",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "31.85",
+            "MA60": "25.85",
+            "RSI_Value": "75.4 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-30,592 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-48,296 張"
+          },
+          "advice": "00631L目前股價為nan，漲跌幅為nan%。技術面顯示均線呈現強勢多頭排列，且MACD於零軸上黃金交叉、紅柱擴大，多頭格局明確。惟RSI指標達75.4進入高檔超買區，短線過熱風險增加。籌碼面呈現外資與自營商同步減碼，合計賣超逾7.8萬張，高檔調節賣壓沉重。建議投資人採取謹慎態度，操作上不宜過度追高，可待獲利了結賣壓消化、指標修正後再行布局。",
+          "suggested_price": "🎯 槓桿型 ETF 波動劇烈，季線支撐不破可偏多操作，若跌破季線則建議嚴格執行停損以控制風險。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
+        {
           "date": "2026-05-28",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
@@ -2640,6 +2765,31 @@
     "0050": {
       "name": "元大台灣50",
       "history": [
+        {
+          "date": "2026-05-29",
+          "prev_price": "102.55",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "74.0 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-39,726 張",
+            "InvestmentTrust": "+688 張",
+            "Dealer": "-21,962 張"
+          },
+          "advice": "0050目前報價為nan，漲跌幅為nan%。技術面上，儘管均線呈現糾結震盪，但MACD於零軸上方形成黃金交叉且紅柱放大，顯示多頭格局未破，惟RSI指標已達74.0，進入高檔超買區，需留意短線拉回風險。籌碼面呈現外資與自營商同步調節，賣超力道顯著，僅靠投信小幅支撐。建議投資人此階段不宜過度追高，採取分批佈局策略，待乖離修正後再伺機加碼。",
+          "suggested_price": "🎯 法人買盤歸隊提供下檔保護，建議採定期定額或於 95 - 96 元區間分批低接。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-05-28",
           "technical": {
@@ -3183,6 +3333,31 @@
       "name": "Invesco NASDAQ 100 ETF",
       "history": [
         {
+          "date": "2026-05-29",
+          "prev_price": "300.38",
+          "price": "302.85",
+          "change": "+0.82%",
+          "technical": {
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "76.5 (高檔超買區)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "QQQM 收盤報 302.85，漲幅 0.82%。技術面雖維持多頭排列且站穩所有均線，但 RSI 達 76.5 進入超買區，配合 MACD 出現高檔死亡交叉及紅柱縮減，顯示短線追價動能明顯轉弱。考量指標過熱且背離風險浮現，建議投資人暫緩激進佈局，應以持股續抱並嚴格設定停利點為主，切勿過度追高，等待指標回檔修正後，再尋求更佳的介入時機。",
+          "suggested_price": "🎯 季線為重要多空分水嶺，建議在季線附近 290 - 293 美元間分批建倉，長線看好科技股發展。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
+        {
           "date": "2026-05-28",
           "prev_price": "300.68",
           "price": "300.38",
@@ -3651,6 +3826,31 @@
     "00403A": {
       "name": "統一台股升級50主動式ETF",
       "history": [
+        {
+          "date": "2026-05-29",
+          "prev_price": "10.78",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "上市時間較短，均線資料不足",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "資料不足",
+            "MACD_Status": "資料不足"
+          },
+          "institutional": {
+            "Foreign": "-80,094 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-20,212 張"
+          },
+          "advice": "00403A近期受市場避險情緒影響，外資賣超達80,094張，自營商同步調節20,212張，籌碼面呈現較大賣壓。由於該ETF上市時間尚短，均線、RSI與MACD等技術指標數據暫缺（報價：nan，漲跌幅：nan%），目前難以從技術層面判斷支撐位。建議投資人密切關注外資提款力道是否減緩，在籌碼結構尚未穩定前，採取分批佈局策略，避免於修正行情中一次性重押，以降低市場波動帶來的投資風險。",
+          "suggested_price": "🎯 空頭排列且籌碼渙散，建議空手觀望，切勿輕易摸底，待打底成型並站上 5 日線後再做評估。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-05-28",
           "technical": {
@@ -4145,6 +4345,31 @@
     "00981A": {
       "name": "統一台股增長主動式ETF",
       "history": [
+        {
+          "date": "2026-05-29",
+          "prev_price": "31.96",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "29.32",
+            "MA60": "24.41",
+            "RSI_Value": "72.2 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-93,498 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-19,811 張"
+          },
+          "advice": "目前00981A報價為nan，漲跌幅nan%。技術面上，該標的站穩所有均線呈強勢多頭排列，MACD於零軸上黃金交叉且紅柱放大，多頭動能強勁。然而，RSI來到72.2的高檔超買區，顯示短線乖離偏大，且外資與自營商近期分別賣超93,498張及19,811張，籌碼面出現調節壓力。建議投資人於強勢多頭格局下，需留意技術性拉回風險，切勿盲目追高，採分批佈局策略為宜。",
+          "suggested_price": "🎯 短線強彈但趨勢未改，搶反彈者應嚴格設停損；穩健型投資者建議等待右側交易訊號出現。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-05-28",
           "technical": {
@@ -4641,6 +4866,31 @@
     "XNAS.L": {
       "name": "Xtrackers Nasdaq 100 UCITS ETF (LSE)",
       "history": [
+        {
+          "date": "2026-05-29",
+          "prev_price": "69.31",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "70.7 (高檔超買區)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "XNAS 目前報價為 nan，漲跌幅 nan%。從技術面觀察，均線呈現糾結，顯示盤勢處於震盪整理階段。值得注意的是，RSI 指標已來到 70.7 的高檔超買區，且 MACD 指標出現高檔死亡交叉或紅柱縮減，暗示短線動能轉弱，上方賣壓漸增。建議投資人此時宜降低曝險，暫時觀望，避免過度追高，靜待指標修正與均線方向明確後再伺機佈局。",
+          "suggested_price": "🎯 季線支撐為關鍵防線，若能守穩 67 元不破，可視為長期投資的良好切入點。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-05-28",
           "technical": {
