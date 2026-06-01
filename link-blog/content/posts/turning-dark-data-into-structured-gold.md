@@ -1,5 +1,5 @@
 ---
-title: "從暗數據到結構化黃金：利用 BigQuery Knowledge Catalog 實現批量媒體文件推理"
+title: "從暗數據到結構化黃金：利用 BigQuery 與 Dataplex Knowledge Catalog 實現批量媒體文件推理"
 date: 2026-06-01T09:10:31+08:00
 draft: false
 tags: ["BigQuery", "Dataplex", "Vertex AI", "Dark Data", "Agentic Data Cloud"]
