@@ -162,14 +162,14 @@ OPTIONS (
 
 我們需要在大語言模型與 BigQuery 之間搭起橋樑。透過在 BigQuery 中註冊 Vertex AI 遠端模型，我們可以直接在 SQL 查詢中呼叫大語言模型。
 
-此處我們選擇效能強大、推理能力極佳且支援長上下文的 **Gemini 1.5 Pro** 模型：
+此處我們選擇效能強大、推理能力極佳且支援長上下文的 **Gemini 3.5 Flash** 模型：
 
 ```sql
--- 在 BigQuery 中註冊遠端 Gemini 1.5 Pro 模型
+-- 在 BigQuery 中註冊遠端 Gemini 3.5 Flash 模型
 CREATE OR REPLACE MODEL `project-id.my_dataset.gemini_pro_model`
   REMOTE WITH CONNECTION `project-id.us.my-cloud-connection`
   OPTIONS (
-    endpoint = 'gemini-1.5-pro'
+    endpoint = 'gemini-3.5-flash'
   );
 ```
 
