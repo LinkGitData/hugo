@@ -4,6 +4,32 @@
       "name": "臻鼎-KY",
       "history": [
         {
+          "date": "2026-06-04",
+          "prev_price": "520.00",
+          "price": "510.00",
+          "change": "-1.92%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Revenue_YoY": "",
+            "Gross_Margin": "",
+            "EPS": ""
+          }
+        },
+        {
           "date": "2026-06-03",
           "prev_price": "520.00",
           "price": "510.00",
@@ -650,6 +676,32 @@
       "name": "Alphabet (Class A)",
       "history": [
         {
+          "date": "2026-06-04",
+          "prev_price": "361.85",
+          "price": "358.99",
+          "change": "-0.79%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Revenue_YoY": "",
+            "Gross_Margin": "",
+            "EPS": ""
+          }
+        },
+        {
           "date": "2026-06-03",
           "prev_price": "376.37",
           "price": "361.85",
@@ -1224,6 +1276,32 @@
     "00937B": {
       "name": "群益ESG投等債20+",
       "history": [
+        {
+          "date": "2026-06-04",
+          "prev_price": "14.95",
+          "price": "14.88",
+          "change": "-0.47%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-06-03",
           "prev_price": "14.95",
@@ -1868,6 +1946,32 @@
     "009816": {
       "name": "凱基台灣TOP 50 ETF",
       "history": [
+        {
+          "date": "2026-06-04",
+          "prev_price": "15.43",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-06-03",
           "prev_price": "15.43",
@@ -2515,15 +2619,41 @@
       "name": "元大台灣50正2",
       "history": [
         {
+          "date": "2026-06-04",
+          "prev_price": "37.91",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
+        {
           "date": "2026-06-03",
           "prev_price": "37.91",
           "price": "39.22",
           "change": "+3.46%",
           "technical": {
-            "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "MA20": "31.85",
-            "MA60": "25.85",
-            "RSI_Value": "75.4 (高檔超買區)",
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "nan",
+            "MA60": "nan",
+            "RSI_Value": "74.4 (高檔超買區)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "institutional": {
@@ -2547,9 +2677,9 @@
           "change": "+0.34%",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "MA20": "31.85",
-            "MA60": "25.85",
-            "RSI_Value": "75.4 (高檔超買區)",
+            "MA20": "33.20",
+            "MA60": "26.81",
+            "RSI_Value": "74.4 (高檔超買區)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "institutional": {
@@ -2573,9 +2703,9 @@
           "change": "+2.27%",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "MA20": "31.85",
-            "MA60": "25.85",
-            "RSI_Value": "75.4 (高檔超買區)",
+            "MA20": "32.86",
+            "MA60": "26.54",
+            "RSI_Value": "74.1 (高檔超買區)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "institutional": {
@@ -2599,9 +2729,9 @@
           "change": "+7.17%",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "MA20": "31.85",
-            "MA60": "25.85",
-            "RSI_Value": "75.4 (高檔超買區)",
+            "MA20": "32.52",
+            "MA60": "26.25",
+            "RSI_Value": "72.4 (高檔超買區)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "institutional": {
@@ -2622,9 +2752,9 @@
           "date": "2026-05-28",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "MA20": "31.85",
-            "MA60": "25.85",
-            "RSI_Value": "75.4 (高檔超買區)",
+            "MA20": "32.10",
+            "MA60": "26.02",
+            "RSI_Value": "66.3 (偏多)",
             "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "institutional": {
@@ -2672,7 +2802,7 @@
           "date": "2026-05-26",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "MA20": "31.49",
+            "MA20": "31.50",
             "MA60": "25.65",
             "RSI_Value": "70.7 (高檔超買區)",
             "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
@@ -2700,10 +2830,10 @@
           "change": "+6.14%",
           "technical": {
             "MA_Trend": "站穩所有均線，強勢多頭排列",
-            "RSI_Value": "71.8 (高檔超買區)",
-            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。",
             "MA20": "31.26",
-            "MA60": "25.48"
+            "MA60": "25.48",
+            "RSI_Value": "71.8 (高檔超買區)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "advice": "00631L 今日強勢大漲6.14%，收34.56元，成功站穩所有均線，呈強勢多頭排列。籌碼面獲外資及自營商同步大買逾5.8萬張，顯示機構買盤積極。然而，技術指標RSI已達71.8進入高檔超買區，且MACD紅柱縮減或出現死亡交叉，暗示短線漲勢動能可能轉弱，需留意過熱後的修正風險。建議投資人宜慎追高，並密切觀察後續量價及指標變化。",
           "suggested_price": "🎯 槓桿型 ETF 波動劇烈，季線支撐不破可偏多操作，若跌破季線則建議嚴格執行停損以控制風險。",
@@ -2724,9 +2854,11 @@
           "price": "32.56",
           "change": "+3.10%",
           "technical": {
-            "MA_Trend": "跌破月線，季線保衛戰",
-            "RSI_Value": "32 (極弱)",
-            "MACD_Status": "MACD 死亡交叉，綠柱再度擴大。"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "30.95",
+            "MA60": "25.30",
+            "RSI_Value": "66.0 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "advice": "受惠台股大盤強彈，今日強勁上漲 3.10% 收在 32.56 元。外資大舉加碼近 2.3 萬張，逢低布局企圖明顯。然而技術面跌破月線面臨季線保衛戰，MACD 綠柱擴大，波動風險仍高。",
           "suggested_price": "🎯 槓桿型 ETF 波動劇烈，季線支撐不破可偏多操作，若跌破季線則建議嚴格執行停損以控制風險。",
@@ -2747,9 +2879,11 @@
           "price": "31.58",
           "change": "+7.01%",
           "technical": {
-            "MA_Trend": "跌破月線，季線保衛戰",
-            "RSI_Value": "32 (極弱)",
-            "MACD_Status": "MACD 死亡交叉，綠柱再度擴大。"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "30.65",
+            "MA60": "25.12",
+            "RSI_Value": "62.5 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "advice": "隨大盤反彈收高至 31.53 元。但須注意自營商大舉賣超 -46,136 張，顯示法人對後市動能仍有疑慮。MACD 雖有收斂，但尚未完全扭轉空方趨勢。",
           "suggested_price": "🎯 槓桿 ETF 波動大，建議待法人賣壓減輕後再行加碼，防守點看 30.5 元。",
@@ -2767,9 +2901,11 @@
         {
           "date": "2026-05-20",
           "technical": {
-            "MA_Trend": "跌破月線，季線保衛戰",
-            "RSI_Value": "32 (極弱)",
-            "MACD_Status": "MACD 死亡交叉，綠柱再度擴大。"
+            "MA_Trend": "跌破月線，回測季線支撐",
+            "MA20": "30.43",
+            "MA60": "24.96",
+            "RSI_Value": "53.0 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "financial": {
             "Premium_Discount": "",
@@ -2790,9 +2926,11 @@
         {
           "date": "2026-05-19",
           "technical": {
-            "MA_Trend": "跌破月線，季線保衛戰",
-            "RSI_Value": "32 (極弱)",
-            "MACD_Status": "MACD 死亡交叉，綠柱再度擴大。"
+            "MA_Trend": "跌破月線，回測季線支撐",
+            "MA20": "30.30",
+            "MA60": "24.83",
+            "RSI_Value": "55.7 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "financial": {
             "Premium_Discount": "",
@@ -2816,9 +2954,11 @@
           "price": "30.91",
           "change": "-1.12%",
           "technical": {
-            "MA_Trend": "跌破月線，季線保衛戰",
-            "RSI_Value": "32 (極弱)",
-            "MACD_Status": "MACD 死亡交叉，綠柱再度擴大。"
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "30.10",
+            "MA60": "24.67",
+            "RSI_Value": "62.4 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "advice": "今日下跌 1.12% 收 30.91 元。MACD 死亡交叉且綠柱擴大，顯示大盤短線偏空。槓桿型 ETF 面臨較大回檔風險，須密切關注季線保衛戰。",
           "suggested_price": "🎯 槓桿商品風險高，若跌破季線應嚴格執行停損，切勿過度留戀。",
@@ -2839,9 +2979,11 @@
           "price": "31.26",
           "change": "-2.19%",
           "technical": {
-            "MA_Trend": "跌破月線，季線保衛戰",
-            "RSI_Value": "32 (極弱)",
-            "MACD_Status": "MACD 死亡交叉，綠柱再度擴大。"
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "29.83",
+            "MA60": "24.48",
+            "RSI_Value": "65.1 (偏多)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
           },
           "advice": "重挫 2.19% 收 31.26 元。早盤拉高誘多後殺尾盤，MACD 綠柱再度擴大，槓桿型 ETF 面臨極大回檔風險。",
           "suggested_price": "🎯 跌破 31.5 元支撐，建議停損出場，保留現金。",
@@ -2862,9 +3004,11 @@
           "price": "31.96",
           "change": "+0.35%",
           "technical": {
-            "MA_Trend": "跌破 10 日均線，下探月線支撐",
-            "RSI_Value": "42 (偏弱)",
-            "MACD_Status": "MACD 死亡交叉延續，綠柱微縮。"
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "29.57",
+            "MA60": "24.29",
+            "RSI_Value": "70.5 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "今日微幅反彈 0.35% 收 31.96 元。MACD 雖維持死亡交叉，但綠柱微縮，顯示短線殺盤力道暫歇。槓桿 ETF 追蹤誤差與波動風險大，不宜過度留倉。",
           "suggested_price": "🎯 反彈無力，建議逢高減碼，防守點嚴格設在 31.5 元。",
@@ -2885,9 +3029,11 @@
           "price": "31.85",
           "change": "-2.06%",
           "technical": {
-            "MA_Trend": "跌破 10 日均線，下探月線支撐",
-            "RSI_Value": "42 (偏弱)",
-            "MACD_Status": "MACD 出現高檔死亡交叉，綠柱開始擴大。"
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "29.24",
+            "MA60": "24.10",
+            "RSI_Value": "70.2 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "今日下跌 2.06% 收 31.85 元，受到台股回檔放大效應影響。MACD 出現高檔死亡交叉，綠柱開始擴大，顯示短線空方力道增強。槓桿型 ETF 波動較大。",
           "suggested_price": "🎯 若跌破 31 元整數關卡應嚴格執行停損，等待大盤止跌回穩後再行佈局。",
@@ -2908,9 +3054,11 @@
           "price": "32.68",
           "change": "+0.06%",
           "technical": {
-            "MA_Trend": "",
-            "RSI_Value": "",
-            "MACD_Status": ""
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "28.89",
+            "MA60": "23.90",
+            "RSI_Value": "75.5 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "今日下跌 0.95%，正2 產品隨大盤陷入震盪。MACD 高檔收斂顯示動能趨緩，短線需防範較大波動與耗損風險。",
           "suggested_price": "防守點設於 31.5 元，若跌破可考慮獲利了結部分部位。",
@@ -2931,9 +3079,11 @@
           "price": "32.66",
           "change": "+0.59%",
           "technical": {
-            "MA_Trend": "",
-            "RSI_Value": "",
-            "MACD_Status": ""
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "28.44",
+            "MA60": "23.69",
+            "RSI_Value": "76.6 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "",
           "suggested_price": "",
@@ -2954,9 +3104,11 @@
           "price": "32.47",
           "change": "-1.78%",
           "technical": {
-            "MA_Trend": "多頭修正",
-            "RSI_Value": "52",
-            "MACD_Status": "高檔收斂"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "27.99",
+            "MA60": "23.48",
+            "RSI_Value": "76.2 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "隨台股大盤拉回，今日下跌 1.88%。MACD 出現「高檔收斂」，短線漲多後可能面臨較大幅度的震盪修正。正 2 波動較大，需注意風險控管與耗損。",
           "suggested_price": "防守點設於 31.5 元，逢高可分批獲利了結部分部位。",
@@ -2977,9 +3129,11 @@
           "price": "33.06",
           "change": "+3.67%",
           "technical": {
-            "MA_Trend": "多頭修正",
-            "RSI_Value": "52",
-            "MACD_Status": "高檔收斂"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "27.51",
+            "MA60": "23.28",
+            "RSI_Value": "80.6 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "正2 爆發強勁上漲 3.83% 至 33.11 元。台股權值股火力全開，帶動槓桿型 ETF 表現亮眼。多頭趨勢明確，但需嚴格執行停利機制。",
           "suggested_price": "防守點大幅上移至 31.5，逢高可分批獲利了結部分部位。",
@@ -3000,9 +3154,11 @@
           "price": "31.89",
           "change": "+2.61%",
           "technical": {
-            "MA_Trend": "多頭修正",
-            "RSI_Value": "52",
-            "MACD_Status": "高檔收斂"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "27.00",
+            "MA60": "23.09",
+            "RSI_Value": "78.3 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "正2 隨台股權值股大漲，終場強勢上漲 2.61% 至 31.89 元。多頭力道強勁，但需注意高檔震盪風險，嚴格執行停利停損紀律。",
           "suggested_price": "上移支撐至 30.5，跌破則建議縮減部位保護獲利。",
@@ -3023,9 +3179,11 @@
           "price": "31.08",
           "change": "+0.26%",
           "technical": {
-            "MA_Trend": "多頭修正",
-            "RSI_Value": "52",
-            "MACD_Status": "高檔收斂"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "26.44",
+            "MA60": "22.90",
+            "RSI_Value": "76.5 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "今日微漲 0.26%，漲勢明顯趨緩。MACD 出現「高檔收斂」，這是一個短線動能即將耗盡的警訊。正 2 產品對波動十分敏感，在高檔整理時容易產生耗損。",
           "suggested_price": "短期內若無法放量上攻，可考慮先縮減部分槓桿部位獲利了結。",
@@ -3046,9 +3204,11 @@
           "price": "31.00",
           "change": "+8.35%",
           "technical": {
-            "MA_Trend": "多頭修正",
-            "RSI_Value": "52",
-            "MACD_Status": "高檔收斂"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "25.89",
+            "MA60": "22.71",
+            "RSI_Value": "76.3 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "隨大盤暴力反彈，今日飆漲 8.35% 站上 31 元大關。然而 MACD 呈現「高檔收斂」，這是一個警訊，代表這波急漲的背後動能正逐漸耗盡。操作正 2 產品必須嚴格控管風險，提防震盪耗損。",
           "suggested_price": "建議於 31 元附近適度縮減槓桿部位獲利了結，跌破 29.5 元則嚴格停損。",
@@ -3066,9 +3226,11 @@
         {
           "date": "2026-04-30",
           "technical": {
-            "MA_Trend": "多頭修正",
-            "RSI_Value": "52",
-            "MACD_Status": "高檔收斂"
+            "MA_Trend": "站穩月線與季線，多頭架構不變",
+            "MA20": "25.39",
+            "MA60": "22.53",
+            "RSI_Value": "69.8 (偏多)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "financial": {
             "Premium_Discount": "+0.20% (溢價)",
@@ -3092,9 +3254,11 @@
           "price": "28.82",
           "change": "-1.54%",
           "technical": {
-            "MA_Trend": "多頭回檔",
-            "RSI_Value": "55",
-            "MACD_Status": "紅柱縮減"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "24.92",
+            "MA60": "22.38",
+            "RSI_Value": "71.4 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "台股短線漲多拉回，正2槓桿波動放大，適合波段操作，請務必注意風險控管及停損停利。",
           "suggested_price": "28.5-29.0 區間操作",
@@ -3115,9 +3279,11 @@
           "price": "29.27",
           "change": "-1.18%",
           "technical": {
-            "MA_Trend": "強烈看漲",
-            "RSI_Value": "52.33",
-            "MACD_Status": "多頭排列 (0.05)"
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "24.49",
+            "MA60": "22.22",
+            "RSI_Value": "74.8 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "槓桿型 ETF 受惠於大盤萬點行情噴出。技術面極度強勢，MACD 維持多方。溢價 0.75% 尚屬合理。",
           "suggested_price": "建議買進：29.5 附近，動能操作",
@@ -3138,9 +3304,11 @@
           "price": "29.62",
           "change": "+4.15%",
           "technical": {
-            "MA_Trend": "",
-            "RSI_Value": "",
-            "MACD_Status": ""
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "24.03",
+            "MA60": "22.06",
+            "RSI_Value": "77.5 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
           },
           "advice": "",
           "suggested_price": "",
@@ -3160,6 +3328,32 @@
     "0050": {
       "name": "元大台灣50",
       "history": [
+        {
+          "date": "2026-06-04",
+          "prev_price": "105.70",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-06-03",
           "prev_price": "105.70",
@@ -3807,6 +4001,32 @@
       "name": "Invesco NASDAQ 100 ETF",
       "history": [
         {
+          "date": "2026-06-04",
+          "prev_price": "307.23",
+          "price": "306.61",
+          "change": "-0.20%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
+        {
           "date": "2026-06-03",
           "prev_price": "305.82",
           "price": "307.23",
@@ -4379,6 +4599,32 @@
     "XNAS.L": {
       "name": "Xtrackers Nasdaq 100 UCITS ETF (LSE)",
       "history": [
+        {
+          "date": "2026-06-04",
+          "prev_price": "70.99",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "",
+            "MA20": "",
+            "MA60": "",
+            "RSI_Value": "",
+            "MACD_Status": ""
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "",
+          "suggested_price": "",
+          "overall_recommendation": "",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-06-03",
           "prev_price": "70.65",
