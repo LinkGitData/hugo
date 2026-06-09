@@ -2,6 +2,7 @@
 title: "SafeBite：為糖尿病與高風險族群量身打造的三層式 AI 飲食助理"
 date: 2026-06-09T09:40:00+08:00
 draft: false
+slug: "safebite-ai-diet-assistant"
 tags: ["Gemini", "Flutter", "iOS Development", "Healthcare AI", "Vertex AI", "APAC GenAI Academy", "App Store Submission", "SaMD"]
 categories: ["AI Projects"]
 mermaid: true
