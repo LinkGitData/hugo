@@ -12,7 +12,9 @@ cover:
   relative: false
 ---
 
-> 🔗 **資料來源**：此篇內容源自我們內部實戰解決 Gemini 429 錯誤的經驗總結。（[📥 下載原始簡報 PDF](/downloads/Gemini-429-錯誤分析與對策.pdf)）
+> 🔗 **資料來源**：
+> - 此篇內容源自我們內部實戰解決 Gemini 429 錯誤的經驗總結。（[📥 下載原始簡報 PDF](/downloads/Gemini-429-錯誤分析與對策.pdf)）
+> - 延伸閱讀：[Build a robust and cost-effective gen AI strategy (Google Cloud Blog)](https://cloud.google.com/blog/products/ai-machine-learning/build-a-robust-and-cost-effective-gen-ai-strategy)
 
 在大型語言模型的實際應用中，當我們以為配額相當充足時，卻時常會意外撞上 **「429 RESOURCE_EXHAUSTED」** 的錯誤牆。本篇筆記將帶您深入剖析這個令人困惑的現象，並提供具體的架構調整與 Python 實踐範例。
 
