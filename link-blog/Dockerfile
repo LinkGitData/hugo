@@ -28,8 +28,7 @@ RUN hugo --minify
 # Stage 2: Serve with Nginx Alpine
 FROM nginx:alpine@sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0
 
-# 升級目前已知有修補版的 Alpine 套件，避免沿用 base image 內的高風險 CVE。
-RUN apk upgrade --no-cache libexpat zlib libpng libcrypto3 libssl3 musl musl-utils nghttp2-libs libxml2
+RUN apk update && apk upgrade --no-cache
 
 # Copy the generated static site from the builder stage
 COPY --from=builder /src/public /usr/share/nginx/html
