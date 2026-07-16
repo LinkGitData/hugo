@@ -6,8 +6,8 @@
         {
           "date": "2026-07-16",
           "prev_price": "618.00",
-          "price": "598.00",
-          "change": "-3.24%",
+          "price": "599.00",
+          "change": "-3.07%",
           "technical": {
             "MA_Trend": "站穩月線與季線，多頭架構不變",
             "MA20": "600.80",
@@ -2827,6 +2827,35 @@
             "Foreign": "",
             "InvestmentTrust": "",
             "Dealer": ""
+          }
+        }
+      ]
+    },
+    "3044": {
+      "name": "健鼎",
+      "history": [
+        {
+          "date": "2026-07-16",
+          "prev_price": "426.00",
+          "price": "421.50",
+          "change": "-1.06%",
+          "technical": {
+            "MA_Trend": "跌破所有均線，空頭排列",
+            "RSI_Value": "33.4 (偏空)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-121 張",
+            "InvestmentTrust": "-73 張",
+            "Dealer": "-21 張"
+          },
+          "advice": "受惠 AI 伺服器與常規伺服器板出貨旺盛，基本面強勁。技術面上，股價在高檔震盪，RSI 指標呈現偏多，MACD 動能溫和，法人籌碼雖有微幅調節，但長線多頭格局仍佳。",
+          "suggested_price": "建議買進區間 410~420 元，停利 460 元，停損 390 元。",
+          "overall_recommendation": "",
+          "financial": {
+            "Revenue_YoY": "+30.8%",
+            "Gross_Margin": "26.51%",
+            "EPS": "5.61 元"
           }
         }
       ]
@@ -5741,8 +5770,8 @@
         {
           "date": "2026-07-16",
           "prev_price": "37.04",
-          "price": "36.36",
-          "change": "-1.84%",
+          "price": "36.33",
+          "change": "-1.92%",
           "technical": {
             "MA_Trend": "均線糾結，震盪整理",
             "MA20": "-",
@@ -7231,8 +7260,8 @@
         {
           "date": "2026-07-16",
           "prev_price": "106.30",
-          "price": "105.20",
-          "change": "-1.03%",
+          "price": "105.15",
+          "change": "-1.08%",
           "technical": {
             "MA_Trend": "均線糾結，震盪整理",
             "MA20": "-",
@@ -11445,8 +11474,8 @@
         {
           "date": "2026-07-16",
           "prev_price": "29.77",
-          "price": "29.47",
-          "change": "-1.01%",
+          "price": "29.46",
+          "change": "-1.04%",
           "technical": {
             "MA_Trend": "均線糾結，震盪整理",
             "MA20": "-",
