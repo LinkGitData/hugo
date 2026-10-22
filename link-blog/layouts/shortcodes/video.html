@@ -1,0 +1,11 @@
+<div class="video-container" style="margin: 24px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); background: #000;">
+  <video controls preload="metadata" playsinline style="width: 100%; display: block;" {{ with .Get "poster" }}poster="{{ . }}"{{ end }}>
+    <source src="{{ .Get "src" }}" type="video/mp4">
+    您的瀏覽器不支援 HTML5 影片播放。
+  </video>
+  {{ with .Get "caption" }}
+  <div style="padding: 10px 16px; font-size: 0.9rem; color: var(--secondary); background: var(--entry); border-top: 1px solid var(--border); text-align: center;">
+    {{ . }}
+  </div>
+  {{ end }}
+</div>
