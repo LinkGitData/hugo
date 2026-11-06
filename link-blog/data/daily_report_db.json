@@ -4,6 +4,32 @@
       "name": "臻鼎-KY",
       "history": [
         {
+          "date": "2026-11-06",
+          "prev_price": "394.00",
+          "price": "394.00",
+          "change": "0.00%",
+          "technical": {
+            "MA_Trend": "跌破所有均線，空頭排列",
+            "MA20": "520.05",
+            "MA60": "501.04",
+            "RSI_Value": "29.9 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-3,192 張",
+            "InvestmentTrust": "+2,176 張",
+            "Dealer": "-222 張"
+          },
+          "advice": "臻鼎-KY目前股價收於394.00元，漲跌幅為0.00%。技術面上均線呈空頭排列且跌破支撐，RSI處於29.9的超賣區，MACD綠柱放大顯示空方動能強勁。籌碼面雖有投信護盤，但外資持續提款，短線賣壓沉重。建議投資人嚴控倉位，切勿過早進場攤平，應等待技術指標修復及賣壓減輕後的築底訊號，避免在弱勢探底過程中接刀。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標嚴重偏空且破線，風險過高，建議暫時觀望，待趨勢止跌回穩。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：360.00~370.00元 &nbsp;|&nbsp; 賣出防守：420.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：看好投信買盤支撐，採取分批佈局策略，降低短期波動風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：380.00~390.00元 &nbsp;|&nbsp; 賣出防守：415.00元</span></div><div>⚡ <strong>積極型</strong>：利用RSI進入超賣區搶反彈，執行嚴格停損機制以控制虧損。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：394.00元 &nbsp;|&nbsp; 賣出防守：380.00元</span></div>",
+          "overall_recommendation": "建議採取【保守】策略。主因是目前均線空頭排列且MACD顯示空方趨勢明確，加上外資持續賣超，儘管RSI指標進入超賣區，但底部尚未明確浮現，此時強行進場風險過大，應保留現金等待市場情緒改善。",
+          "financial": {
+            "Revenue_YoY": "+12.5%",
+            "Gross_Margin": "18.2%",
+            "EPS": "8.50"
+          }
+        },
+        {
           "date": "2026-11-05",
           "prev_price": "433.00",
           "price": "394.00",
@@ -3536,6 +3562,32 @@
       "name": "Alphabet (Class A)",
       "history": [
         {
+          "date": "2026-11-06",
+          "prev_price": "288.93",
+          "price": "282.57",
+          "change": "-2.20%",
+          "technical": {
+            "MA_Trend": "跌破所有均線，空頭排列",
+            "MA20": "317.33",
+            "MA60": "334.71",
+            "RSI_Value": "28.0 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "GOOGL近期表現疲軟，單日下挫2.20%至282.57元，技術面已完全跌破所有均線呈空頭排列，且MACD於零軸下死亡交叉，綠柱持續放大，顯示賣壓沉重。雖RSI來到28.0的超賣區，短線可能出現技術性反彈，但整體趨勢仍偏弱，建議投資人靜待止跌訊號，切勿過早試圖摸底承接。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術面處於絕對空頭，趨勢並未轉向，保守型投資人應嚴控資金，避開當前墜落的刀子，優先關注資產保全。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：260.00元以下 &nbsp;|&nbsp; 賣出防守：310.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：考慮到RSI已達超賣區，短線存有反彈需求，中庸型投資人可採取分批佈局策略，降低短期波動風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：270.00~275.00元 &nbsp;|&nbsp; 賣出防守：295.00元</span></div><div>⚡ <strong>積極型</strong>：利用極端超賣後的反彈機會進行短線操作，但在空頭排列下，必須嚴格執行停損，避免趨勢向下造成鉅額虧損。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：280.00~282.00元 &nbsp;|&nbsp; 賣出防守：290.00元</span></div>",
+          "overall_recommendation": "建議採取【保守】策略。原因在於GOOGL目前不僅跌破所有均線，MACD空頭指標明確，技術面結構嚴重破壞，在沒有出現爆量長紅或籌碼面明顯改善前，下跌慣性尚未改變，切勿因技術性超賣而過度積極進場。",
+          "financial": {
+            "Revenue_YoY": "+14.8%",
+            "Gross_Margin": "56.4%",
+            "EPS": "5.80"
+          }
+        },
+        {
           "date": "2026-11-05",
           "prev_price": "280.03",
           "price": "288.93",
@@ -6995,6 +7047,32 @@
       "name": "健鼎",
       "history": [
         {
+          "date": "2026-11-06",
+          "prev_price": "438.50",
+          "price": "438.50",
+          "change": "0.00%",
+          "technical": {
+            "MA_Trend": "跌破所有均線，空頭排列",
+            "MA20": "541.77",
+            "MA60": "516.42",
+            "RSI_Value": "29.5 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-890 張",
+            "InvestmentTrust": "+506 張",
+            "Dealer": "+103 張"
+          },
+          "advice": "健鼎股價收於438.50元，維持0.00%平盤表現，技術面目前呈現空頭排列且MACD綠柱放大，顯示下跌動能尚未緩解。雖有投信與自營商小幅回補，但外資持續賣超890張壓抑反彈，RSI指標已達29.5超賣區，建議觀察短期賣壓是否減緩，操作上不宜過度追空，建議等待均線結構改善再行介入。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術面疲軟且均線呈現空頭排列，保守型投資人應以避開風險為首要原則，等待底部型態確立。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：400.00~410.00 元 &nbsp;|&nbsp; 賣出防守：460.00 元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：股價跌破所有均線且處於超賣區，中庸型投資人可採取區間操作策略，利用乖離過大尋找反彈契機。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：420.00~425.00 元 &nbsp;|&nbsp; 賣出防守：450.00 元</span></div><div>⚡ <strong>積極型</strong>：RSI指標顯示超賣，積極型投資人可針對技術性反彈進行短線佈局，但需嚴守停損，防止進一步跌勢。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：435.00~438.50 元 &nbsp;|&nbsp; 賣出防守：445.00 元</span></div>",
+          "overall_recommendation": "現階段建議採取【保守】策略。目前健鼎技術面結構完全偏空，外資賣壓沉重，雖有超賣跡象，但尚未出現止跌訊號，建議投資人暫且觀望，優先保護資金，待均線轉折向上後再進場佈局。",
+          "financial": {
+            "Revenue_YoY": "+30.8%",
+            "Gross_Margin": "26.51%",
+            "EPS": "5.61 元"
+          }
+        },
+        {
           "date": "2026-11-05",
           "prev_price": "484.00",
           "price": "438.50",
@@ -9079,6 +9157,32 @@
     "00937B": {
       "name": "群益ESG投等債20+",
       "history": [
+        {
+          "date": "2026-11-06",
+          "prev_price": "14.55",
+          "price": "14.55",
+          "change": "+0.00%",
+          "technical": {
+            "MA_Trend": "站穩所有均線，強勢多頭排列",
+            "MA20": "14.10",
+            "MA60": "14.07",
+            "RSI_Value": "71.8 (高檔超買區)",
+            "MACD_Status": "MACD 零軸上黃金交叉，紅柱放大，多頭表態。"
+          },
+          "institutional": {
+            "Foreign": "+36,505 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "+99,212 張"
+          },
+          "advice": "00937B目前報價14.55，漲跌幅+0.00%。技術面處於多頭強勢排列，MACD零軸上黃金交叉顯示多頭動能強勁。雖RSI來到71.8高檔超買區，短線震盪風險增加，但外資與自營商籌碼呈現同步大舉買超，有利多頭續航，操作上建議逢回測短期支撐布局，切勿過度追高。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：考慮目前位於超買區，保守型投資人應嚴控資金水位，建議等待股價拉回均線支撐再進場，以降低追高風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.20~14.30元 &nbsp;|&nbsp; 賣出防守：14.80元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：市場呈現多頭趨勢且籌碼集中，中庸型投資人可在技術修正時採分批布局策略，靈活調整倉位以獲取波段價差。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.40~14.50元 &nbsp;|&nbsp; 賣出防守：14.95元</span></div><div>⚡ <strong>積極型</strong>：看好MACD紅柱放大所展現的強勢動能，積極型投資人可趁勢進場，並嚴格設定停利點位，以應對高檔震盪。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：14.50~14.55元 &nbsp;|&nbsp; 賣出防守：15.10元</span></div>",
+          "overall_recommendation": "建議採取【中庸】策略。儘管籌碼面強勁且技術指標顯示多頭格局未變，但RSI已達71.8超買區，建議透過中庸策略，在保持多頭曝險的同時，利用回檔分批布局，既能參與行情也能避免短線高檔急殺風險。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-11-05",
           "prev_price": "14.25",
@@ -12609,6 +12713,32 @@
     "009816": {
       "name": "凱基台灣TOP 50 ETF",
       "history": [
+        {
+          "date": "2026-11-06",
+          "prev_price": "14.53",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "-",
+            "MA60": "-",
+            "RSI_Value": "26.5 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-8,500 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "-175,139 張"
+          },
+          "advice": "目前009816技術指標RSI處於26.5超賣區，且MACD綠柱放大顯示空頭趨勢強勁，加上外資與自營商呈現顯著賣超，顯示賣壓沉重。雖股價因數據缺失顯示為nan，但均線糾結後轉弱，建議投資人目前不宜貿然接刀，應觀察賣壓是否緩解及底部支撐力道，現階段策略應以靜待築底為主，嚴防追高風險。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標極度疲弱，籌碼面呈現雙重賣壓，建議避開下跌趨勢，靜待市場情緒回穩。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：暫時觀望 &nbsp;|&nbsp; 賣出防守：若持倉建議設嚴格停損</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：考量RSI進入超賣區可能出現技術性反彈，但空頭排列未解，建議採取分批佈局策略。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：待反彈確認後於支撐區介入 &nbsp;|&nbsp; 賣出防守：設定5%停損</span></div><div>⚡ <strong>積極型</strong>：籌碼賣超嚴重，短線波動加劇，可利用超賣區間進行搶短，但須嚴格控管曝險部位。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：視盤中低點強支撐位置 &nbsp;|&nbsp; 賣出防守：短線快進快出，見紅即收</span></div>",
+          "overall_recommendation": "建議採【保守】策略。主因是目前MACD指標弱勢且三大法人同步賣超，市場籌碼極度渙散，加上股價趨勢不明朗，此時應優先以風險管控為首要任務，避免在下跌趨勢中過早進場攤平。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-11-05",
           "prev_price": "14.91",
@@ -16141,6 +16271,32 @@
     "00631L": {
       "name": "元大台灣50正2",
       "history": [
+        {
+          "date": "2026-11-06",
+          "prev_price": "29.21",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "-",
+            "MA60": "-",
+            "RSI_Value": "26.2 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-14,516 張",
+            "InvestmentTrust": "+26 張",
+            "Dealer": "-217,461 張"
+          },
+          "advice": "目前00631L技術面呈現MACD零軸下死叉且RSI處於26.2超賣區，顯示空頭格局強勁。籌碼面外資與自營商大幅賣超，賣壓沈重且均線糾結後轉向震盪整理。由於目前成交報價為nan，漲跌幅為nan%，顯示市場流動性或數據端存在異常，建議投資人暫時觀望，切勿在指標未轉強前盲目進場接刀，防範下行風險。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標嚴重超賣且籌碼面法人賣壓沈重，為避免資產減損，建議採取極度保守策略，暫停交易。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：暫不進場 &nbsp;|&nbsp; 賣出防守：持有者可視反彈停損</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：均線呈現整理且指標偏空，中庸型投資人應等待MACD綠柱縮短或RSI重回50以上轉強訊號。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：報價持穩於均線之上時考慮 &nbsp;|&nbsp; 賣出防守：nan元以下建議出場</span></div><div>⚡ <strong>積極型</strong>：雖然短線指標顯示超賣，但籌碼面賣壓未止，僅建議極短線搶反彈，嚴格執行停損。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：nan元附近觀察支撐 &nbsp;|&nbsp; 賣出防守：跌破nan元立即停損</span></div>",
+          "overall_recommendation": "保守。綜合目前MACD空頭排列、RSI過低以及法人大幅賣超之籌碼數據，顯示盤勢極度不穩，且價格顯示為nan，投資風險極高，現階段採取保守策略最為穩妥。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-11-05",
           "prev_price": "30.85",
@@ -19712,6 +19868,32 @@
       "name": "元大台灣50",
       "history": [
         {
+          "date": "2026-11-06",
+          "prev_price": "97.15",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "-",
+            "MA60": "-",
+            "RSI_Value": "26.6 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "-72,290 張",
+            "InvestmentTrust": "+4,051 張",
+            "Dealer": "-273,402 張"
+          },
+          "advice": "目前0050技術面進入超賣區，RSI指標僅26.6，且MACD綠柱放大，顯示空頭氣勢未止。籌碼面上，外資與自營商聯手大幅拋售，投信雖力撐但難擋賣壓。建議投資人避開短期鋒頭，因均線糾結處壓力沉重，若未能守穩支撐，不排除進一步下探，操作應以控管現金部位為核心，勿過早猜測底部。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標顯示弱勢且籌碼面賣壓沉重，保守型投資人應採取觀望態度，等待止跌訊號。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：建議暫不佈局，等待站回月線後再考量 &nbsp;|&nbsp; 賣出防守：跌破近期波段低點時執行停損</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：市場處於震盪整理且空方表態，中庸型投資人可採分批佈局策略，以降低波動風險。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：於乖離率過大時分批佈局 &nbsp;|&nbsp; 賣出防守：設定反彈至均線糾結區間執行獲利了結</span></div><div>⚡ <strong>積極型</strong>：RSI指標處於超賣區，積極型投資人可利用市場過度恐慌造成的乖離空間，進行極短線的跌深搶反彈。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：於技術性超賣訊號出現處伺機買進 &nbsp;|&nbsp; 賣出防守：設定3%至5%為目標停利點，跌破買進價格即嚴格停損</span></div>",
+          "overall_recommendation": "推薦採取【保守】策略。原因在於目前MACD呈死叉且綠柱持續放大，顯示空方趨勢明確；外資與自營商的大幅流出顯示法人信心不足，在技術指標尚未出現止跌轉強訊號前，建議投資人優先保護資本，避免盲目接刀。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
+        {
           "date": "2026-11-05",
           "prev_price": "99.85",
           "price": "97.15",
@@ -23244,6 +23426,32 @@
       "name": "Invesco NASDAQ 100 ETF",
       "history": [
         {
+          "date": "2026-11-06",
+          "prev_price": "284.92",
+          "price": "266.85",
+          "change": "-6.34%",
+          "technical": {
+            "MA_Trend": "跌破所有均線，空頭排列",
+            "MA20": "291.24",
+            "MA60": "296.41",
+            "RSI_Value": "27.0 (弱勢超賣區)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "QQQM近期受市場恐慌影響，單日暴跌6.34%收在266.85，技術面完全跌破均線且MACD綠柱放大，顯示空頭壓力沈重。雖然RSI來到27.0的超賣區，短線可能有反彈修正需求，但整體下降趨勢已成形，目前不宜過度積極進場接刀，建議投資人靜待技術性指標修復與底部訊號明確再行布局。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：市場進入恐慌下跌階段，均線呈空頭排列，保守型投資人應採取絕對避險策略，暫時空手觀望。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：235.00元以下 &nbsp;|&nbsp; 賣出防守：285.00元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：技術指標處於超賣區，中庸型投資人可嘗試分批布局，但需設置嚴格停損以防跌勢擴大。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：250.00~260.00元 &nbsp;|&nbsp; 賣出防守：275.00元</span></div><div>⚡ <strong>積極型</strong>：強烈跌勢下存在短線技術性反彈契機，激進型投資人可於急殺時短打，但務必快進快出，嚴禁長抱。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：260.00~266.85元 &nbsp;|&nbsp; 賣出防守：272.00元</span></div>",
+          "overall_recommendation": "現階段推薦【保守】策略。目前市場呈現空頭排列且跌勢凌厲，技術指標雖進入超賣但趨勢並未反轉，盲目進場風險極高，建議優先保存資金，待盤勢止穩後再規劃進場。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
+        {
           "date": "2026-11-05",
           "prev_price": "282.23",
           "price": "284.92",
@@ -26702,6 +26910,32 @@
     "XNAS.L": {
       "name": "Xtrackers Nasdaq 100 UCITS ETF (LSE)",
       "history": [
+        {
+          "date": "2026-11-06",
+          "prev_price": "66.11",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "-",
+            "MA60": "-",
+            "RSI_Value": "36.9 (偏空)",
+            "MACD_Status": "MACD 零軸下死亡交叉，綠柱放大，空頭表態。"
+          },
+          "institutional": {
+            "Foreign": "",
+            "InvestmentTrust": "",
+            "Dealer": ""
+          },
+          "advice": "目前Nasdaq 100 ETF技術指標顯示MACD零軸下死亡交叉且綠柱放大，RSI處於36.9偏空領域，均線維持震盪整理，市場短期賣壓沉重。雖報價數據暫缺，但技術面已明顯轉弱，建議投資人靜待均線翻揚或空頭力竭信號，切勿貿然追高，以防下行風險。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：市場技術面偏空，防禦性策略優先，降低持倉以規避潛在波動。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：建議暫時觀望，待技術指標修復至40以下支撐。 &nbsp;|&nbsp; 賣出防守：執行嚴格停損，若反彈未過壓力線建議減碼。</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：均線糾結顯示方向不明，建議採用分批佈局策略，關注盤整支撐力道。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：逢低分批佈局，建議於整理區間下緣介入。 &nbsp;|&nbsp; 賣出防守：設定5%停損位，目標設定於均線糾結處獲利出場。</span></div><div>⚡ <strong>積極型</strong>：技術面顯示空頭表態，適合風險承受度高者，可配置反向工具或逢低搶反彈。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：於極度超賣區間嘗試短線搶進。 &nbsp;|&nbsp; 賣出防守：設定3%快速停損，目標搶反彈至短線壓力位即出場。</span></div>",
+          "overall_recommendation": "現階段推薦【保守】策略。主因是技術面空方訊號明確（MACD死叉及RSI低檔），且均線糾結顯示盤勢缺乏明確方向，在整體格局未轉強前，控制資金風險為首要任務。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-11-05",
           "prev_price": "65.38",
@@ -30165,6 +30399,32 @@
     "00919": {
       "name": "群益台灣精選高息",
       "history": [
+        {
+          "date": "2026-11-06",
+          "prev_price": "31.19",
+          "price": "nan",
+          "change": "nan%",
+          "technical": {
+            "MA_Trend": "均線糾結，震盪整理",
+            "MA20": "-",
+            "MA60": "-",
+            "RSI_Value": "37.5 (偏空)",
+            "MACD_Status": "MACD 高檔死亡交叉或紅柱縮減，動能轉弱。"
+          },
+          "institutional": {
+            "Foreign": "-12,929 張",
+            "InvestmentTrust": "0 張",
+            "Dealer": "+5,627 張"
+          },
+          "advice": "近期00919技術指標呈現MACD紅柱縮減且RSI僅37.5，顯示動能轉弱，技術面處於均線糾結震盪。籌碼面外資大幅提款近1.3萬張，盤勢受壓，建議採取分批佈局策略，避免於弱勢整理期過度追高，靜待籌碼穩定後再加碼。",
+          "suggested_price": "<div style='margin-bottom: 8px;'>🛡️ <strong>保守型</strong>：技術指標偏空且外資賣壓沉重，保守型投資人應嚴控資金水位，等待更佳支撐位。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：23.5元~23.8元 &nbsp;|&nbsp; 賣出防守：25.5元</span></div><div style='margin-bottom: 8px;'>⚖️ <strong>中庸型</strong>：市場呈現震盪整理，適合透過區間操作降低成本，並關注月線支撐力道。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：24.0元~24.2元 &nbsp;|&nbsp; 賣出防守：25.8元</span></div><div>⚡ <strong>積極型</strong>：雖然動能轉弱，但積極型投資人可嘗試於籌碼消化過程中，尋找短線反彈的搶點。<br><span style='color: #2563eb; font-weight: 600; padding-left: 24px;'>➔ 推薦買進：24.2元以下 &nbsp;|&nbsp; 賣出防守：25.2元</span></div>",
+          "overall_recommendation": "建議採【保守】策略。目前MACD死亡交叉且外資連續賣超，籌碼面劣勢明顯，均線糾結亦顯示市場方向未定，現階段應以防禦為主，耐心等待技術指標修正完畢再行進場。",
+          "financial": {
+            "Premium_Discount": "",
+            "Expense_Ratio": "",
+            "Yield_Status": ""
+          }
+        },
         {
           "date": "2026-11-05",
           "prev_price": "31.26",
